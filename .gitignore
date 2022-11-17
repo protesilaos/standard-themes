@@ -1,0 +1,5 @@
+*.elc
+*-autoloads.el
+*-pkg.el
+standard-themes.info
+standard-themes.texi

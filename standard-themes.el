@@ -273,7 +273,7 @@ With `intense', use a more pronounced gray background color."
           (const :format "[%v] %t\n" :tag "No visible fringes" nil)
           (const :format "[%v] %t\n" :tag "Subtle gray background" subtle)
           (const :format "[%v] %t\n" :tag "Intense gray background" intense))
-  :link '(info-link "(standard-themes) Fringes"))
+  :link '(info-link "(standard-themes) Fringe visibility"))
 
 (defcustom standard-themes-links nil
   "Set the style of links.
@@ -325,10 +325,10 @@ Please refer to their documentation strings."
                       (const :tag "No underline" no-underline))
               (const :tag "Bold font weight" bold)
               (const :tag "Italic font slant" italic))
-  :link '(info-link "(standard-themes) Link styles"))
+  :link '(info-link "(standard-themes) Link style"))
 
 (defcustom standard-themes-prompts nil
-  "Use subtle or intense styles for minibuffer and REPL prompts.
+  "Control the style of prompts (e.g. minibuffer, REPL).
 
 The value is a list of properties, each designated by a symbol.
 The default (a nil value or an empty list) means to only use a
@@ -360,14 +360,14 @@ In user configuration files the form may look like this:
               (const :tag "With Background" background)
               (const :tag "Bold font weight" bold)
               (const :tag "Italic font slant" italic))
-  :link '(info-link "(standard-themes) Command prompts"))
+  :link '(info-link "(standard-themes) Option for command prompts"))
 
 (defcustom standard-themes-mode-line-accented nil
   "When non-nil, use accented background for the active mode line."
   :group 'standard-themes
   :package-version '(standard-themes . "1.0.0")
   :type 'boolean
-  :link '(info-link "(standard-themes) Mode line"))
+  :link '(info-link "(standard-themes) Accented mode line"))
 
 ;;; Helpers for user options
 

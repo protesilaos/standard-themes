@@ -62,7 +62,8 @@ This is used by the command `standard-themes-toggle'."
   :group 'standard-themes)
 
 (defcustom standard-themes-bold-constructs nil
-  "Use bold text in more code constructs."
+  "When non-nil, use bold text in more code constructs.
+This affects keywords, builtins, and a few other elements."
   :group 'standard-themes
   :package-version '(standard-themes . "1.0.0")
   :type 'boolean

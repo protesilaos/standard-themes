@@ -70,7 +70,8 @@ This affects keywords, builtins, and a few other elements."
   :link '(info-link "(standard-themes) Bold constructs"))
 
 (defcustom standard-themes-italic-constructs nil
-  "Use italic text in more code constructs."
+  "When non-nil, use italic text in more code constructs.
+This affects comments, doc strings, and some other minor elements."
   :group 'standard-themes
   :package-version '(standard-themes . "1.0.0")
   :type 'boolean

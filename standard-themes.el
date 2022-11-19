@@ -138,9 +138,9 @@ to the `default' face's height.
 
 - The symbol of a weight attribute adjusts the font of the
   heading accordingly, such as `light', `semibold', etc.  Valid
-  symbols are defined in the variable `standard-themes-weights'.  The
-  absence of a weight means that bold will be used by virtue of
-  inheriting the `bold' face.
+  symbols are defined in the variable `standard-themes-weights'.
+  The absence of a weight means that no distinct weight will be
+  used.
 
 - A number, expressed as a floating point (e.g. 1.5), adjusts the
   height of the heading to that many times the base font size.

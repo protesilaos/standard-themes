@@ -6,7 +6,7 @@
 ;; Maintainer: Standard-Themes Development <~protesilaos/standard-themes@lists.sr.ht>
 ;; URL: https://git.sr.ht/~protesilaos/standard-themes
 ;; Mailing-List: https://lists.sr.ht/~protesilaos/standard-themes
-;; Version: 0.1.0
+;; Version: 1.0.0
 ;; Package-Requires: ((emacs "27.1"))
 ;; Keywords: faces, theme, accessibility
 
@@ -58,20 +58,20 @@
   "Hook that runs after loading a Standard theme.
 This is used by the command `standard-themes-toggle'."
   :type 'hook
-  :package-version '(standard-themes . "0.1.0")
+  :package-version '(standard-themes . "1.0.0")
   :group 'standard-themes)
 
 (defcustom standard-themes-bold-constructs nil
   "Use bold text in more code constructs."
   :group 'standard-themes
-  :package-version '(standard-themes . "0.1.0")
+  :package-version '(standard-themes . "1.0.0")
   :type 'boolean
   :link '(info-link "(standard-themes) Bold constructs"))
 
 (defcustom standard-themes-italic-constructs nil
   "Use italic text in more code constructs."
   :group 'standard-themes
-  :package-version '(standard-themes . "0.1.0")
+  :package-version '(standard-themes . "1.0.0")
   :type 'boolean
   :link '(info-link "(standard-themes) Italic constructs"))
 
@@ -180,7 +180,7 @@ will retain the original aesthetic for that level.  For example:
                   (2 . (1.3))
                   (t . t)))) ; default style for all other levels"
   :group 'standard-themes
-  :package-version '(standard-themes . "0.1.0")
+  :package-version '(standard-themes . "1.0.0")
   :type `(alist
           :options ,(mapcar (lambda (h)
                               (list h standard-themes--headings-choice))
@@ -202,7 +202,7 @@ Users may need to explicitly configure the font family of
 typography (also check the `fontaine' package on GNU ELPA (by
 Protesilaos))."
   :group 'standard-themes
-  :package-version '(standard-themes . "0.1.0")
+  :package-version '(standard-themes . "1.0.0")
   :type 'boolean
   :link '(info-link "(standard-themes) Enable mixed fonts"))
 
@@ -215,7 +215,7 @@ Users may need to explicitly configure the font family of
 their typography (also check the `fontaine' package on GNU
 ELPA (by Protesilaos))."
   :group 'standard-themes
-  :package-version '(standard-themes . "0.1.0")
+  :package-version '(standard-themes . "1.0.0")
   :type 'boolean
   :link '(info-link "(standard-themes) UI typeface"))
 
@@ -248,7 +248,7 @@ Other examples:
     (setq standard-themes-region \\='(intense))
     (setq standard-themes-region \\='(intense no-extend neutral))"
   :group 'standard-themes
-  :package-version '(standard-themes . "0.1.0")
+  :package-version '(standard-themes . "1.0.0")
   :type '(set :tag "Properties" :greedy t
               (const :tag "Do not extend to the edge of the window" no-extend)
               (const :tag "More neutral/gray background" neutral)
@@ -265,7 +265,7 @@ visible yet close to the main background color.
 
 With `intense', use a more pronounced gray background color."
   :group 'standard-themes
-  :package-version '(standard-themes . "0.1.0")
+  :package-version '(standard-themes . "1.0.0")
   :version "29.1"
   :type '(choice
           (const :format "[%v] %t\n" :tag "No visible fringes" nil)
@@ -312,7 +312,7 @@ text, is controlled by `x-use-underline-position-properties',
 `x-underline-at-descent-line', `underline-minimum-offset'.
 Please refer to their documentation strings."
   :group 'standard-themes
-  :package-version '(standard-themes . "0.1.0")
+  :package-version '(standard-themes . "1.0.0")
   :type '(set :tag "Properties" :greedy t
               (choice :tag "Text coloration"
                       (const :tag "Saturared color (default)" nil)
@@ -353,7 +353,7 @@ In user configuration files the form may look like this:
 
     (setq standard-themes-prompts (quote (background gray)))"
   :group 'standard-themes
-  :package-version '(standard-themes . "0.1.0")
+  :package-version '(standard-themes . "1.0.0")
   :type '(set :tag "Properties" :greedy t
               (const :tag "With Background" background)
               (const :tag "Bold font weight" bold)
@@ -363,7 +363,7 @@ In user configuration files the form may look like this:
 (defcustom standard-themes-mode-line-accented nil
   "When non-nil, use accented background for the active mode line."
   :group 'standard-themes
-  :package-version '(standard-themes . "0.1.0")
+  :package-version '(standard-themes . "1.0.0")
   :type 'boolean
   :link '(info-link "(standard-themes) Mode line"))
 
@@ -674,32 +674,32 @@ Helper function for `standard-themes-preview-colors'."
   (custom-declare-face
    (intern (format "standard-themes-heading-%d" n))
    nil (format "Used for level %d heading." n)
-   :package-version '(standard-themes . "0.1.0")
+   :package-version '(standard-themes . "1.0.0")
    :group 'standard-themes-faces))
 
 (defface standard-themes-key-binding nil
   "Face for key bindings."
-  :package-version '(standard-themes . "0.1.0")
+  :package-version '(standard-themes . "1.0.0")
   :group 'standard-themes-faces)
 
 (defface standard-themes-bold nil
   "Face attributes when `standard-themes-bold-constructs' is non-nil."
-  :package-version '(standard-themes . "0.1.0")
+  :package-version '(standard-themes . "1.0.0")
   :group 'standard-themes-faces)
 
 (defface standard-themes-italic nil
   "Face attributes when `standard-themes-italic-constructs' is non-nil."
-  :package-version '(standard-themes . "0.1.0")
+  :package-version '(standard-themes . "1.0.0")
   :group 'standard-themes-faces)
 
 (defface standard-themes-fixed-pitch nil
   "Face for `fixed-pitch' if `standard-themes-mixed-fonts' is non-nil."
-  :package-version '(standard-themes . "0.1.0")
+  :package-version '(standard-themes . "1.0.0")
   :group 'standard-themes-faces)
 
 (defface standard-themes-ui-variable-pitch nil
   "Face for `variable-pitch' if `standard-themes-variable-pitch-ui' is non-nil."
-  :package-version '(standard-themes . "0.1.0")
+  :package-version '(standard-themes . "1.0.0")
   :group 'standard-themes-faces)
 
 ;; This produces `standard-themes-mark-delete' and the like.
@@ -707,7 +707,7 @@ Helper function for `standard-themes-preview-colors'."
   (custom-declare-face
    (intern (format "standard-themes-mark-%s" scope))
    nil (format "Face for %s marks (e.g. `dired', `trashed')." scope)
-   :package-version '(standard-themes . "0.1.0")
+   :package-version '(standard-themes . "1.0.0")
    :group 'standard-themes-faces))
 
 ;; This produces `standard-themes-underline-error' and the like
@@ -715,7 +715,7 @@ Helper function for `standard-themes-preview-colors'."
   (custom-declare-face
    (intern (format "standard-themes-underline-%s" scope))
    nil (format "Face for %s underline (e.g. `flymake', `flyspell')." scope)
-   :package-version '(standard-themes . "0.1.0")
+   :package-version '(standard-themes . "1.0.0")
    :group 'standard-themes-faces))
 
 (defconst standard-themes-faces

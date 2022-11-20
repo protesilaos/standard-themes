@@ -578,6 +578,18 @@ Run `standard-themes-post-load-hook'."
   (load-theme theme :no-confirm)
   (run-hooks 'standard-themes-post-load-hook))
 
+;;;###autoload
+(defun standard-themes-load-dark ()
+  "Load `standard-dark' and run `standard-themes-post-load-hook'."
+  (interactive)
+  (standard-themes--load-theme 'standard-dark))
+
+;;;###autoload
+(defun standard-themes-load-light ()
+  "Load `standard-light' and run `standard-themes-post-load-hook'."
+  (interactive)
+  (standard-themes--load-theme 'standard-light))
+
 (defun standard-themes--load-prompt ()
   "Helper for `standard-themes-toggle'."
   (let ((theme
@@ -586,8 +598,8 @@ Run `standard-themes-post-load-hook'."
                            standard-themes-items nil t))))
     (mapc #'disable-theme (standard-themes--list-known-themes))
     (pcase theme
-      ('standard-light (standard-themes--load-theme 'standard-light))
-      ('standard-dark (standard-themes--load-theme 'standard-dark)))))
+      ('standard-light (standard-themes-load-light))
+      ('standard-dark (standard-themes-load-dark)))))
 
 ;;;###autoload
 (defun standard-themes-toggle ()
@@ -595,8 +607,8 @@ Run `standard-themes-post-load-hook'."
 Run `standard-themes-post-load-hook' after loading the theme."
   (interactive)
   (pcase (standard-themes--current-theme)
-    ('standard-light (standard-themes--load-theme 'standard-dark))
-    ('standard-dark (standard-themes--load-theme 'standard-light))
+    ('standard-light (standard-themes-load-dark))
+    ('standard-dark (standard-themes-load-light))
     (_ (standard-themes--load-prompt))))
 
 (defun standard-themes--preview-colors-render (buffer theme &rest _)

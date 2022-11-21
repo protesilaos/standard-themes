@@ -58,7 +58,7 @@
       ;; Basic hues for foreground values
       (red             "#b3303a")
       (red-warmer      "#e00033")
-      (red-cooler      "#ee3b3b")
+      (red-cooler      "#ce2b50")
       (red-faint       "#b22222")
       (green           "#228b22")
       (green-warmer    "#4f7400")

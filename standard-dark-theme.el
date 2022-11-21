@@ -193,7 +193,11 @@
       (rainbow-5 green-cooler)
       (rainbow-6 cyan-cooler)
       (rainbow-7 blue-faint)
-      (rainbow-8 yellow-cooler))
+      (rainbow-8 yellow-cooler)
+
+      (prose-code      magenta-warmer)
+      (prose-macro     magenta)
+      (prose-verbatim  green-cooler))
     "The `standard-dark' palette.")
 
   (standard-themes-theme standard-dark standard-dark-palette)

@@ -776,7 +776,7 @@ Helper function for `standard-themes-preview-colors'."
     `(fringe ((,c ,@(standard-themes--fringe bg-dim bg-active) :foreground ,fg-main)))
     `(header-line ((,c :inherit standard-themes-ui-variable-pitch :background ,bg-dim)))
     `(header-line-highlight ((,c :inherit highlight)))
-    `(help-argument-name ((,c :foreground ,accent-0)))
+    `(help-argument-name ((,c :foreground ,prose-verbatim)))
     `(help-key-binding ((,c :inherit (bold standard-themes-fixed-pitch) :foreground ,keybind)))
     `(highlight ((,c :background ,bg-hover :foreground ,fg-main)))
     `(hl-line ((,c :background ,bg-hl-line)))
@@ -866,9 +866,9 @@ Helper function for `standard-themes-preview-colors'."
     `(font-latex-slide-title-face ((,c :inherit standard-themes-heading-0)))
     `(font-latex-string-face ((,c :inherit font-lock-string-face)))
     `(font-latex-underline-face ((,c :inherit underline)))
-    `(font-latex-verbatim-face ((,c :inherit standard-themes-fixed-pitch :foreground ,accent-0)))
+    `(font-latex-verbatim-face ((,c :inherit standard-themes-fixed-pitch :foreground ,prose-verbatim)))
     `(font-latex-warning-face ((,c :inherit font-lock-warning-face)))
-    `(tex-verbatim ((,c :inherit standard-themes-fixed-pitch :foreground ,accent-0)))
+    `(tex-verbatim ((,c :inherit standard-themes-fixed-pitch :foreground ,prose-verbatim)))
     ;; `(texinfo-heading ((,c :foreground ,magenta)))
     `(TeX-error-description-error ((,c :inherit error)))
     `(TeX-error-description-help ((,c :inherit success)))
@@ -1309,7 +1309,7 @@ Helper function for `standard-themes-preview-colors'."
     `(image-dired-thumb-header-file-size ((,c :foreground ,info)))
     `(image-dired-thumb-mark ((,c :background ,info)))
 ;;;; info
-    `(Info-quoted ((,c :inherit standard-themes-fixed-pitch :foreground ,accent-0))) ; the capitalization is canonical
+    `(Info-quoted ((,c :inherit standard-themes-fixed-pitch :foreground ,prose-code))) ; the capitalization is canonical
     `(info-header-node ((,c :inherit (shadow bold))))
     `(info-index-match ((,c :inherit match)))
     `(info-menu-header ((,c :inherit bold)))
@@ -1468,7 +1468,7 @@ Helper function for `standard-themes-preview-colors'."
     `(markdown-header-face-5 ((,c :inherit standard-themes-heading-5)))
     `(markdown-header-face-6 ((,c :inherit standard-themes-heading-6)))
     `(markdown-highlighting-face ((,c :background ,bg-info :foreground ,info)))
-    `(markdown-inline-code-face ((,c :inherit standard-themes-fixed-pitch :foreground ,accent-1))) ; same as `org-code'
+    `(markdown-inline-code-face ((,c :inherit standard-themes-fixed-pitch :foreground ,prose-code)))
     `(markdown-italic-face ((,c :inherit italic)))
     `(markdown-language-keyword-face ((,c :inherit standard-themes-fixed-pitch :foreground ,comment)))
     `(markdown-line-break-face ((,c :inherit nobreak-space)))
@@ -1629,7 +1629,7 @@ Helper function for `standard-themes-preview-colors'."
     `(org-block-end-line ((,c :inherit org-block-begin-line)))
     `(org-checkbox ((,c :foreground ,warning)))
     `(org-clock-overlay ((,c :background ,bg-alt :foreground ,red-cooler)))
-    `(org-code ((,c :inherit standard-themes-fixed-pitch :foreground ,accent-1)))
+    `(org-code ((,c :inherit standard-themes-fixed-pitch :foreground ,prose-code)))
     `(org-column ((,c :inherit default :background ,bg-alt)))
     `(org-column-title ((,c :inherit (bold default) :underline t :background ,bg-alt)))
     `(org-date ((,c :inherit standard-themes-fixed-pitch :foreground ,date :underline t)))
@@ -1655,7 +1655,7 @@ Helper function for `standard-themes-preview-colors'."
     `(org-level-8 ((,c :inherit standard-themes-heading-8)))
     `(org-link ((,c :inherit link)))
     `(org-list-dt ((,c :inherit bold)))
-    `(org-macro ((,c :inherit standard-themes-fixed-pitch :foreground ,accent-2)))
+    `(org-macro ((,c :inherit standard-themes-fixed-pitch :foreground ,prose-macro)))
     `(org-meta-line ((,c :inherit standard-themes-fixed-pitch :foreground ,comment)))
     `(org-mode-line-clock (( )))
     `(org-mode-line-clock-overrun ((,c :inherit bold :foreground ,modeline-err)))
@@ -1671,7 +1671,7 @@ Helper function for `standard-themes-preview-colors'."
     `(org-target ((,c :underline t)))
     `(org-time-grid ((,c :foreground ,fg-dim)))
     `(org-todo ((,c :inherit bold :foreground ,err)))
-    `(org-verbatim ((,c :inherit standard-themes-fixed-pitch :foreground ,accent-0)))
+    `(org-verbatim ((,c :inherit standard-themes-fixed-pitch :foreground ,prose-verbatim)))
     `(org-verse ((,c :inherit org-block)))
     `(org-warning ((,c :inherit warning)))
 ;;;; org-habit
@@ -1783,7 +1783,7 @@ Helper function for `standard-themes-preview-colors'."
     `(sh-heredoc ((,c :inherit font-lock-doc-face)))
     `(sh-quoted-exec ((,c :inherit font-lock-builtin-face)))
 ;;;; shr
-    `(shr-code ((,c :inherit standard-themes-fixed-pitch :foreground ,accent-1))) ; same as `org-code'
+    `(shr-code ((,c :inherit standard-themes-fixed-pitch :foreground ,prose-code)))
     `(shr-h1 ((,c :inherit standard-themes-heading-1)))
     `(shr-h2 ((,c :inherit standard-themes-heading-2)))
     `(shr-h3 ((,c :inherit standard-themes-heading-3)))

@@ -37,7 +37,11 @@
 (eval-and-compile
   (require 'standard-themes)
 
-  (deftheme standard-light "Like the unthemed light Emacs, but more consistent.")
+  (deftheme standard-light
+    "Like the unthemed light Emacs, but more consistent."
+    :background-mode 'light
+    :kind 'color-scheme
+    :family 'standard)
 
   (defconst standard-light-palette
     '(;; Basic tones

@@ -37,7 +37,11 @@
 (eval-and-compile
   (require 'standard-themes)
 
-  (deftheme standard-dark "Like the unthemed dark Emacs, but more consistent.")
+  (deftheme standard-dark
+    "Like the unthemed dark Emacs, but more consistent."
+    :background-mode 'dark
+    :kind 'color-scheme
+    :family 'standard)
 
   (defconst standard-dark-palette
     '(;; Basic tones

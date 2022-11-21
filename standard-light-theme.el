@@ -177,10 +177,10 @@
       (rx-escape green) ; compare with `string'
       (rx-construct fg-main)
 
-      (accent-0 blue-cooler)
-      (accent-1 magenta)
+      (accent-0 blue)
+      (accent-1 red-cooler)
       (accent-2 green)
-      (accent-3 red)
+      (accent-3 magenta-cooler)
 
       (mail-0 magenta-cooler)
       (mail-1 blue-warmer)

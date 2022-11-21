@@ -68,7 +68,7 @@
       (blue-warmer     "#3a5fcd")
       (blue-cooler     "#0000ff")
       (blue-faint      "#483d8b")
-      (magenta         "#8b008b")
+      (magenta         "#721045")
       (magenta-warmer  "#8b2252")
       (magenta-cooler  "#800080")
       (magenta-faint   "#bf3580")

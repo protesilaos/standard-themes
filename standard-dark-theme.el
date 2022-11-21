@@ -182,12 +182,12 @@
       (accent-2 green)
       (accent-3 magenta-cooler)
 
-      (mail-0 yellow-cooler)
-      (mail-1 cyan-warmer)
+      (mail-0 magenta)
+      (mail-1 blue)
       (mail-2 cyan-cooler)
-      (mail-3 magenta-cooler)
-      (mail-4 red-warmer)
-      (mail-5 blue)
+      (mail-3 yellow)
+      (mail-4 blue-cooler)
+      (mail-5 green-warmer)
 
       (rainbow-0 "#afeeee")
       (rainbow-1 cyan-warmer)

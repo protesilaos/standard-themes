@@ -79,7 +79,7 @@
       (cyan            "#00ffff")
       (cyan-warmer     "#87cefa")
       (cyan-cooler     "#7fffd4")
-      (cyan-faint      "#8aa0df")
+      (cyan-faint      "#6acbcb")
 
       ;; Basic hues for background values
       (bg-red      "#cd2f30")

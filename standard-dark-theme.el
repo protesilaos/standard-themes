@@ -146,7 +146,7 @@
 
       ;; Conditional hues
       (bg-region-intense   "#9f3047")
-      (bg-mode-line-accent "#662a10")
+      (bg-mode-line-accent "#173780")
 
       ;; Mappings
       (err red)

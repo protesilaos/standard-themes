@@ -69,7 +69,7 @@
       (yellow-cooler   "#ffa07a")
       (yellow-faint    "#dfb08f")
       (blue            "#87ceff")
-      (blue-warmer     "#6a9fff")
+      (blue-warmer     "#80aaff")
       (blue-cooler     "#02cfff")
       (blue-faint      "#b0c4de")
       (magenta         "#df8faf")

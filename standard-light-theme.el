@@ -158,7 +158,7 @@
       (link-faint blue-faint)
       (link-alt-faint magenta-faint)
       (date cyan-warmer)
-      (name cyan-cooler)
+      (name green-cooler)
       (keybind blue)
       (prompt blue-cooler)
       (bg-prompt bg-blue)

@@ -951,7 +951,7 @@ Helper function for `standard-themes-preview-colors'."
 ;;;; compilation
     `(compilation-column-number ((,c :inherit compilation-line-number)))
     `(compilation-error ((,c :inherit error)))
-    `(compilation-info ((,c :inherit bold :foreground ,name)))
+    `(compilation-info ((,c :inherit bold :foreground ,magenta-warmer)))
     `(compilation-line-number ((,c :inherit shadow)))
     `(compilation-mode-line-exit ((,c :inherit bold :foreground ,modeline-info)))
     `(compilation-mode-line-fail ((,c :inherit bold :foreground ,modeline-err)))

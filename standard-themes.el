@@ -1325,7 +1325,7 @@ Helper function for `standard-themes-preview-colors'."
     `(isearch-group-1 ((,c :background ,bg-green :foreground ,fg-main)))
     `(isearch-group-2 ((,c :background ,bg-yellow :foreground ,fg-main)))
     `(lazy-highlight ((,c :background ,bg-cyan :foreground ,fg-main)))
-    `(match ((,c :background ,bg-alt :foreground ,fg-main)))
+    `(match ((,c :background ,bg-warning)))
     `(query-replace ((,c :background ,bg-red :foreground ,fg-main)))
 ;;;; keycast
     `(keycast-command ((,c :inherit bold :foreground ,bg-accent)))

@@ -199,9 +199,9 @@
       (rainbow-7 blue-faint)
       (rainbow-8 yellow-cooler)
 
-      (prose-code      cyan-cooler)
-      (prose-macro     green-warmer)
-      (prose-verbatim  magenta-warmer))
+      (prose-code cyan-cooler)
+      (prose-macro green-warmer)
+      (prose-verbatim magenta-warmer))
     "The `standard-dark' palette.")
 
   (standard-themes-theme standard-dark standard-dark-palette)

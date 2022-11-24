@@ -199,9 +199,9 @@
       (rainbow-7 blue-faint)
       (rainbow-8 magenta-warmer)
 
-      (prose-code      cyan-cooler)
-      (prose-macro     green-warmer)
-      (prose-verbatim  magenta))
+      (prose-code cyan-cooler)
+      (prose-macro green-warmer)
+      (prose-verbatim magenta))
     "The `standard-light' palette.")
 
   (standard-themes-theme standard-light standard-light-palette)

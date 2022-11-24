@@ -67,6 +67,16 @@ included in the section entitled “GNU Free Documentation License.”
 modify this GNU manual.”
 #+end_quote
 
+* About the Standard themes
+:PROPERTIES:
+:CUSTOM_ID: h:fd5bf657-937d-4e42-b936-b423ef4f45ee
+:END:
+
+The ~standard-themes~ are a pair of light and dark themes for GNU
+Emacs.  They emulate the out-of-the-box looks of Emacs (which
+technically do NOT constitute a theme) while bringing to them thematic
+consistency, customizability, and extensibility.
+
 * Installation
 :PROPERTIES:
 :CUSTOM_ID: h:3306414a-e56a-4fda-b70a-73a4140cfa0a

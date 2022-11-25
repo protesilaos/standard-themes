@@ -161,7 +161,7 @@
       (name green-cooler)
       (keybind blue)
       (prompt blue-cooler)
-      (bg-prompt bg-blue)
+      (bg-prompt bg-yellow)
 
       (builtin blue-faint)
       (comment red-faint)

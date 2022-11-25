@@ -184,10 +184,10 @@
 
       (mail-0 magenta)
       (mail-1 blue-warmer)
-      (mail-2 cyan-cooler)
+      (mail-2 green-cooler)
       (mail-3 yellow-cooler)
       (mail-4 blue)
-      (mail-5 green-warmer)
+      (mail-5 cyan)
 
       (rainbow-0 "#191970")
       (rainbow-1 blue-cooler)

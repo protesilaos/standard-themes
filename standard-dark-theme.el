@@ -119,7 +119,7 @@
       ;; Special hues
       (bg-mode-line  "#505050") (fg-mode-line  "#ffffff")
       (bg-accent     "#ffc200")
-      (bg-completion "#334e22")
+      (bg-completion "#254b5f")
       (bg-hover      "#457b2f")
       (bg-hover-alt  "#00688b")
       (bg-hl-line    "#556b2f")

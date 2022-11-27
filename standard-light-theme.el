@@ -105,6 +105,11 @@
       (bg-removed-refine "#f3b5af")
       (fg-removed        "#a02a2a")
 
+      ;; Marks
+      (bg-mark-alt  "#ffeabb") (fg-mark-alt  "#a45822")
+      (bg-mark-del  "#ffd5ea") (fg-mark-del  "#b32230")
+      (bg-mark-sel  "#c0effa") (fg-mark-sel  "#1f6fb0")
+
       ;; Graphs
       (red-graph-0-bg     "#ef7969")
       (red-graph-1-bg     "#ffaab4")

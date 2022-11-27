@@ -148,6 +148,7 @@
       (underline-info    "#02af52")
 
       ;; Conditional hues
+      (bg-prompt           "#9bbfdf")
       (bg-region-intense   "#eeb422")
       (bg-mode-line-accent "#9fbaff")
 
@@ -164,7 +165,6 @@
       (name green-cooler)
       (keybind blue)
       (prompt blue-cooler)
-      (bg-prompt bg-yellow)
 
       (builtin blue-faint)
       (comment red-faint)

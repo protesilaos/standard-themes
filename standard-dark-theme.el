@@ -148,6 +148,7 @@
       (underline-info    "#22b022")
 
       ;; Conditional hues
+      (bg-prompt           "#3f5563") ; Also try: #33447f, #3a3a8f
       (bg-region-intense   "#9f3047")
       (bg-mode-line-accent "#173780")
 
@@ -164,7 +165,6 @@
       (name cyan-cooler)
       (keybind blue-cooler)
       (prompt blue)
-      (bg-prompt bg-yellow)
 
       (builtin blue-faint)
       (comment red-warmer)

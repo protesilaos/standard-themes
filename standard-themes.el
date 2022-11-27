@@ -1217,6 +1217,7 @@ Helper function for `standard-themes-preview-colors'."
 ;;;; git-commit
     `(git-commit-comment-action ((,c :inherit font-lock-comment-face)))
     `(git-commit-comment-branch-local ((,c :inherit font-lock-comment-face :foreground ,accent-0)))
+    `(git-commit-comment-branch-remote ((,c :inherit font-lock-comment-face :foreground ,accent-3)))
     `(git-commit-comment-heading ((,c :inherit (bold font-lock-comment-face))))
     `(git-commit-comment-file ((,c :inherit font-lock-comment-face :foreground ,name)))
     `(git-commit-keyword ((,c :foreground ,keyword)))

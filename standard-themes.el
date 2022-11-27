@@ -1359,7 +1359,7 @@ Helper function for `standard-themes-preview-colors'."
     `(magit-diff-base ((,c :background ,bg-changed-faint  :foreground ,fg-changed)))
     `(magit-diff-base-highlight ((,c :background ,bg-changed  :foreground ,fg-changed)))
     `(magit-diff-context ((,c :inherit shadow)))
-    `(magit-diff-context-highlight ((,c :background ,bg-dim)))
+    `(magit-diff-context-highlight ((,c :inherit shadow :background ,bg-dim)))
     `(magit-diff-file-heading ((,c :inherit bold :foreground ,accent-0)))
     `(magit-diff-file-heading-highlight ((,c :inherit magit-diff-file-heading :background ,bg-alt)))
     `(magit-diff-file-heading-selection ((,c :inherit bold :background ,bg-hover-alt :foreground ,fg-main)))

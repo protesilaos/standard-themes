@@ -153,7 +153,7 @@
       (underline-info    "#22b022")
 
       ;; Conditional hues
-      (bg-prompt           "#3f5563") ; Also try: #33447f, #3a3a8f
+      (bg-prompt           "#394a63")
       (bg-region-intense   "#9f3047")
       (bg-mode-line-accent "#173780")
 

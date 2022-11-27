@@ -90,17 +90,20 @@
       (bg-cyan     "#a8efff")
 
       ;; Diffs
-      (bg-added          "#d5f8d5")
-      (bg-added-faint    "#e5ffe5")
-      (bg-added-refine   "#c6e8c6")
+      (bg-added          "#c0f8d0")
+      (bg-added-faint    "#d0ffe0")
+      (bg-added-refine   "#b4e8c4")
+      (fg-added          "#007200")
 
       (bg-changed        "#ffdfa9")
       (bg-changed-faint  "#ffefbf")
       (bg-changed-refine "#fac090")
+      (fg-changed        "#8d6a12")
 
       (bg-removed        "#ffd8d5")
       (bg-removed-faint  "#ffe9e9")
       (bg-removed-refine "#f3b5af")
+      (fg-removed        "#a02a2a")
 
       ;; Graphs
       (red-graph-0-bg     "#ef7969")

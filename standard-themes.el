@@ -794,7 +794,7 @@ Helper function for `standard-themes-preview-colors'."
     `(link ((,c ,@(standard-themes--link link link-faint border))))
     `(link-visited ((,c ,@(standard-themes--link link-alt link-alt-faint border))))
     `(minibuffer-prompt ((,c ,@(standard-themes--prompt prompt bg-prompt fg-main))))
-    `(mm-command-output ((,c :foreground ,mail-5))) ; like message-mml
+    `(mm-command-output ((,c :foreground ,mail-4))) ; like message-mml
     `(pgtk-im-0 ((,c :inherit secondary-selection)))
     `(read-multiple-choice-face ((,c :inherit warning :background ,bg-warning)))
     `(rectangle-preview ((,c :inherit secondary-selection)))
@@ -1498,12 +1498,12 @@ Helper function for `standard-themes-preview-colors'."
     `(message-cited-text-4 ((,c :foreground ,mail-3)))
     `(message-header-name ((,c :inherit bold)))
     `(message-header-newsgroups ((,c :inherit message-header-other)))
-    `(message-header-to ((,c :inherit bold :foreground ,mail-2)))
-    `(message-header-cc ((,c :foreground ,mail-2)))
-    `(message-header-subject ((,c :inherit bold :foreground ,mail-1)))
-    `(message-header-xheader ((,c :foreground ,mail-3)))
-    `(message-header-other ((,c :foreground ,mail-4)))
-    `(message-mml ((,c :foreground ,mail-5)))
+    `(message-header-to ((,c :inherit bold :foreground ,mail-recipient)))
+    `(message-header-cc ((,c :foreground ,mail-recipient)))
+    `(message-header-subject ((,c :inherit bold :foreground ,mail-subject)))
+    `(message-header-xheader ((,c :inherit message-header-other)))
+    `(message-header-other ((,c :foreground ,mail-other)))
+    `(message-mml ((,c :foreground ,mail-4)))
     `(message-separator ((,c :background ,bg-alt)))
 ;;;; mode-line
     `(mode-line ((,c :inherit standard-themes-ui-variable-pitch
@@ -1579,7 +1579,7 @@ Helper function for `standard-themes-preview-colors'."
     `(neo-vc-user-face ((,c :inherit warning)))
 ;;;; notmuch
     `(notmuch-crypto-decryption ((,c :inherit bold)))
-    `(notmuch-crypto-part-header ((,c :foreground ,mail-5))) ; like `message-mml'
+    `(notmuch-crypto-part-header ((,c :foreground ,mail-4))) ; like `message-mml'
     `(notmuch-crypto-signature-bad ((,c :inherit error)))
     `(notmuch-crypto-signature-good ((,c :inherit success)))
     `(notmuch-crypto-signature-good-key ((,c :inherit success)))

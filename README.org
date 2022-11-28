@@ -934,6 +934,9 @@ All the faces defined by the themes:
 
 + ~standard-themes-bold~
 + ~standard-themes-fixed-pitch~
++ ~standard-themes-fringe-error~
++ ~standard-themes-fringe-info~
++ ~standard-themes-fringe-warning~
 + ~standard-themes-heading-0~
 + ~standard-themes-heading-1~
 + ~standard-themes-heading-2~

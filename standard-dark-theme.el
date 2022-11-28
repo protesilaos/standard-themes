@@ -49,10 +49,10 @@
       (fg-main     "#ffffff")
       (bg-dim      "#202020")
       (fg-dim      "#a6a6a6")
-      (bg-alt      "#323232")
+      (bg-alt      "#363636")
       (fg-alt      "#a0afef")
 
-      (bg-active   "#424242")
+      (bg-active   "#606060")
       (bg-inactive "#141414")
 
       ;; Basic hues for foreground values

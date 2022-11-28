@@ -1500,14 +1500,14 @@ Helper function for `standard-themes-preview-colors'."
                      :background ,@(if standard-themes-mode-line-accented
                                        (list bg-mode-line-accent)
                                      (list bg-mode-line))
-                     :foreground ,fg-mode-line)))
+                     :foreground ,fg-main)))
     `(mode-line-active ((,c :inherit mode-line :box (:line-width -1 :style released-button))))
     `(mode-line-buffer-id ((,c :inherit bold)))
     `(mode-line-emphasis ((,c :inherit bold :foreground ,modeline-info)))
     `(mode-line-highlight ((,c :inherit highlight)))
     `(mode-line-inactive ((,c :inherit standard-themes-ui-variable-pitch
                               :box (:line-width -1 :color ,border)
-                              :background ,bg-alt :foreground ,fg-dim)))
+                              :background ,bg-mode-line-inactive :foreground ,fg-dim)))
 ;;;; mu4e
     `(mu4e-attach-number-face ((,c :inherit bold :foreground ,fg-dim)))
     `(mu4e-cited-1-face ((,c :inherit message-cited-text-1)))

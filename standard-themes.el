@@ -724,6 +724,13 @@ Helper function for `standard-themes-preview-colors'."
    :package-version '(standard-themes . "1.0.0")
    :group 'standard-themes-faces))
 
+(dolist (scope '(info error warning))
+  (custom-declare-face
+   (intern (format "standard-themes-fringe-%s" scope))
+   nil (format "Face for %s fringe indicators (e.g. `flymake', `flycheck')." scope)
+   :package-version '(standard-themes . "1.0.0")
+   :group 'standard-themes-faces))
+
 ;; This produces `standard-themes-underline-error' and the like
 (dolist (scope '(info error warning))
   (custom-declare-face
@@ -755,6 +762,9 @@ Helper function for `standard-themes-preview-colors'."
     `(standard-themes-underline-error ((,c :underline (:style wave :color ,underline-err))))
     `(standard-themes-underline-info ((,c :underline (:style wave :color ,underline-info))))
     `(standard-themes-underline-warning ((,c :underline (:style wave :color ,underline-warning))))
+    `(standard-themes-fringe-error ((,c :inherit bold :background ,bg-red :foreground ,fg-main)))
+    `(standard-themes-fringe-info ((,c :inherit bold :background ,bg-green :foreground ,fg-main)))
+    `(standard-themes-fringe-warning ((,c :inherit bold :background ,bg-yellow :foreground ,fg-main)))
 ;;;; all basic faces
 ;;;;; absolute essentials
     `(bold ((,c :weight bold)))
@@ -1186,9 +1196,9 @@ Helper function for `standard-themes-preview-colors'."
     `(eww-form-textarea ((,c :inherit eww-form-text)))
 ;;;; flycheck
     `(flycheck-error ((,c :inherit standard-themes-underline-error)))
-    `(flycheck-fringe-error ((,c :inherit standard-themes-mark-delete)))
-    `(flycheck-fringe-info ((,c :inherit standard-themes-mark-select)))
-    `(flycheck-fringe-warning ((,c :inherit standard-themes-mark-other)))
+    `(flycheck-fringe-error ((,c :inherit standard-themes-fringe-error)))
+    `(flycheck-fringe-info ((,c :inherit standard-themes-fringe-info)))
+    `(flycheck-fringe-warning ((,c :inheri standard-themes-fringe-warning)))
     `(flycheck-info ((,c :inherit standard-themes-underline-info)))
     `(flycheck-warning ((,c :inherit standard-themes-underline-warning)))
 ;;;; flymake
@@ -1944,9 +1954,9 @@ Helper function for `standard-themes-preview-colors'."
       '( ,red-graph-0-bg ,green-graph-0-bg ,yellow-graph-0-bg ,blue-graph-0-bg ,magenta-graph-0-bg ,cyan-graph-0-bg
          ,red-graph-1-bg ,green-graph-1-bg ,yellow-graph-1-bg ,blue-graph-1-bg ,magenta-graph-1-bg ,cyan-graph-1-bg))
 ;;;; flymake fringe indicators
-    `(flymake-error-bitmap '(flymake-double-exclamation-mark standard-themes-mark-delete))
-    `(flymake-warning-bitmap '(exclamation-mark standard-themes-mark-other))
-    `(flymake-note-bitmap '(exclamation-mark standard-themes-mark-select))
+    `(flymake-error-bitmap '(flymake-double-exclamation-mark standard-themes-fringe-error))
+    `(flymake-warning-bitmap '(exclamation-mark standard-themes-fringe-warning))
+    `(flymake-note-bitmap '(exclamation-mark standard-themes-fringe-info))
 ;;;; ibuffer
     `(ibuffer-deletion-face 'standard-themes-mark-delete)
     `(ibuffer-filter-group-name-face 'bold)

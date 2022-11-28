@@ -106,9 +106,9 @@
       (fg-removed        "#ff5f5f")
 
       ;; Marks
-      (bg-mark-alt  "#3a2f00") (fg-mark-alt  "#e0dd82")
+      (bg-mark-alt  "#002f4a") (fg-mark-alt  "#57cefa")
       (bg-mark-del  "#440d09") (fg-mark-del  "#ff5f60")
-      (bg-mark-sel  "#002f4a") (fg-mark-sel  "#57cefa")
+      (bg-mark-sel  "#333000") (fg-mark-sel  "#d0d082")
 
       ;; Graphs
       (red-graph-0-bg     "#b52c2c")

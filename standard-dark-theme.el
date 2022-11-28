@@ -153,7 +153,7 @@
       (underline-info    "#22b022")
 
       ;; Conditional hues
-      (bg-prompt           "#394a63")
+      (bg-prompt           "#483f73")
       (bg-region-intense   "#9f3047")
       (bg-mode-line-accent "#173780")
 

@@ -892,7 +892,7 @@ Helper function for `standard-themes-preview-colors'."
     `(bongo-currently-playing-track ((,c :inherit bold)))
     `(bongo-elapsed-track-part ((,c :background ,bg-alt :underline t)))
     `(bongo-filled-seek-bar ((,c :background ,bg-hover)))
-    `(bongo-marked-track ((,c :inherit standard-themes-mark-other)))
+    `(bongo-marked-track ((,c :inherit standard-themes-mark-select)))
     `(bongo-marked-track-line ((,c :background ,bg-dim)))
     `(bongo-played-track ((,c :inherit shadow :strike-through t)))
     `(bongo-track-length ((,c :inherit shadow)))

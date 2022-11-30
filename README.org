@@ -654,7 +654,8 @@ This function is added to the `standard-themes-post-load-hook'."
      `(font-lock-variable-name-face ((,c :foreground ,variable))))))
 
 ;; Using the hook lets our changes persist when we use the commands
-;; `standard-themes-toggle', `standard-themes-select', and `standard-themes-load-random'.
+;; `standard-themes-toggle', `standard-themes-load-dark',
+;; `standard-themes-load-light'.
 (add-hook 'standard-themes-post-load-hook #'my-standard-themes-custom-faces)
 #+end_src
 
@@ -675,7 +676,7 @@ This function is added to the `standard-themes-post-load-hook'."
 
 ;; Using the hook lets our changes persist when we use the commands
 ;; `standard-themes-toggle', `standard-themes-load-dark',
-;; `standard-themes-load-light'
+;; `standard-themes-load-light'.
 (add-hook 'standard-themes-post-load-hook #'my-standard-themes-custom-faces)
 #+end_src
 
@@ -694,7 +695,8 @@ This function is added to the `standard-themes-post-load-hook'."
      `(font-lock-variable-name-face ((,c :inherit standard-themes-italic :foreground ,comment))))))
 
 ;; Using the hook lets our changes persist when we use the commands
-;; `standard-themes-toggle', `standard-themes-select', and `standard-themes-load-random'.
+;; `standard-themes-toggle', `standard-themes-load-dark',
+;; `standard-themes-load-light'.
 (add-hook 'standard-themes-post-load-hook #'my-standard-themes-custom-faces)
 
 ;; Load the theme and run `standard-themes-post-load-hook'
@@ -818,7 +820,7 @@ it means for a construct to be bold/italic, by tweaking the ~bold~ and
 ~italic~ faces.  Cases where that can be useful include:
 
 + The default typeface does not have a variant with slanted glyphs
-  (e.g. Fira Mono/Code as of this writing on 2022-08-23), so the user
+  (e.g. Fira Mono/Code as of this writing on 2022-11-30), so the user
   wants to add another family for the italics, such as Hack.
 
 + The typeface of choice provides a multitude of weights and the user
@@ -1156,26 +1158,6 @@ unwillingness to be good Emacs citizens:
   faces that hardcode color values for no good reason.
 
 The above list is non-exhaustive though you get the idea.
-
-* Acknowledgements
-:PROPERTIES:
-:CUSTOM_ID: h:9db21121-577d-43e5-8787-62739bfa5d83
-:END:
-
-#+cindex: Contributors
-
-This project is meant to be a collective effort.  Every bit of help
-matters.
-
-+ Author/maintainer :: Protesilaos Stavrou.
-
-+ Contributions to code or the manual :: Alex Lu, Christopher League,
-  Philip Kaludercic, Walheimat.
-
-+ Ideas and/or user feedback :: Alan Schmitt, Anthony Chavez, Benjamin
-  (zealotrush), Daniel Mendler, Federico Stilman, Iris Garcia,
-  Jean-Philippe Gagné Guay, Jonas Collberg, Saša Janiška, Spike-Leung,
-  Steve Molitor, Summer Emacs, Sven Seebeck, Zoltán Király.
 
 * GNU Free Documentation License
 :PROPERTIES:

@@ -29,6 +29,9 @@
 ;; Emacs.  They emulate the out-of-the-box looks of Emacs (which
 ;; technically do NOT constitute a theme) while bringing to them
 ;; thematic consistency, customizability, and extensibility.
+;;
+;; Why call them "standard"?  Obviously because: Standard Themes Are
+;; Not Derivatives but the Affectionately Reimagined Default ... themes.
 
 ;;; Code:
 

@@ -105,14 +105,16 @@ This affects comments, doc strings, and some other minor elements."
 This is a helper variable intended for internal use.")
 
 (defcustom standard-themes-headings nil
-  "Heading styles with optional list of values for levels 0-8.
+  "Set heading style with optional list of values for levels 0-8.
 
-This is an alist that accepts a (key . list-of-values)
-combination.  The key is either a number, representing the
+This is an alist that accepts a (KEY . LIST-OF-VALUES)
+combination.  The KEY is either a number, representing the
 heading's level (0-8) or t, which pertains to the fallback style.
+The fallback applies to all heading levels that are not
+customized.
 
 Level 0 is a special heading: it is used for what counts as a
-document title or equivalent, such as the #+title construct we
+document title or equivalent, such as the #+TITLE construct we
 find in Org files.  Levels 1-8 are regular headings.
 
 The list of values covers symbols that refer to properties, as
@@ -126,7 +128,7 @@ presentation of all available properties:
                   (t . (variable-pitch)))))
 
 By default (a nil value for this variable), all headings have a
-bold typographic weight, a font family that is the same as the
+normal typographic weight, a font family that is the same as the
 `default' face (typically monospaced), and a height that is equal
 to the `default' face's height.
 
@@ -253,7 +255,7 @@ Other examples:
   :type '(set :tag "Properties" :greedy t
               (const :tag "Do not extend to the edge of the window" no-extend)
               (const :tag "More neutral/gray background" neutral)
-              (const :tag "More intense background (also override text color)" accented))
+              (const :tag "More intense background (also override text color)" intense))
   :link '(info-link "(standard-themes) Style of region highlight"))
 
 (defcustom standard-themes-fringes 'subtle
@@ -267,7 +269,6 @@ visible yet close to the main background color.
 With `intense', use a more pronounced gray background color."
   :group 'standard-themes
   :package-version '(standard-themes . "1.0.0")
-  :version "29.1"
   :type '(choice
           (const :format "[%v] %t\n" :tag "No visible fringes" nil)
           (const :format "[%v] %t\n" :tag "Subtle gray background" subtle)
@@ -330,11 +331,11 @@ Please refer to their documentation strings."
   "Control the style of prompts (e.g. minibuffer, REPL).
 
 The value is a list of properties, each designated by a symbol.
-The default (a nil value or an empty list) means to only use a
-subtle accented foreground color.
+The default (a nil value or an empty list) means to only use an
+accented foreground color.
 
 The property `background' applies a background color to the
-prompt's text.  By default, this is a subtle accented value.
+prompt's text and adjusts the foreground accordingly.
 
 The property `bold' makes the text use a bold typographic weight.
 Similarly, `italic' adds a slant to the font's forms (italic or
@@ -343,16 +344,15 @@ oblique forms, depending on the typeface).
 Combinations of any of those properties are expressed as a list,
 like in these examples:
 
-    (intense)
-    (bold intense)
-    (intense bold gray)
-    (intense background gray bold)
+    (background)
+    (bold italic)
+    (background bold italic)
 
 The order in which the properties are set is not significant.
 
 In user configuration files the form may look like this:
 
-    (setq standard-themes-prompts (quote (background gray)))"
+    (setq standard-themes-prompts (quote (background bold)))"
   :group 'standard-themes
   :package-version '(standard-themes . "1.0.0")
   :type '(set :tag "Properties" :greedy t
@@ -362,7 +362,8 @@ In user configuration files the form may look like this:
   :link '(info-link "(standard-themes) Option for command prompts"))
 
 (defcustom standard-themes-mode-line-accented nil
-  "When non-nil, use accented background for the active mode line."
+  "When non-nil, use accented background for the active mode line.
+The default is a gray background color."
   :group 'standard-themes
   :package-version '(standard-themes . "1.0.0")
   :type 'boolean

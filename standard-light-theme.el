@@ -218,4 +218,7 @@
 
   (provide-theme 'standard-light))
 
+;;;###theme-autoload
+(put 'standard-light 'theme-properties '(:background-mode light :kind color-scheme :family standard))
+
 ;;; standard-light-theme.el ends here

@@ -218,4 +218,7 @@
 
   (provide-theme 'standard-dark))
 
+;;;###theme-autoload
+(put 'standard-dark 'theme-properties '(:background-mode dark :kind color-scheme :family standard))
+
 ;;; standard-dark-theme.el ends here

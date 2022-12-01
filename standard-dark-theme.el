@@ -41,10 +41,7 @@
   (require 'standard-themes)
 
   (deftheme standard-dark
-    "Like the unthemed dark Emacs, but more consistent."
-    :background-mode 'dark
-    :kind 'color-scheme
-    :family 'standard)
+    "Like the unthemed dark Emacs, but more consistent.")
 
   (defconst standard-dark-palette
     '(;; Basic tones

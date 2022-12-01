@@ -41,10 +41,7 @@
   (require 'standard-themes)
 
   (deftheme standard-light
-    "Like the unthemed light Emacs, but more consistent."
-    :background-mode 'light
-    :kind 'color-scheme
-    :family 'standard)
+    "Like the unthemed light Emacs, but more consistent.")
 
   (defconst standard-light-palette
     '(;; Basic tones

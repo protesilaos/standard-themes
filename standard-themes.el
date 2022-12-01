@@ -85,7 +85,6 @@ This affects comments, doc strings, and some other minor elements."
   '(set :tag "Properties" :greedy t
         (const :tag "Proportionately spaced font (variable-pitch)" variable-pitch)
         (choice :tag "Font weight (must be supported by the typeface)"
-                (const :tag "Bold (default)" nil)
                 (const :tag "Thin" thin)
                 (const :tag "Ultra-light" ultralight)
                 (const :tag "Extra-light" extralight)
@@ -94,6 +93,7 @@ This affects comments, doc strings, and some other minor elements."
                 (const :tag "Regular" regular)
                 (const :tag "Medium" medium)
                 (const :tag "Semi-bold" semibold)
+                (const :tag "Bold" bold)
                 (const :tag "Extra-bold" extrabold)
                 (const :tag "Ultra-bold" ultrabold))
         (radio :tag "Height"

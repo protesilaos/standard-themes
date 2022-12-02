@@ -105,26 +105,29 @@ This affects comments, doc strings, and some other minor elements."
 This is a helper variable intended for internal use.")
 
 (defcustom standard-themes-headings nil
-  "Set heading style with optional list of values for levels 0-8.
+  "Heading styles with optional list of values per heading level.
 
 This is an alist that accepts a (KEY . LIST-OF-VALUES)
 combination.  The KEY is either a number, representing the
 heading's level (0-8) or t, which pertains to the fallback style.
-The fallback applies to all heading levels that are not
-customized.
+The named keys `agenda-date' and `agenda-structure' apply to the
+Org agenda.
 
-Level 0 is a special heading: it is used for what counts as a
-document title or equivalent, such as the #+TITLE construct we
-find in Org files.  Levels 1-8 are regular headings.
+Level 0 is used for what counts as a document title or
+equivalent, such as the #+title construct we find in Org files.
+Levels 1-8 are regular headings.
 
-The list of values covers symbols that refer to properties, as
-described below.  Here is a complete sample, followed by a
-presentation of all available properties:
+The LIST-OF-VALUES covers symbols that refer to properties, as
+described below.  Here is a complete sample with various
+stylistic combinations, followed by a presentation of all
+available properties:
 
     (setq standard-themes-headings
           (quote ((1 . (light variable-pitch 1.5))
                   (2 . (regular 1.3))
                   (3 . (1.1))
+                  (agenda-date (1.3))
+                  (agenda-structure (variable-pitch light 1.8))
                   (t . (variable-pitch)))))
 
 By default (a nil value for this variable), all headings have a
@@ -187,7 +190,7 @@ will retain the original aesthetic for that level.  For example:
   :type `(alist
           :options ,(mapcar (lambda (h)
                               (list h standard-themes--headings-choice))
-                            '(0 1 2 3 4 5 6 7 8 t))
+                            '(0 1 2 3 4 5 6 7 8 t agenda-date agenda-structure))
           :key-type symbol
           :value-type ,standard-themes--headings-choice)
   :link '(info-link "(standard-themes) Option for headings"))
@@ -452,7 +455,8 @@ sequence given SEQ-PRED, using SEQ-DEFAULT as a fallback."
           (standard-themes--alist-or-seq properties 'height #'floatp 'unspecified)
           :weight
           (cond
-           ((and (zerop level)
+           ((and (not (symbolp level))
+                 (zerop level)
                  (null weight))
             'bold)
            ((or weight 'unspecified))))))
@@ -1618,7 +1622,7 @@ Helper function for `standard-themes-preview-colors'."
     `(org-agenda-clocking ((,c :background ,bg-warning :foreground ,warning)))
     `(org-agenda-column-dateline ((,c :background ,bg-alt)))
     `(org-agenda-current-time ((,c :foreground ,fg-main)))
-    `(org-agenda-date ((,c :inherit standard-themes-heading-1)))
+    `(org-agenda-date ((,c ,@(standard-themes--heading 'agenda-date) :foreground ,rainbow-1)))
     `(org-agenda-date-today ((,c :inherit org-agenda-date :underline t)))
     `(org-agenda-date-weekend ((,c :inherit org-agenda-date)))
     `(org-agenda-date-weekend-today ((,c :inherit org-agenda-date-today)))
@@ -1630,7 +1634,7 @@ Helper function for `standard-themes-preview-colors'."
     `(org-agenda-filter-regexp ((,c :inherit bold :foreground ,modeline-err)))
     `(org-agenda-filter-tags ((,c :inherit bold :foreground ,modeline-err)))
     `(org-agenda-restriction-lock ((,c :background ,bg-dim :foreground ,fg-dim)))
-    `(org-agenda-structure ((,c :inherit standard-themes-heading-0)))
+    `(org-agenda-structure ((,c ,@(standard-themes--heading 'agenda-structure) :foreground ,rainbow-0)))
     `(org-agenda-structure-filter ((,c :inherit org-agenda-structure :foreground ,rainbow-1)))
     `(org-agenda-structure-secondary ((,c :foreground ,rainbow-1)))
     `(org-archived ((,c :background ,bg-alt :foreground ,fg-main)))

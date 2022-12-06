@@ -1,0 +1,83 @@
+#+title: Change log of the Standard Themes
+#+author: Protesilaos Stavrou
+#+email: info@protesilaos.com
+#+options: ':nil toc:nil num:nil author:nil email:nil
+
+This document contains the release notes for each tagged commit on the
+project's main git repository: <https://git.sr.ht/~protesilaos/standard-themes>.
+
+The newest release is at the top.  For further details, please consult
+the manual: <https://protesilaos.com/emacs/standard-themes>.
+
+* Version 1.1.0 on 2022-12-06
+:PROPERTIES:
+:CUSTOM_ID: h:f7a5799c-279c-4dfb-96ae-3eba58ee582e
+:END:
+
+** The ~standard-themes-headings~ now covers the Org agenda
+:PROPERTIES:
+:CUSTOM_ID: h:d7fa8d0c-b49c-447a-a24c-4dc18c6d755b
+:END:
+
+The user option ~standard-themes-headings~ lets the user control the
+height, weight, and use of proportionately spaced fonts
+(~variable-pitch~) on a per-heading basis.  Different combinations are
+possible, as explained in the option's doc string on the corresponding
+entry in the manual.
+
+I have now made it possible to specify the =agenda-date= and
+=agenda-structure= keys.  Both pertain to the Org agenda.  The former
+applies to date headings, while the latter styles the headings of each
+"block" of content.  In a generic agenda buffer, that block heading is
+the first line which reads =Week-agenda (W49):= or something like
+that, though we find such headings in more places as well.
+
+Here is a sample with various stylistic variants per heading:
+
+#+begin_src emacs-lisp
+(setq standard-themes-headings ; read the manual's entry or the doc string
+      '((0 . (variable-pitch light 1.9))
+        (1 . (variable-pitch light 1.8))
+        (2 . (semilight 1.7))
+        (3 . (semilight 1.6))
+        (4 . (1.5)) ; absence of weight means "regular"
+        (5 . (1.4))
+        (6 . (bold 1.3))
+        (7 . (bold 1.2))
+        (agenda-date . (semilight 1.5))
+        (agenda-structure . (variable-pitch light 1.9))
+        (t . (variable-pitch 1.1))))
+#+end_src
+
+Note that Org re-uses heading levels past 8.  This means that level 9
+will look the same as level 1.  This is not the theme's doing.  Check
+the user options ~org-level-faces~, ~org-n-level-faces~ for ways to
+change this.
+
+** =M-x theme-choose-variant= works as expected
+:PROPERTIES:
+:CUSTOM_ID: h:9c95de58-9d0c-44dd-bc24-63ce7691806e
+:END:
+
+Users of Emacs 29 have access to the command ~theme-choose-variant~:
+it toggles between two themes of the same family.  If the family
+has more members, it uses minibuffer completion instead.
+
+I registered the appropriate theme properties to make this work as
+intended.  However, it is still possible to use the command
+~standard-themes-toggle~.
+
+** Stylistic refinements
+:PROPERTIES:
+:CUSTOM_ID: h:33e6d85e-42cc-4a30-87d5-47d9b81cc769
+:END:
+
++ Simplified the Magit blame faces to avoid exaggerations.
++ Revised the colours of day headings in the =M-x calendar= buffer.
+  Weekends stand out, as is the case with physical calendars and many
+  established apps.
++ Made the ~edmacro-label~ face stand out in its context.  Otherwise
+  it was difficult to spot.  This is for Emacs 29 and applies to
+  headings in the keyboard macro editing buffer (e.g. with =C-x C-k
+  C-e= (~kmacro-edit-macro-repeat~)).
++ Added support for the =powerline= package.

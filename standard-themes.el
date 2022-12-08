@@ -418,10 +418,6 @@ value."
     ('subtle (list :background mainbg))
     (_ (list :background 'unspecified))))
 
-(defun standard-themes--key-cdr (key alist)
-  "Get cdr of KEY in ALIST."
-  (cdr (assoc key alist)))
-
 (defun standard-themes--alist-or-seq (properties alist-key seq-pred seq-default)
   "Return value from alist or sequence.
 Check PROPERTIES for an alist value that corresponds to
@@ -442,8 +438,8 @@ sequence given SEQ-PRED, using SEQ-DEFAULT as a fallback."
 
 (defun standard-themes--heading (level)
   "Conditional styles for `standard-themes-headings' per LEVEL heading."
-  (let* ((key (standard-themes--key-cdr level standard-themes-headings))
-         (style (or key (standard-themes--key-cdr t standard-themes-headings)))
+  (let* ((key (alist-get level standard-themes-headings))
+         (style (or key (alist-get t standard-themes-headings)))
          (style-listp (listp style))
          (properties style)
          (weight (when style-listp (standard-themes--weight style))))

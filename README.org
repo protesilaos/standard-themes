@@ -1151,6 +1151,19 @@ unwillingness to be good Emacs citizens:
 
 The above list is non-exhaustive though you get the idea.
 
+* Acknowledgements
+:PROPERTIES:
+:CUSTOM_ID: h:20e79476-6975-4643-838f-a77dfa92627a
+:END:
+#+cindex: Contributors
+
+This project is meant to be a collective effort.  Every bit of help
+matters.
+
++ Author/maintainer :: Protesilaos Stavrou.
+
++ Ideas and/or user feedback :: Manuel Uberti.
+
 * GNU Free Documentation License
 :PROPERTIES:
 :CUSTOM_ID: h:255fa624-6e3c-4118-9618-17cc25a801bd

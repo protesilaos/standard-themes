@@ -130,7 +130,7 @@
       (bg-completion "#254b5f")
       (bg-hover      "#457b2f")
       (bg-hover-alt  "#00688b")
-      (bg-hl-line    "#556b2f")
+      (bg-hl-line    "#334815")
       (bg-region     "#0000cd")
       (bg-paren      "#4f94cd")
       (bg-err        "#3f0d09") ; check with err

@@ -1162,7 +1162,7 @@ matters.
 
 + Author/maintainer :: Protesilaos Stavrou.
 
-+ Ideas and/or user feedback :: Manuel Uberti.
++ Ideas and/or user feedback :: Fritz Grabo, Manuel Uberti.
 
 * GNU Free Documentation License
 :PROPERTIES:

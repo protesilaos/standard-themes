@@ -633,7 +633,7 @@ Run `standard-themes-post-load-hook' after loading the theme."
 Routine for `standard-themes-preview-colors'."
   (let ((palette (seq-remove (lambda (cell)
                                (symbolp (cadr cell)))
-                             (symbol-value (standard-themes--palette-value theme :overrides))))
+                             (standard-themes--palette-value theme :overrides)))
         (current-buffer buffer)
         (current-theme theme))
     (with-help-window buffer

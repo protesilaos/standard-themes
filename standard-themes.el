@@ -1984,12 +1984,12 @@ Helper function for `standard-themes-preview-colors'."
 ;;; Theme macros
 
 (defvar standard-themes-common-palette-overrides nil
-  "Set palette overrides for all the Modus themes.
+  "Set palette overrides for all the Standard themes.
 
 Mirror the elements of a theme's palette, overriding their value.
 The palette variables are named THEME-NAME-palette, while
 individual theme overrides are THEME-NAME-palette-overrides.  The
-THEME-NAME is one of the symbols in `modus-themes-items'.
+THEME-NAME is one of the symbols in `standard-themes-items'.
 
 Individual theme overrides take precedence over these common
 overrides.")

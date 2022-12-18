@@ -214,7 +214,12 @@
       (prose-verbatim magenta))
     "The `standard-light' palette.")
 
-  (standard-themes-theme standard-light standard-light-palette)
+  (defvar standard-light-palette-overrides nil
+    "Overrides for `standard-light-palette'.")
+
+  (standard-themes-theme standard-light
+                         standard-light-palette
+                         standard-light-palette-overrides)
 
   (provide-theme 'standard-light))
 

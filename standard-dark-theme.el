@@ -214,7 +214,12 @@
       (prose-verbatim magenta-warmer))
     "The `standard-dark' palette.")
 
-  (standard-themes-theme standard-dark standard-dark-palette)
+  (defvar standard-dark-palette-overrides nil
+    "Overrides for `standard-dark-palette'.")
+
+  (standard-themes-theme standard-dark
+                         standard-dark-palette
+                         standard-dark-palette-overrides)
 
   (provide-theme 'standard-dark))
 

@@ -560,16 +560,33 @@ color that is combined with FG-FOR-BG."
   "Return first enabled Standard theme."
   (car (standard-themes--list-enabled-themes)))
 
-(defun standard-themes--palette (theme)
-  "Return THEME palette as a symbol."
-  (when theme
-    (intern (format "%s-palette" theme))))
+(defun standard-themes--palette-symbol (theme &optional overrides)
+  "Return THEME palette as a symbol.
+With optional OVERRIDES, return THEME palette overrides as a
+symbol."
+  (when-let ((suffix (cond
+                      ((and theme overrides)
+                       "palette-overrides")
+                      (theme
+                       "palette"))))
+    (intern (format "%s-%s" theme suffix))))
 
-(defun standard-themes--current-theme-palette ()
-  "Return palette of active Standard theme, else produce `user-error'."
-  (if-let* ((palette (standard-themes--palette (standard-themes--current-theme))))
-      (symbol-value palette)
-    (user-error "No enabled Standard theme could be found")))
+(defun standard-themes--palette-value (theme &optional overrides)
+  "Return palette value of THEME with optional OVERRIDES."
+  (let ((base-value (symbol-value (standard-themes--palette-symbol theme))))
+    (if overrides
+        (append (symbol-value (standard-themes--palette-symbol theme :overrides)) base-value)
+      base-value)))
+
+(defun standard-themes--current-theme-palette (&optional overrides)
+  "Return palette value of active Ef theme, else produce `user-error'.
+With optional OVERRIDES return palette value plus whatever
+overrides."
+  (if-let ((theme (standard-themes--current-theme)))
+      (if overrides
+          (standard-themes--palette-value theme :overrides)
+        (standard-themes--palette-value theme))
+    (user-error "No enabled Ef theme could be found")))
 
 (defun standard-themes--load-theme (theme)
   "Load THEME while disabling other Standard themes.
@@ -616,7 +633,7 @@ Run `standard-themes-post-load-hook' after loading the theme."
 Routine for `standard-themes-preview-colors'."
   (let ((palette (seq-remove (lambda (cell)
                                (symbolp (cadr cell)))
-                             (symbol-value (standard-themes--palette theme))))
+                             (symbol-value (standard-themes--palette-value theme :overrides))))
         (current-buffer buffer)
         (current-theme theme))
     (with-help-window buffer
@@ -1966,18 +1983,32 @@ Helper function for `standard-themes-preview-colors'."
 
 ;;; Theme macros
 
+(defvar standard-themes-common-palette-overrides nil
+  "Set palette overrides for all the Modus themes.
+
+Mirror the elements of a theme's palette, overriding their value.
+The palette variables are named THEME-NAME-palette, while
+individual theme overrides are THEME-NAME-palette-overrides.  The
+THEME-NAME is one of the symbols in `modus-themes-items'.
+
+Individual theme overrides take precedence over these common
+overrides.")
+
 ;;;###autoload
-(defmacro standard-themes-theme (name palette)
+(defmacro standard-themes-theme (name palette &optional overrides)
   "Bind NAME's color PALETTE around face specs and variables.
 Face specifications are passed to `custom-theme-set-faces'.
 While variables are handled by `custom-theme-set-variables'.
 Those are stored in `standard-themes-faces' and
-`standard-themes-custom-variables' respectively."
+`standard-themes-custom-variables' respectively.
+
+Optional OVERRIDES are appended to PALETTE, overriding
+corresponding entries."
   (declare (indent 0))
   (let ((sym (gensym))
         (colors (mapcar #'car (symbol-value palette))))
     `(let* ((c '((class color) (min-colors 256)))
-            (,sym ,palette)
+            (,sym (append ,overrides standard-themes-common-palette-overrides ,palette))
             ,@(mapcar (lambda (color)
                         (list color
                               `(let* ((value (car (alist-get ',color ,sym))))
@@ -2001,7 +2032,7 @@ Those are stored in `standard-themes-faces' and
          ;; inside a function.
          (colors (mapcar #'car (standard-themes--current-theme-palette))))
     `(let* ((c '((class color) (min-colors 256)))
-            (,sym (standard-themes--current-theme-palette))
+            (,sym (standard-themes--current-theme-palette :overrides))
             ,@(mapcar (lambda (color)
                         (list color
                               `(let* ((value (car (alist-get ',color ,sym))))

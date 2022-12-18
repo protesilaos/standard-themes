@@ -519,7 +519,9 @@ Other examples:
 :END:
 #+cindex: Override color values and semantic color mappings
 
-[ Part of {{{development-version}}}. ]
+[ Part of {{{development-version}}}.  For a video demo of the same
+idea that I implemented in the ~modus-themes~, check:
+https://protesilaos.com/codelog/2022-12-17-modus-themes-v4-demo/. ]
 
 The Standard themes define their own color palette as well as semantic
 color mappings.  The former is the set of color values such as what

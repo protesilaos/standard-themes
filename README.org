@@ -580,7 +580,7 @@ semantic mapping:
 The overrides can contain as many associations as the user needs.
 
 Changes to color values are reflected in the preview of the theme's
-palette ([[#h:8dd67bf5-879e-46e5-b277-5bac141f53d1][Preview theme colors]]).  They are shown at the top of the
+palette ([[#h:1eebe221-0d0c-43e8-877a-202d2f15ef34][Preview theme colors]]).  They are shown at the top of the
 buffer.  In the above example, the first instance of =blue-warmer= is
 the override and the second is the original one.
 

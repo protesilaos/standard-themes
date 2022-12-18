@@ -1237,6 +1237,8 @@ matters.
 
 + Author/maintainer :: Protesilaos Stavrou.
 
++ Contributions to code :: Clemens Radermacher.
+
 + Ideas and/or user feedback :: Fritz Grabo, Manuel Uberti.
 
 * GNU Free Documentation License

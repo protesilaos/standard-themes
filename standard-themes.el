@@ -1989,11 +1989,21 @@ Helper function for `standard-themes-preview-colors'."
 
 Mirror the elements of a theme's palette, overriding their value.
 The palette variables are named THEME-NAME-palette, while
-individual theme overrides are THEME-NAME-palette-overrides.  The
-THEME-NAME is one of the symbols in `standard-themes-items'.
+individual theme overrides are THEME-NAME-palette-overrides:
+
+- `standard-dark-palette'
+- `standard-dark-palette-overrides'
+- `standard-light-palette'
+- `standard-light-palette-overrides'
 
 Individual theme overrides take precedence over these common
-overrides.")
+overrides.
+
+The idea of common overrides is to change semantic color
+mappings, such as to make the cursor red.  Wherea theme-specific
+overrides can also be used to change the value of a named color,
+such as what hexadecimal RGB value the red-warmer symbol
+represents.")
 
 ;;;###autoload
 (defmacro standard-themes-theme (name palette &optional overrides)

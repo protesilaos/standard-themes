@@ -212,10 +212,29 @@
       (prose-code cyan-cooler)
       (prose-macro green-warmer)
       (prose-verbatim magenta-warmer))
-    "The `standard-dark' palette.")
+    "The `standard-dark' palette.
+Color values have the form (COLOR-NAME HEX-VALUE) with the former
+as a symbol and the latter as a string.
+
+Semantic color mappings have the form (MAPPING-NAME COLOR-NAME)
+with both as symbols.  The latter is a color that already exists
+in the palette and is associated with a HEX-VALUE.")
 
   (defvar standard-dark-palette-overrides nil
-    "Overrides for `standard-dark-palette'.")
+    "Overrides for `standard-dark-palette'.
+
+Mirror the elements of the aforementioned palette, overriding
+their value.
+
+For overrides that are shared across all of the Standard themes,
+refer to `standard-themes-common-palette-overrides'.
+
+Theme-specific overrides take precedence over shared overrides.
+The idea of common overrides is to change semantic color
+mappings, such as to make the cursor red.  Wherea theme-specific
+overrides can also be used to change the value of a named color,
+such as what hexadecimal RGB value the red-warmer symbol
+represents.")
 
   (standard-themes-theme standard-dark
                          standard-dark-palette

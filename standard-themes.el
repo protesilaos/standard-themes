@@ -372,6 +372,28 @@ The default is a gray background color."
   :type 'boolean
   :link '(info-link "(standard-themes) Accented mode line"))
 
+;; TODO 2022-12-30: Make the palette overrides a `defcustom'
+(defvar standard-themes-common-palette-overrides nil
+  "Set palette overrides for all the Standard themes.
+
+Mirror the elements of a theme's palette, overriding their value.
+The palette variables are named THEME-NAME-palette, while
+individual theme overrides are THEME-NAME-palette-overrides:
+
+- `standard-dark-palette'
+- `standard-dark-palette-overrides'
+- `standard-light-palette'
+- `standard-light-palette-overrides'
+
+Individual theme overrides take precedence over these common
+overrides.
+
+The idea of common overrides is to change semantic color
+mappings, such as to make the cursor red.  Wherea theme-specific
+overrides can also be used to change the value of a named color,
+such as what hexadecimal RGB value the red-warmer symbol
+represents.")
+
 ;;; Helpers for user options
 
 (defun standard-themes--warn (option)
@@ -575,7 +597,9 @@ symbol."
   "Return palette value of THEME with optional OVERRIDES."
   (let ((base-value (symbol-value (standard-themes--palette-symbol theme))))
     (if overrides
-        (append (symbol-value (standard-themes--palette-symbol theme :overrides)) base-value)
+        (append (symbol-value (standard-themes--palette-symbol theme :overrides))
+                standard-themes-common-palette-overrides
+                base-value)
       base-value)))
 
 (defun standard-themes--current-theme-palette (&optional overrides)
@@ -1983,27 +2007,6 @@ Helper function for `standard-themes-preview-colors'."
   "Custom variables for `standard-themes-theme'.")
 
 ;;; Theme macros
-
-(defvar standard-themes-common-palette-overrides nil
-  "Set palette overrides for all the Standard themes.
-
-Mirror the elements of a theme's palette, overriding their value.
-The palette variables are named THEME-NAME-palette, while
-individual theme overrides are THEME-NAME-palette-overrides:
-
-- `standard-dark-palette'
-- `standard-dark-palette-overrides'
-- `standard-light-palette'
-- `standard-light-palette-overrides'
-
-Individual theme overrides take precedence over these common
-overrides.
-
-The idea of common overrides is to change semantic color
-mappings, such as to make the cursor red.  Wherea theme-specific
-overrides can also be used to change the value of a named color,
-such as what hexadecimal RGB value the red-warmer symbol
-represents.")
 
 ;;;###autoload
 (defmacro standard-themes-theme (name palette &optional overrides)

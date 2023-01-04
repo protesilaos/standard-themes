@@ -2008,6 +2008,27 @@ Helper function for `standard-themes-preview-colors'."
 
 ;;; Theme macros
 
+(defun standard-themes--retrieve-palette-value (color palette)
+  "Return COLOR from PALETTE.
+Use recursion until COLOR is retrieved as a string.  Refrain from
+doing so if the value of COLOR is not a key in the PALETTE.
+
+Return `unspecified' if the value of COLOR cannot be determined.
+This symbol is accepted by faces and is thus harmless.
+
+This function is used in the macros `standard-themes-theme',
+`standard-themes-with-colors'."
+  (let ((value (car (alist-get color palette))))
+    (cond
+     ((or (stringp value)
+          (eq value 'unspecified))
+      value)
+     ((and (symbolp value)
+           (memq value (mapcar #'car palette)))
+      (standard-themes--retrieve-palette-value value palette))
+     (t
+      'unspecified))))
+
 ;;;###autoload
 (defmacro standard-themes-theme (name palette &optional overrides)
   "Bind NAME's color PALETTE around face specs and variables.
@@ -2025,10 +2046,7 @@ corresponding entries."
             (,sym (append ,overrides standard-themes-common-palette-overrides ,palette))
             ,@(mapcar (lambda (color)
                         (list color
-                              `(let* ((value (car (alist-get ',color ,sym))))
-                                 (if (stringp value)
-                                     value
-                                   (car (alist-get value ,sym))))))
+                              `(standard-themes--retrieve-palette-value ',color ,sym)))
                       colors))
        (custom-theme-set-faces ',name ,@standard-themes-faces)
        (custom-theme-set-variables ',name ,@standard-themes-custom-variables))))
@@ -2049,10 +2067,7 @@ corresponding entries."
             (,sym (standard-themes--current-theme-palette :overrides))
             ,@(mapcar (lambda (color)
                         (list color
-                              `(let* ((value (car (alist-get ',color ,sym))))
-                                 (if (stringp value)
-                                     value
-                                   (car (alist-get value ,sym))))))
+                              `(standard-themes--retrieve-palette-value ',color ,sym)))
                       colors))
        (ignore c ,@colors)            ; Silence unused variable warnings
        ,@body)))

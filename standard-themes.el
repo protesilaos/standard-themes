@@ -53,6 +53,27 @@
 (defconst standard-themes-items '(standard-dark standard-light)
   "Symbols of the Standard themes.")
 
+(defcustom standard-themes-disable-other-themes t
+  "Disable all other themes when loading a Standard theme.
+
+When the value is non-nil, the command `standard-themes-toggle'
+as well as the functions `standard-themes-load-dark' and
+`standard-themes-load-light', will disable all other themes while
+loading the specified Standard theme.  This is done to ensure
+that Emacs does not blend two or more themes: such blends lead to
+awkward results that undermine the work of the designer.
+
+When the value is nil, the aforementioned command and functions
+will only disable the other Standard theme.
+
+This option is provided because Emacs themes are not necessarily
+limited to colors/faces: they can consist of an arbitrary set of
+customizations.  Users who use such customization bundles must
+set this variable to a nil value."
+  :group 'standard-themes
+  :package-version '(standard-themes . "1.2.0")
+  :type 'boolean)
+
 (defcustom standard-themes-post-load-hook nil
   "Hook that runs after loading a Standard theme.
 This is used by the command `standard-themes-toggle'."
@@ -612,10 +633,17 @@ overrides."
         (standard-themes--palette-value theme))
     (user-error "No enabled Ef theme could be found")))
 
+(defun standard-themes--disable-themes ()
+  "Disable themes per `standard-themes-disable-other-themes'."
+  (mapc #'disable-theme
+        (if standard-themes-disable-other-themes
+            custom-enabled-themes
+          (standard-themes--list-known-themes))))
+
 (defun standard-themes--load-theme (theme)
   "Load THEME while disabling other Standard themes.
 Run `standard-themes-post-load-hook'."
-  (mapc #'disable-theme (standard-themes--list-known-themes))
+  (standard-themes--disable-themes)
   (load-theme theme :no-confirm)
   (run-hooks 'standard-themes-post-load-hook))
 
@@ -637,7 +665,7 @@ Run `standard-themes-post-load-hook'."
          (intern
           (completing-read "Load Standard theme (will disable all others): "
                            standard-themes-items nil t))))
-    (mapc #'disable-theme (standard-themes--list-known-themes))
+    (standard-themes--disable-themes)
     (pcase theme
       ('standard-light (standard-themes-load-light))
       ('standard-dark (standard-themes-load-dark)))))

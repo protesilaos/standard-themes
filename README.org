@@ -186,6 +186,32 @@ aspects of the theme.  All customizations need to be evaluated before
 loading a theme.  Any change after the theme has been loaded require a
 re-load ([[#h:59c399d6-5dca-4686-b793-255be8bffc31][Loading a theme]]).
 
+** Disable other themes
+:PROPERTIES:
+:CUSTOM_ID: h:bc4827ec-7ec1-4511-ae1b-491c28835b19
+:END:
+
+[ Part of {{{development-version}}}. ]
+
+#+vindex: standard-themes-disable-other-themes
+The user option ~standard-themes-disable-other-themes~ controls which
+themes to disable when loading a Standard theme ([[#h:59c399d6-5dca-4686-b793-255be8bffc31][Loading a theme]]).
+
+When the value is non-nil, the command ~standard-themes-toggle~ as
+well as the functions ~standard-themes-load-dark~ and
+~standard-themes-load-light~, will disable all other themes while
+loading the specified Standard theme.  This is done to ensure that
+Emacs does not blend two or more themes: such blends lead to awkward
+results that undermine the work of the designer.
+
+When the value is nil, the aforementioned command and functions will
+only disable the other Standard theme.
+
+This option is provided because Emacs themes are not necessarily
+limited to colors/faces: they can consist of an arbitrary set of
+customizations.  Users who use such customization bundles must set
+this variable to a nil value.
+
 ** Enable mixed fonts
 :PROPERTIES:
 :CUSTOM_ID: h:a939ee30-f705-4d70-aa00-cca5528ef172
@@ -597,7 +623,7 @@ Emacs can load and maintain enabled multiple themes at once.  This
 typically leads to awkward styling and weird combinations.  The theme
 looks broken and the designer's intent is misunderstood.  Before
 loading either of the =standard-themes=, the user is encouraged to
-disable all others:
+disable all others ([[#h:bc4827ec-7ec1-4511-ae1b-491c28835b19][Disable other themes]]):
 
 #+begin_src emacs-lisp
 (mapc #'disable-theme custom-enabled-themes)

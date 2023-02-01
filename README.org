@@ -658,6 +658,8 @@ These two functions are also called by the command
 :CUSTOM_ID: h:1eebe221-0d0c-43e8-877a-202d2f15ef34
 :END:
 
+[ Updated as part of {{{development-version}}}. ]
+
 #+findex: standard-themes-preview-colors
 The command ~standard-themes-preview-colors~ uses minibuffer
 completion to select an item from the Standard themes and then
@@ -669,6 +671,27 @@ buffer has a naming scheme which reflects the given choice, like
 The command ~standard-themes-preview-colors-current~ skips the
 minibuffer selection process and just produces a preview for the
 current Standard theme.
+
+When called with a prefix argument (=C-u= with the default key
+bindings), these commands will show a preview of the palette's
+semantic color mappings instead of the named colors.
+
+#+findex: standard-themes-list-colors
+#+findex: standard-themes-list-colors-current
+Aliases for those commands are ~standard-themes-list-colors~ and
+~standard-themes-list-colors-current~.
+
+Overrides to color values are reflected in the buffers produced by the
+aforementioned commands ([[#h:34fe0582-960b-45dc-af5d-23c8f3e9d724][Palette overrides]]).
+
+Each row shows a foreground and background coloration using the
+underlying value it references.  For example a line with =#b3303a= (a
+shade of red) will show red text followed by a stripe with that same
+color as a backdrop.
+
+The name of the buffer describes the given Standard theme and what the
+contents are, such as =*standard-light-list-colors*= for named colors
+and ==*standard-light-list-mappings*= for the semantic color mappings.
 
 * Use colors from the active Standard theme
 :PROPERTIES:

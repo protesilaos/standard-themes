@@ -220,7 +220,7 @@ Semantic color mappings have the form (MAPPING-NAME COLOR-NAME)
 with both as symbols.  The latter is a color that already exists
 in the palette and is associated with a HEX-VALUE.")
 
-  (defvar standard-dark-palette-overrides nil
+  (defcustom standard-dark-palette-overrides nil
     "Overrides for `standard-dark-palette'.
 
 Mirror the elements of the aforementioned palette, overriding
@@ -234,7 +234,11 @@ The idea of common overrides is to change semantic color
 mappings, such as to make the cursor red.  Wherea theme-specific
 overrides can also be used to change the value of a named color,
 such as what hexadecimal RGB value the red-warmer symbol
-represents.")
+represents."
+  :group 'standard-themes
+  :package-version '(standard-themes . "1.2.0")
+  :type '(repeat (list symbol (choice symbol string)))
+  :link '(info-link "(standard-themes) Palette overrides"))
 
   (standard-themes-theme standard-dark
                          standard-dark-palette

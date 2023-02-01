@@ -393,8 +393,7 @@ The default is a gray background color."
   :type 'boolean
   :link '(info-link "(standard-themes) Accented mode line"))
 
-;; TODO 2022-12-30: Make the palette overrides a `defcustom'
-(defvar standard-themes-common-palette-overrides nil
+(defcustom standard-themes-common-palette-overrides nil
   "Set palette overrides for all the Standard themes.
 
 Mirror the elements of a theme's palette, overriding their value.
@@ -413,7 +412,11 @@ The idea of common overrides is to change semantic color
 mappings, such as to make the cursor red.  Wherea theme-specific
 overrides can also be used to change the value of a named color,
 such as what hexadecimal RGB value the red-warmer symbol
-represents.")
+represents."
+  :group 'standard-themes
+  :package-version '(standard-themes . "1.2.0")
+  :type '(repeat (list symbol (choice symbol string)))
+  :link '(info-link "(standard-themes) Palette overrides"))
 
 ;;; Helpers for user options
 

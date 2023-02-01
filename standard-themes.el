@@ -578,6 +578,53 @@ color that is combined with FG-FOR-BG."
 
 ;;; Commands and their helper functions
 
+(defun standard-themes--retrieve-palette-value (color palette)
+  "Return COLOR from PALETTE.
+Use recursion until COLOR is retrieved as a string.  Refrain from
+doing so if the value of COLOR is not a key in the PALETTE.
+
+Return `unspecified' if the value of COLOR cannot be determined.
+This symbol is accepted by faces and is thus harmless.
+
+This function is used in the macros `standard-themes-theme',
+`standard-themes-with-colors'."
+  (let ((value (car (alist-get color palette))))
+    (cond
+     ((or (stringp value)
+          (eq value 'unspecified))
+      value)
+     ((and (symbolp value)
+           (memq value (mapcar #'car palette)))
+      (standard-themes--retrieve-palette-value value palette))
+     (t
+      'unspecified))))
+
+(defun standard-themes-get-color-value (color &optional overrides theme)
+  "Return color value of named COLOR for current Standard theme.
+
+COLOR is a symbol that represents a named color entry in the
+palette.
+
+If the value is the name of another color entry in the
+palette (so a mapping), recur until you find the underlying color
+value.
+
+With optional OVERRIDES as a non-nil value, account for palette
+overrides.  Else use the default palette.
+
+With optional THEME as a symbol among `standard-themes-items',
+use the palette of that item.  Else use the current Standard
+theme.
+
+If COLOR is not present in the palette, return the `unspecified'
+symbol, which is safe when used as a face attribute's value."
+  (if-let* ((palette (if theme
+                         (standard-themes--palette-value theme overrides)
+                       (standard-themes--current-theme-palette overrides)))
+            (value (standard-themes--retrieve-palette-value color palette)))
+      value
+    'unspecified))
+
 (declare-function cl-remove-if-not "cl-seq" (cl-pred cl-list &rest cl-keys))
 
 (defun standard-themes--list-enabled-themes ()
@@ -2038,27 +2085,6 @@ Helper function for `standard-themes-preview-colors'."
   "Custom variables for `standard-themes-theme'.")
 
 ;;; Theme macros
-
-(defun standard-themes--retrieve-palette-value (color palette)
-  "Return COLOR from PALETTE.
-Use recursion until COLOR is retrieved as a string.  Refrain from
-doing so if the value of COLOR is not a key in the PALETTE.
-
-Return `unspecified' if the value of COLOR cannot be determined.
-This symbol is accepted by faces and is thus harmless.
-
-This function is used in the macros `standard-themes-theme',
-`standard-themes-with-colors'."
-  (let ((value (car (alist-get color palette))))
-    (cond
-     ((or (stringp value)
-          (eq value 'unspecified))
-      value)
-     ((and (symbolp value)
-           (memq value (mapcar #'car palette)))
-      (standard-themes--retrieve-palette-value value palette))
-     (t
-      'unspecified))))
 
 ;;;###autoload
 (defmacro standard-themes-theme (name palette &optional overrides)

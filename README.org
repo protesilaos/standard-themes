@@ -712,6 +712,64 @@ This section shows how the user can tweak the Standard themes to their
 liking, often by employing the ~standard-themes-with-colors~ macro
 ([[#h:a4d62b3e-0f90-4016-829a-6b6ff8ff7c23][Use colors from the active Standard theme]]).
 
+** Get a single color from the palette
+:PROPERTIES:
+:CUSTOM_ID: h:cc1633d3-8e83-45b5-b258-804935f9ee0d
+:END:
+
+[ Part of {{{development-version}}}. ]
+
+[[#h:a6d48445-c215-4f2e-b0ff-c83b0c673fa7][The general approach to advanced DIY changes]].
+
+#+findex: standard-themes-get-color-value
+The fuction ~standard-themes-get-color-value~ can be called from Lisp
+to return the value of a color from the active Standard theme palette.
+It takea a =COLOR= argument and an optional =OVERRIDES=.
+
+=COLOR= is a symbol that represents a named color entry in the
+palette.
+
+[[#h:1eebe221-0d0c-43e8-877a-202d2f15ef34][Preview theme colors]].
+
+If the value is the name of another color entry in the palette (so a
+mapping), this function recurs until it finds the underlying color
+value.
+
+With an optional =OVERRIDES= argument as a non-nil value, it accounts
+for palette overrides.  Else it reads only the default palette.
+
+[[#h:34fe0582-960b-45dc-af5d-23c8f3e9d724][Palette overrides]].
+
+With optional =THEME= as a symbol among ~standard-themes-collection~,
+use the palette of that item.  Else use the current Standard theme.
+
+If =COLOR= is not present in the palette, this function returns the
+=unspecified= symbol, which is safe when used as a face attribute's
+value.
+
+An example with ~standard-light~ to show how this function behaves
+with/without overrides and when recursive mappings are introduced.
+
+#+begin_src emacs-lisp
+;; Here we show the recursion of palette mappings.  In general, it is
+;; better for the user to specify named colors to avoid possible
+;; confusion with their configuration, though those still work as
+;; expected.
+(setq standard-themes-common-palette-overrides
+      '((cursor red)
+        (prompt cursor)
+        (variable prompt)))
+
+;; Ignore the overrides and get the original value.
+(standard-themes-get-color-value 'variable)
+;; => "#a0522d"
+
+;; Read from the overrides and deal with any recursion to find the
+;; underlying value.
+(standard-themes-get-color-value 'variable :overrides)
+;; => "#b3303a"
+#+end_src
+
 ** The general approach to advanced DIY changes
 :PROPERTIES:
 :CUSTOM_ID: h:a6d48445-c215-4f2e-b0ff-c83b0c673fa7

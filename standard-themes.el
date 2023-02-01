@@ -2117,7 +2117,7 @@ corresponding entries."
   (let ((sym (gensym))
         (colors (mapcar #'car (symbol-value palette))))
     `(let* ((c '((class color) (min-colors 256)))
-            (,sym (append ,overrides standard-themes-common-palette-overrides ,palette))
+            (,sym (standard-themes--palette-value ',name ',overrides))
             ,@(mapcar (lambda (color)
                         (list color
                               `(standard-themes--retrieve-palette-value ',color ,sym)))

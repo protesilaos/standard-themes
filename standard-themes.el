@@ -6,7 +6,7 @@
 ;; Maintainer: Standard-Themes Development <~protesilaos/standard-themes@lists.sr.ht>
 ;; URL: https://git.sr.ht/~protesilaos/standard-themes
 ;; Mailing-List: https://lists.sr.ht/~protesilaos/standard-themes
-;; Version: 1.1.0
+;; Version: 1.2.0
 ;; Package-Requires: ((emacs "27.1"))
 ;; Keywords: faces, theme, accessibility
 

@@ -1475,6 +1475,8 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(lazy-highlight ((,c :background ,bg-cyan :foreground ,fg-main)))
     `(match ((,c :background ,bg-warning)))
     `(query-replace ((,c :background ,bg-red :foreground ,fg-main)))
+;;;; jit-spell
+    `(jit-spell-misspelling ((,c :inherit standard-themes-underline-error)))
 ;;;; keycast
     `(keycast-command ((,c :inherit bold :foreground ,bg-accent)))
     `(keycast-key ((,c :background ,bg-accent :foreground ,bg-main)))

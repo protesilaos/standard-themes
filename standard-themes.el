@@ -1339,12 +1339,16 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(flycheck-info ((,c :inherit standard-themes-underline-info)))
     `(flycheck-warning ((,c :inherit standard-themes-underline-warning)))
 ;;;; flymake
+    `(flymake-end-of-line-diagnostics-face ((,c :inherit italic :height 0.85 :box ,border)))
     `(flymake-error ((,c :inherit standard-themes-underline-error)))
     `(flymake-error-echo ((,c :inherit error)))
+    `(flymake-error-echo-at-eol ((,c :inherit flymake-end-of-line-diagnostics-face :foreground ,err)))
     `(flymake-note ((,c :inherit standard-themes-underline-info)))
     `(flymake-note-echo ((,c :inherit success)))
+    `(flymake-note-echo-at-eol ((,c :inherit flymake-end-of-line-diagnostics-face :foreground ,info)))
     `(flymake-warning ((,c :inherit standard-themes-underline-warning)))
     `(flymake-warning-echo ((,c :inherit warning)))
+    `(flymake-note-echo-at-eol ((,c :inherit flymake-end-of-line-diagnostics-face :foreground ,warning)))
 ;;;; flyspell
     `(flyspell-duplicate ((,c :inherit standard-themes-underline-warning)))
     `(flyspell-incorrect ((,c :inherit standard-themes-underline-error)))

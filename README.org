@@ -240,7 +240,7 @@ activation of the built-in ~variable-pitch-mode~.
 
 To get consistent typography, the user may need to edit the font
 family of the ~fixed-pitch~ and ~variable-pitch~ faces.  The
-=fontaine= package on GNU ELPA (by Protesilaos) can be helpful in this
+~fontaine~ package on GNU ELPA (by Protesilaos) can be helpful in this
 regard.
 
 ** Accented mode line
@@ -275,7 +275,7 @@ In this context, the UI elements are:
 
 To get consistent typography, the user may need to edit the font
 family of the ~fixed-pitch~ and ~variable-pitch~ faces.  The
-=fontaine= package on GNU ELPA (by Protesilaos) can be helpful in this
+~fontaine~ package on GNU ELPA (by Protesilaos) can be helpful in this
 regard.
 
 ** Bold constructs
@@ -446,7 +446,7 @@ face's height.
 
 - A ~variable-pitch~ property changes the font family of the heading
   to that of the ~variable-pitch~ face (normally a proportionately
-  spaced typeface).  Also check the =fontaine= package (by
+  spaced typeface).  Also check the ~fontaine~ package (by
   Protesilaos) for tweaking fonts via faces.
 
 - The symbol of a weight attribute adjusts the font of the heading
@@ -901,7 +901,7 @@ manual, especially the sections on enabling and loading the themes,
 will be in a good position to benefit from that hook.
 
 Advanced users who have a need to switch between the Standard themes
-and other items (e.g. the =modus-themes= and =ef-themes=) will find
+and other items (e.g. the ~modus-themes~ and ~ef-themes~) will find
 that such a hook does not meet their requirements: it only works with
 the Standard themes and only with the functions they provide.
 
@@ -1034,15 +1034,15 @@ To reset the font family, one can use this:
 (set-face-attribute 'italic nil :family 'unspecified)
 #+end_src
 
-Consider the =fontaine= package on GNU ELPA (by Protesilaos) which
+Consider the ~fontaine~ package on GNU ELPA (by Protesilaos) which
 provides the means to configure font families via faces.
 
-** Tweak =org-modern= timestamps
+** Tweak ~org-modern~ timestamps
 :PROPERTIES:
 :CUSTOM_ID: h:8c88f697-a14e-468d-935c-7576934e7092
 :END:
 
-The =org-modern= package uses faces and text properties to make Org
+The ~org-modern~ package uses faces and text properties to make Org
 buffers more aesthetically pleasing.  It affects tables, timestamps,
 lists, headings, and more.
 
@@ -1052,7 +1052,7 @@ prevented the user option ~org-modern-label-border~ from having its
 desired effect.  As such, we no longer override that face.
 
 Users who were used to the previous design and who generally do not
-configure the user options of =org-modern= may thus notice a change in
+configure the user options of ~org-modern~ may thus notice a change in
 how clocktables (or generally tables with timestamps) are aligned.  The
 simplest solution is to instruct the mode to not prettify timestamps, by
 setting the user option ~org-modern-timestamp~ to ~nil~.  For example, by
@@ -1075,7 +1075,7 @@ For any further issues, you are welcome to ask for help.
 
 The built-in ~goto-address-mode~ uses heuristics to identify URLs and
 email addresses in the current buffer.  It then applies a face to them
-to change their style.  Some packages, such as =notmuch=, use this
+to change their style.  Some packages, such as ~notmuch~, use this
 minor-mode automatically.
 
 The faces are not declared with ~defface~, meaning that it is better
@@ -1293,7 +1293,7 @@ unwillingness to be good Emacs citizens:
 - calibredb :: has an external dependency that I don't use.
 
 - ctrlf :: use the built-in isearch or the ~consult-line~ command of
-  =consult=.
+  ~consult~.
 
 - dired+ :: it is complex and makes inconsiderate use of color.
 
@@ -1302,11 +1302,11 @@ unwillingness to be good Emacs citizens:
 - ement.el :: has an external dependency that I don't use.
 
 - helm :: it is complex and makes inconsiderate use of color.  Prefer
-  the =vertico=, =consult=, and =embark= packages.
+  the ~vertico~, ~consult~, and ~embark~ packages.
 
 - info+ :: it is complex and makes inconsiderate use of color.
 
-- ivy/counsel/swiper :: use the =vertico=, =consult=, and =embark=
+- ivy/counsel/swiper :: use the ~vertico~, ~consult~, and ~embark~
   packages which are designed to be compatible with standard Emacs
   mechanisms and are modular.
 

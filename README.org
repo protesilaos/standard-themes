@@ -1167,6 +1167,7 @@ everything most users need.
 - completions
 - consult
 - corfu
+- corfu-candidate-overlay [Part of {{{development-version}}}]
 - custom (=M-x customize=)
 - denote
 - dictionary

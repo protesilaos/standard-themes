@@ -40,8 +40,12 @@
 (eval-and-compile
   (require 'standard-themes)
 
+;;;###theme-autoload
   (deftheme standard-dark
-    "Like the unthemed dark Emacs, but more consistent.")
+    "Like the unthemed dark Emacs, but more consistent."
+    :background-mode 'dark
+    :kind 'color-scheme
+    :family 'standard)
 
   (defconst standard-dark-palette
     '(;; Basic tones
@@ -245,8 +249,5 @@ represents."
                          standard-dark-palette-overrides)
 
   (provide-theme 'standard-dark))
-
-;;;###theme-autoload
-(put 'standard-dark 'theme-properties '(:background-mode dark :kind color-scheme :family standard))
 
 ;;; standard-dark-theme.el ends here

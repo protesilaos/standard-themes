@@ -40,8 +40,12 @@
 (eval-and-compile
   (require 'standard-themes)
 
+;;;###theme-autoload
   (deftheme standard-light
-    "Like the unthemed light Emacs, but more consistent.")
+    "Like the unthemed light Emacs, but more consistent."
+    :background-mode 'light
+    :kind 'color-scheme
+    :family 'standard)
 
   (defconst standard-light-palette
     '(;; Basic tones
@@ -245,8 +249,5 @@ represents."
                          standard-light-palette-overrides)
 
   (provide-theme 'standard-light))
-
-;;;###theme-autoload
-(put 'standard-light 'theme-properties '(:background-mode light :kind color-scheme :family standard))
 
 ;;; standard-light-theme.el ends here

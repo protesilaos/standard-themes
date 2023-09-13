@@ -1022,6 +1022,10 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(TeX-error-description-warning ((,c :inherit warning)))
 ;;;; auto-dim-other-buffers
     `(auto-dim-other-buffers-face ((,c :background ,bg-inactive)))
+;;;; breadcrumb
+    `(breadcrumb-face (( )))
+    `(breadcrumb-imenu-leaf-face ((,c :inherit bold :foreground ,modeline-warning))) ; same as `which-func'
+    `(breadcrumb-project-leaf-face ((,c :inherit bold)))
 ;;;; bongo
     `(bongo-album-title (( )))
     `(bongo-artist ((,c :foreground ,rainbow-0)))
@@ -2107,7 +2111,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(wgrep-file-face ((,c :foreground ,fg-alt)))
     `(wgrep-reject-face ((,c :background ,bg-err :foreground ,err)))
 ;;;; which-function-mode
-    `(which-func ((,c :inherit bold :foreground ,modeline-warning)))
+    `(which-func ((,c :inherit bold :foreground ,modeline-warning))) ; same as `breadcrumb-imenu-leaf-face'
 ;;;; whitespace-mode
     `(whitespace-big-indent ((,c :background ,bg-err :foreground ,err)))
     `(whitespace-empty ((,c :inherit whitespace-big-indent)))

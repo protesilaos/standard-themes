@@ -1155,6 +1155,7 @@ everything most users need.
 - ansi-color
 - auctex
 - auto-dim-other-buffers
+- breadcrumb [Part of {{{development-version}}}]
 - bongo
 - bookmark
 - calendar and diary

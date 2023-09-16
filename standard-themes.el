@@ -903,6 +903,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(standard-themes-fringe-warning ((,c :inherit bold :background ,bg-yellow :foreground ,fg-main)))
 ;;;; all basic faces
 ;;;;; absolute essentials
+    `(appt-notification ((,c :inherit error)))
     `(bold ((,c :weight bold)))
     `(bold-italic ((,c :inherit (bold italic))))
     `(cursor ((,c :background ,cursor)))

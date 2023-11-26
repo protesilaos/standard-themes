@@ -349,6 +349,8 @@ In user configuration files the form may look like this:
 :CUSTOM_ID: h:8540fd7a-7633-4eb9-af4b-4f160568f79a
 :END:
 
+[ Updated as part of {{{development-version}}}. ]
+
 #+vindex: standard-themes-headings
 The user option ~standard-themes-headings~ provides support for individual
 heading styles for regular heading levels 0 through 8, as well as the

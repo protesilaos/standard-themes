@@ -1402,12 +1402,13 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(keycast-command ((,c :inherit bold :foreground ,bg-accent)))
     `(keycast-key ((,c :background ,bg-accent :foreground ,bg-main)))
 ;;;; line numbers (display-line-numbers-mode and global variant)
-    ;; We need to fall back to `default' otherwise line numbers do not
-    ;; scale when using `text-scale-adjust'.
-    `(line-number ((,c :inherit (standard-themes-fixed-pitch shadow default))))
-    `(line-number-current-line ((,c :inherit (bold line-number) :foreground ,fg-main)))
-    `(line-number-major-tick ((,c :inherit (bold line-number) :foreground ,rainbow-0)))
-    `(line-number-minor-tick ((,c :inherit (bold line-number))))
+    ;; Here we cannot inherit `standard-themes-fixed-pitch'.  We need to
+    ;; fall back to `default' otherwise line numbers do not scale when
+    ;; using `text-scale-adjust'.
+    `(line-number ((,c :inherit ,(if standard-themes-mixed-fonts '(fixed-pitch default) 'default) :background ,bg-line-number-inactive :foreground ,fg-line-number-inactive)))
+    `(line-number-current-line ((,c :inherit (bold line-number) :background ,bg-line-number-active :foreground ,fg-line-number-active)))
+    `(line-number-major-tick ((,c :inherit line-number :foreground ,err)))
+    `(line-number-minor-tick ((,c :inherit line-number :foreground ,fg-alt)))
 ;;;; magit
     `(magit-bisect-bad ((,c :inherit error)))
     `(magit-bisect-good ((,c :inherit success)))

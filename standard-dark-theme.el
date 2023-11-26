@@ -239,6 +239,13 @@
       (accent-2 green)
       (accent-3 magenta-cooler)
 
+;;;; Line number mappings
+
+      (fg-line-number-inactive fg-dim)
+      (fg-line-number-active fg-main)
+      (bg-line-number-inactive unspecified)
+      (bg-line-number-active unspecified)
+
 ;;;; Link mappings
 
       (fg-link cyan)

@@ -130,7 +130,6 @@
 
       ;; Special hues
       (bg-fringe     bg-dim)
-      (bg-mode-line  "#505050") (bg-mode-line-inactive "#323232")
       (bg-accent     "#ffc200")
       (bg-completion "#254b5f")
       (bg-hover      "#457b2f")
@@ -145,6 +144,13 @@
 
       (border        "#606070")
       (cursor        "#ffffff")
+
+      (bg-mode-line-active        "#505050")
+      (fg-mode-line-active        "#ffffff")
+      (border-mode-line-active    "#959595")
+      (bg-mode-line-inactive      "#323232")
+      (fg-mode-line-inactive      "#969696")
+      (border-mode-line-inactive  "#606060")
 
       (bg-tab              "#333333")
       (bg-tab-inactive     "#4d4d4d")

@@ -284,13 +284,7 @@ In user configuration files the form may look like this:
               (const :tag "Italic font slant" italic))
   :link '(info-link "(standard-themes) Option for command prompts"))
 
-(defcustom standard-themes-mode-line-accented nil
-  "When non-nil, use accented background for the active mode line.
-The default is a gray background color."
-  :group 'standard-themes
-  :package-version '(standard-themes . "1.0.0")
-  :type 'boolean
-  :link '(info-link "(standard-themes) Accented mode line"))
+(make-obsolete-variable 'standard-themes-mode-line-accented nil "2.0.0")
 
 (defcustom standard-themes-common-palette-overrides nil
   "Set palette overrides for all the Standard themes.
@@ -1494,10 +1488,9 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(message-separator ((,c :background ,bg-alt)))
 ;;;; mode-line
     `(mode-line ((,c :inherit standard-themes-ui-variable-pitch
-                     :background ,@(if standard-themes-mode-line-accented
-                                       (list bg-mode-line-accent)
-                                     (list bg-mode-line))
-                     :foreground ,fg-main)))
+                     :box ,border-mode-line-active
+                     :background ,bg-mode-line-active
+                     :foreground ,fg-mode-line-active)))
     `(mode-line-active ((,c :inherit mode-line :box (:line-width -1 :style released-button))))
     `(mode-line-buffer-id ((,c :inherit bold)))
     `(mode-line-emphasis ((,c :inherit bold :foreground ,modeline-info)))

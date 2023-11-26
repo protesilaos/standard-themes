@@ -129,6 +129,7 @@
       (cyan-graph-1-bg    "#00808f")
 
       ;; Special hues
+      (bg-fringe     bg-dim)
       (bg-mode-line  "#505050") (bg-mode-line-inactive "#323232")
       (bg-accent     "#ffc200")
       (bg-completion "#254b5f")

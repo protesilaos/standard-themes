@@ -282,22 +282,6 @@ Other examples:
               (const :tag "More intense background (also override text color)" intense))
   :link '(info-link "(standard-themes) Style of region highlight"))
 
-(defcustom standard-themes-fringes 'subtle
-  "Control the visibility of fringes.
-
-When the value is nil, do not apply a distinct background color.
-
-With a value of `subtle', use a gray background color that is
-visible yet close to the main background color.
-
-With `intense', use a more pronounced gray background color."
-  :group 'standard-themes
-  :package-version '(standard-themes . "1.0.0")
-  :type '(choice
-          (const :format "[%v] %t\n" :tag "No visible fringes" nil)
-          (const :format "[%v] %t\n" :tag "Subtle gray background" subtle)
-          (const :format "[%v] %t\n" :tag "Intense gray background" intense))
-  :link '(info-link "(standard-themes) Fringe visibility"))
 
 (defcustom standard-themes-links nil
   "Set the style of links.
@@ -350,6 +334,7 @@ Please refer to their documentation strings."
               (const :tag "Bold font weight" bold)
               (const :tag "Italic font slant" italic))
   :link '(info-link "(standard-themes) Link style"))
+(make-obsolete-variable 'standard-themes-fringes nil "2.0.0")
 
 (defcustom standard-themes-prompts nil
   "Control the style of prompts (e.g. minibuffer, REPL).
@@ -454,15 +439,6 @@ represents."
   "Conditional application of `variable-pitch' in the UI."
   (when standard-themes-variable-pitch-ui
     (list :inherit 'variable-pitch)))
-
-(defun standard-themes--fringe (mainbg intensebg)
-  "Conditional use of background colors for fringes.
-MAINBG is the default.  INTENSEBG should be a prominent gray
-value."
-  (pcase standard-themes-fringes
-    ('intense (list :background intensebg))
-    ('subtle (list :background mainbg))
-    (_ (list :background 'unspecified))))
 
 (defun standard-themes--alist-or-seq (properties alist-key seq-pred seq-default)
   "Return value from alist or sequence.
@@ -918,7 +894,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(elisp-shorthand-font-lock-face ((,c :inherit italic)))
     `(error ((,c :inherit bold :foreground ,err)))
     `(escape-glyph ((,c :foreground ,warning)))
-    `(fringe ((,c ,@(standard-themes--fringe bg-dim bg-active) :foreground ,fg-main)))
+    `(fringe ((,c :background ,bg-fringe :foreground ,fg-main)))
     `(header-line ((,c :inherit standard-themes-ui-variable-pitch :background ,bg-dim)))
     `(header-line-highlight ((,c :inherit highlight)))
     `(help-argument-name ((,c :foreground ,prose-verbatim)))

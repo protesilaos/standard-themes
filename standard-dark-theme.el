@@ -161,7 +161,7 @@
       (bg-hover      "#457b2f")
       (bg-hover-alt  "#00688b")
       (bg-hl-line    "#334815")
-      (bg-region     "#0000cd")
+      (bg-region     "#20009d")
       (fg-region     unspecified)
       (bg-paren      "#4f94cd")
       (bg-err        "#3f0d09") ; check with err

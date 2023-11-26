@@ -727,9 +727,9 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(standard-themes-underline-error ((,c :underline (:style wave :color ,underline-err))))
     `(standard-themes-underline-info ((,c :underline (:style wave :color ,underline-info))))
     `(standard-themes-underline-warning ((,c :underline (:style wave :color ,underline-warning))))
-    `(standard-themes-fringe-error ((,c :inherit bold :background ,bg-red :foreground ,fg-main)))
-    `(standard-themes-fringe-info ((,c :inherit bold :background ,bg-green :foreground ,fg-main)))
-    `(standard-themes-fringe-warning ((,c :inherit bold :background ,bg-yellow :foreground ,fg-main)))
+    `(standard-themes-fringe-error ((,c :inherit bold :background ,bg-red-intense :foreground ,fg-main)))
+    `(standard-themes-fringe-info ((,c :inherit bold :background ,bg-green-intense :foreground ,fg-main)))
+    `(standard-themes-fringe-warning ((,c :inherit bold :background ,bg-yellow-intense :foreground ,fg-main)))
 ;;;; all basic faces
 ;;;;; absolute essentials
     `(appt-notification ((,c :inherit error)))
@@ -768,7 +768,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(shadow ((,c :foreground ,fg-dim)))
     `(success ((,c :inherit bold :foreground ,info)))
     `(tooltip ((,c :background ,bg-alt :foreground ,fg-main)))
-    `(trailing-whitespace ((,c :background ,bg-red :foreground ,fg-main)))
+    `(trailing-whitespace ((,c :background ,bg-red-intense :foreground ,fg-main)))
     `(warning ((,c :inherit bold :foreground ,warning)))
 ;;;; all-the-icons
     `(all-the-icons-blue ((,c :foreground ,blue-cooler)))
@@ -914,7 +914,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(company-echo-common ((,c :inherit bold :foreground ,accent-0)))
     `(company-preview ((,c :background ,bg-dim :foreground ,fg-dim)))
     `(company-preview-common ((,c :inherit company-echo-common)))
-    `(company-preview-search ((,c :background ,bg-yellow :foreground ,fg-main)))
+    `(company-preview-search ((,c :background ,bg-yellow-intense :foreground ,fg-main)))
     `(company-scrollbar-bg ((,c :background ,bg-active)))
     `(company-scrollbar-fg ((,c :background ,fg-main)))
     `(company-template-field ((,c :background ,bg-active :foreground ,fg-main)))
@@ -1311,13 +1311,13 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(info-title-3 ((,c :inherit standard-themes-heading-3)))
     `(info-title-4 ((,c :inherit standard-themes-heading-4)))
 ;;;; isearch, occur, and the like
-    `(isearch ((,c :background ,bg-magenta :foreground ,fg-main)))
-    `(isearch-fail ((,c :background ,bg-red :foreground ,fg-main)))
-    `(isearch-group-1 ((,c :background ,bg-green :foreground ,fg-main)))
-    `(isearch-group-2 ((,c :background ,bg-yellow :foreground ,fg-main)))
-    `(lazy-highlight ((,c :background ,bg-cyan :foreground ,fg-main)))
+    `(isearch ((,c :background ,bg-magenta-intense :foreground ,fg-main)))
+    `(isearch-fail ((,c :background ,bg-red-intense :foreground ,fg-main)))
+    `(isearch-group-1 ((,c :background ,bg-green-intense :foreground ,fg-main)))
+    `(isearch-group-2 ((,c :background ,bg-yellow-intense :foreground ,fg-main)))
+    `(lazy-highlight ((,c :background ,bg-cyan-intense :foreground ,fg-main)))
     `(match ((,c :background ,bg-warning)))
-    `(query-replace ((,c :background ,bg-red :foreground ,fg-main)))
+    `(query-replace ((,c :background ,bg-red-intense :foreground ,fg-main)))
 ;;;; jit-spell
     `(jit-spell-misspelling ((,c :inherit standard-themes-underline-error)))
 ;;;; keycast
@@ -1773,7 +1773,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(rainbow-delimiters-depth-7-face ((,c :foreground ,rainbow-6)))
     `(rainbow-delimiters-depth-8-face ((,c :foreground ,rainbow-7)))
     `(rainbow-delimiters-depth-9-face ((,c :foreground ,rainbow-8)))
-    `(rainbow-delimiters-mismatched-face ((,c :background ,bg-red :foreground ,fg-main)))
+    `(rainbow-delimiters-mismatched-face ((,c :background ,bg-red-intense :foreground ,fg-main)))
     `(rainbow-delimiters-unmatched-face ((,c :inherit (bold rainbow-delimiters-mismatched-face))))
 ;;;; rcirc
     `(rcirc-bright-nick ((,c :inherit error)))
@@ -1793,10 +1793,10 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(recursion-indicator-general ((,c :foreground ,modeline-err)))
     `(recursion-indicator-minibuffer ((,c :foreground ,modeline-info)))
 ;;;; regexp-builder (re-builder)
-    `(reb-match-0 ((,c :background ,bg-green :foreground ,fg-main)))
-    `(reb-match-1 ((,c :background ,bg-red :foreground ,fg-main)))
-    `(reb-match-2 ((,c :background ,bg-magenta :foreground ,fg-main)))
-    `(reb-match-3 ((,c :background ,bg-blue :foreground ,fg-main)))
+    `(reb-match-0 ((,c :background ,bg-green-intense :foreground ,fg-main)))
+    `(reb-match-1 ((,c :background ,bg-red-intense :foreground ,fg-main)))
+    `(reb-match-2 ((,c :background ,bg-magenta-intense :foreground ,fg-main)))
+    `(reb-match-3 ((,c :background ,bg-blue-intense :foreground ,fg-main)))
     `(reb-regexp-grouping-backslash ((,c :inherit font-lock-regexp-grouping-backslash)))
     `(reb-regexp-grouping-construct ((,c :inherit font-lock-regexp-grouping-construct)))
 ;;;; ruler-mode
@@ -1813,7 +1813,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
 ;;;; show-paren-mode
     `(show-paren-match ((,c :background ,bg-paren :foreground ,fg-main)))
     `(show-paren-match-expression ((,c :background ,bg-alt)))
-    `(show-paren-mismatch ((,c :background ,bg-red :foreground ,fg-main)))
+    `(show-paren-mismatch ((,c :background ,bg-red-intense :foreground ,fg-main)))
 ;;;; shell-script-mode (sh-mode)
     `(sh-heredoc ((,c :inherit font-lock-doc-face)))
     `(sh-quoted-exec ((,c :inherit font-lock-builtin-face)))
@@ -1950,7 +1950,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(whitespace-newline ((,c :inherit whitespace-indentation)))
     `(whitespace-space ((,c :inherit whitespace-indentation)))
     `(whitespace-space-after-tab ((,c :inherit whitespace-space-before-tab)))
-    `(whitespace-space-before-tab ((,c :background ,bg-red)))
+    `(whitespace-space-before-tab ((,c :background ,bg-red-intense)))
     `(whitespace-tab ((,c :inherit whitespace-indentation)))
     `(whitespace-trailing ((,c :inherit whitespace-space-before-tab)))
 ;;;; widget

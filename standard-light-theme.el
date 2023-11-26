@@ -85,13 +85,28 @@
       (cyan-cooler     "#008b8b")
       (cyan-faint      "#3f7a80")
 
-      ;; Basic hues for background values
-      (bg-red      "#ff8f88")
-      (bg-green    "#7ae070")
-      (bg-yellow   "#fac200")
-      (bg-blue     "#6bcfff")
-      (bg-magenta  "#cf9fff")
-      (bg-cyan     "#a8efff")
+;;; Common accent backgrounds
+
+      (bg-red-intense     "#ff8f88")
+      (bg-green-intense   "#8adf80")
+      (bg-yellow-intense  "#f3d000")
+      (bg-blue-intense    "#bfc9ff")
+      (bg-magenta-intense "#dfa0f0")
+      (bg-cyan-intense    "#a4d5f9")
+
+      (bg-red-subtle      "#ffcfbf")
+      (bg-green-subtle    "#b3fabf")
+      (bg-yellow-subtle   "#fff576")
+      (bg-blue-subtle     "#ccdfff")
+      (bg-magenta-subtle  "#ffddff")
+      (bg-cyan-subtle     "#bfefff")
+
+      (bg-red-nuanced     "#fff1f0")
+      (bg-green-nuanced   "#ecf7ed")
+      (bg-yellow-nuanced  "#fff3da")
+      (bg-blue-nuanced    "#f3f3ff")
+      (bg-magenta-nuanced "#fdf0ff")
+      (bg-cyan-nuanced    "#ebf6fa")
 
       ;; Diffs
       (bg-added          "#c0f8d0")

@@ -981,7 +981,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(change-log-name ((,c :foreground ,name)))
     `(log-edit-header ((,c :inherit bold)))
     `(log-edit-headers-separator ((,c :height 1 :background ,border :extend t)))
-    `(log-edit-summary ((,c :inherit bold :foreground ,accent-0)))
+    `(log-edit-summary ((,c :inherit success)))
     `(log-edit-unknown-header ((,c :inherit shadow)))
     `(log-view-commit-body (( )))
     `(log-view-file ((,c :inherit bold)))
@@ -1291,7 +1291,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(git-commit-keyword ((,c :foreground ,keyword)))
     `(git-commit-nonempty-second-line ((,c :inherit error)))
     `(git-commit-overlong-summary ((,c :inherit warning)))
-    `(git-commit-summary ((,c :inherit bold :foreground ,accent-0)))
+    `(git-commit-summary ((,c :inherit success)))
 ;;;; git-rebase
     `(git-rebase-comment-hash ((,c :inherit font-lock-comment-face :foreground ,constant)))
     `(git-rebase-comment-heading  ((,c :inherit (bold font-lock-comment-face))))

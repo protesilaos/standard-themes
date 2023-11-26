@@ -57,9 +57,9 @@
       (fg-dim      "#7f7f7f")
       (bg-alt      "#dcdcdc")
       (fg-alt      "#193f8f")
-
       (bg-active   "#bfbfbf")
       (bg-inactive "#f5f5f5")
+      (border      "#bababa")
 
 ;;; Basic accent foregrounds
 
@@ -167,7 +167,6 @@
       (bg-err        "#ffd5ea") ; check with err
       (bg-warning    "#ffeabb") ; check with warning
       (bg-info       "#d0efda") ; check with info
-      (border        "#bababa")
 
       (bg-mode-line-active        "#b3b3b3")
       (fg-mode-line-active        "#000000")
@@ -230,7 +229,6 @@
       (string magenta-warmer)
       (type green)
       (variable yellow-cooler)
-
       (rx-escape green) ; compare with `string'
       (rx-construct fg-main)
 

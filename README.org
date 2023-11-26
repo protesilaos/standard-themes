@@ -291,6 +291,8 @@ affects comments, doc strings, and a few other minor elements.
 :CUSTOM_ID: h:eedd0b6b-9f84-48bc-8871-620934506aa6
 :END:
 
+[ Updated as part of {{{development-version}}}. ]
+
 #+vindex: standard-themes-prompts
 The user option ~standard-themes-prompts~ controls the style of all
 prompts, such as those of the minibuffer and REPLs.

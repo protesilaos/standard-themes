@@ -258,10 +258,10 @@
 
 ;;;; Mail mappings
 
-      (mail-0 red-cooler)
-      (mail-1 magenta)
-      (mail-2 green)
-      (mail-3 cyan-cooler)
+      (mail-0 magenta)
+      (mail-1 cyan-cooler)
+      (mail-2 yellow-cooler)
+      (mail-3 red-warmer)
       (mail-4 blue-warmer)
       (mail-recipient blue)
       (mail-subject magenta-cooler)

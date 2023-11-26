@@ -185,6 +185,12 @@
       (info green)
 
       (date-common cyan-warmer)
+      (date-deadline red)
+      (date-event fg-alt)
+      (date-holiday red-cooler)
+      (date-now fg-main)
+      (date-range fg-alt)
+      (date-scheduled green-cooler)
       (date-weekday cyan-warmer)
       (date-weekend red)
 

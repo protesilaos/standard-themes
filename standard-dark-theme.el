@@ -164,7 +164,7 @@
       (fg-mode-line-active        "#ffffff")
       (border-mode-line-active    "#959595")
       (bg-mode-line-inactive      "#323232")
-      (fg-mode-line-inactive      "#969696")
+      (fg-mode-line-inactive      "#a6a6a6")
       (border-mode-line-inactive  "#606070")
 
       (bg-tab              "#333333")

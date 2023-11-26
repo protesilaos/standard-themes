@@ -505,44 +505,10 @@ original aesthetic for that level.  For example:
         (t . t))) ; default style for all other levels
 #+end_src
 
-** Style of region highlight
-:PROPERTIES:
-:CUSTOM_ID: h:827e4fff-0416-4eba-a364-a6588f80b768
-:END:
-
-#+vindex: standard-themes-region
-The user option ~standard-themes-region~ controls the appearance of
-the ~region~ face (the highlighted selection of an area).
-
-The value it accepts is a list of symbols.
-
-If ~nil~ or an empty list (the default), use a subtle background for
-the region and preserve the color of selected text.
-
-The ~no-extend~ symbol limits the highlighted area to the end of the
-line, so that it does not reach the edge of the window.
-
-The ~neutral~ symbol makes the highlighted area's background gray (or
-more gray, depending on the theme).
-
-The ~intense~ symbol amplifies the intensity of the highlighted area's
-background color.  It also overrides any text color to keep it
-legible.
-
-Combinations of those symbols are expressed in any order.
-
-In user configuration files the form may look like this:
-
-#+begin_src emacs-lisp
-(setq standard-themes-region '(intense no-extend))
-#+end_src
-
-Other examples:
-
-#+begin_src emacs-lisp
-(setq standard-themes-region '(intense))
-(setq standard-themes-region '(intense no-extend neutral))
-#+end_src
+Note that the text color of headings, of their background, and
+overline can all be set via the overrides.  It is possible to have any
+color combination for any heading level (something that could not be
+done in older versions of the themes).
 
 ** Palette overrides
 :PROPERTIES:

@@ -167,10 +167,6 @@
       (warning yellow-warmer)
       (info green)
 
-      (link cyan)
-      (link-alt magenta-cooler)
-      (link-faint cyan-faint)
-      (link-alt-faint magenta-faint)
       (date cyan-warmer)
       (name cyan-cooler)
       (keybind blue-cooler)
@@ -194,6 +190,14 @@
       (accent-1 red-cooler)
       (accent-2 green)
       (accent-3 magenta-cooler)
+
+      (fg-link cyan)
+      (bg-link unspecified)
+      (underline-link blue-warmer)
+
+      (fg-link-visited magenta-cooler)
+      (bg-link-visited unspecified)
+      (underline-link-visited magenta)
 
       (mail-0 red-cooler)
       (mail-1 magenta-warmer)

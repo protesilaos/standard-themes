@@ -246,60 +246,9 @@ ELPA (by Protesilaos))."
   :type 'boolean
   :link '(info-link "(standard-themes) UI typeface"))
 
-
-(defcustom standard-themes-links nil
-  "Set the style of links.
-
-The value is a list of properties, each designated by a symbol.
-The default (a nil value or an empty list) is a prominent text
-color, typically blue, with an underline of the same color.
-
-For the style of the underline, a `neutral-underline' property
-turns the color of the line into a subtle gray, while the
-`no-underline' property removes the line altogether.  If both of
-those are set, the latter takes precedence.
-
-For text coloration, a `faint' property desaturates the color of
-the text and the underline, unless the underline is affected by
-the aforementioned properties.
-
-A `bold' property applies a heavy typographic weight to the text
-of the link.
-
-An `italic' property adds a slant to the link's text (italic or
-oblique forms, depending on the typeface).
-
-Combinations of any of those properties are expressed as a list,
-like in these examples:
-
-    (faint)
-    (no-underline faint)
-
-The order in which the properties are set is not significant.
-
-In user configuration files the form may look like this:
-
-    (setq standard-themes-links (quote (neutral-underline faint)))
-
-The placement of the underline, meaning its proximity to the
-text, is controlled by `x-use-underline-position-properties',
-`x-underline-at-descent-line', `underline-minimum-offset'.
-Please refer to their documentation strings."
-  :group 'standard-themes
-  :package-version '(standard-themes . "1.0.0")
-  :type '(set :tag "Properties" :greedy t
-              (choice :tag "Text coloration"
-                      (const :tag "Saturared color (default)" nil)
-                      (const :tag "Faint coloration" faint))
-              (choice :tag "Underline"
-                      (const :tag "Same color as text (default)" nil)
-                      (const :tag "Neutral (gray) underline color" neutral-underline)
-                      (const :tag "No underline" no-underline))
-              (const :tag "Bold font weight" bold)
-              (const :tag "Italic font slant" italic))
-  :link '(info-link "(standard-themes) Link style"))
 (make-obsolete-variable 'standard-themes-region nil "2.0.0")
 (make-obsolete-variable 'standard-themes-fringes nil "2.0.0")
+(make-obsolete-variable 'standard-themes-links nil "2.0.0")
 
 (defcustom standard-themes-prompts nil
   "Control the style of prompts (e.g. minibuffer, REPL).
@@ -443,33 +392,6 @@ sequence given SEQ-PRED, using SEQ-DEFAULT as a fallback."
                  (null weight))
             'bold)
            ((or weight 'unspecified))))))
-
-
-(defun standard-themes--link (fg fgfaint underline)
-  "Conditional application of link styles.
-FG is the link's default color for its text and underline
-property.  FGFAINT is a desaturated color for the text and
-underline.  UNDERLINE is a gray color only for the undeline."
-  (let ((properties (standard-themes--list-or-warn 'standard-themes-links)))
-    (list :inherit
-          (cond
-           ((and (memq 'bold properties)
-                 (memq 'italic properties))
-            'bold-italic)
-           ((memq 'italic properties)
-            'italic)
-           ((memq 'bold properties)
-            'bold)
-           ('unspecified))
-          :foreground
-          (if (memq 'faint properties) fgfaint fg)
-          :underline
-          (cond
-           ((memq 'no-underline properties)
-            'unspecified)
-           ((memq 'neutral-underline properties)
-            underline)
-           (t)))))
 
 (defun standard-themes--prompt (fg bg fg-for-bg)
   "Conditional use of colors for text prompt faces.
@@ -825,7 +747,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(region ((,c :background ,bg-region :foreground ,fg-region)))
     `(vertical-border ((,c :foreground "gray50")))
 ;;;;; all other basic faces
-    `(button ((,c ,@(standard-themes--link link link-faint border))))
+    `(button ((,c :background ,bg-link :foreground ,fg-link :underline ,underline-link)))
     `(child-frame-border ((,c :background ,border)))
     `(comint-highlight-input ((,c :inherit bold)))
     `(comint-highlight-prompt ((,c :inherit minibuffer-prompt)))
@@ -841,8 +763,8 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(highlight ((,c :background ,bg-hover :foreground ,fg-main)))
     `(hl-line ((,c :background ,bg-hl-line)))
     `(icon-button ((,c :box ,fg-dim :background ,bg-active :foreground ,fg-main))) ; same as `custom-button'
-    `(link ((,c ,@(standard-themes--link link link-faint border))))
-    `(link-visited ((,c ,@(standard-themes--link link-alt link-alt-faint border))))
+    `(link ((,c :inherit button)))
+    `(link-visited ((,c :background ,bg-link-visited :foreground ,fg-link-visited :underline ,underline-link-visited)))
     `(minibuffer-prompt ((,c ,@(standard-themes--prompt prompt bg-prompt fg-main))))
     `(mm-command-output ((,c :foreground ,mail-4))) ; like message-mml
     `(pgtk-im-0 ((,c :inherit secondary-selection)))
@@ -1127,7 +1049,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(diredfl-flag-mark ((,c :inherit dired-marked)))
     `(diredfl-flag-mark-line ((,c :inherit dired-marked)))
     `(diredfl-ignored-file-name ((,c :inherit shadow)))
-    `(diredfl-link-priv ((,c :foreground ,link)))
+    `(diredfl-link-priv ((,c :foreground ,fg-link)))
     `(diredfl-no-priv ((,c :inherit shadow)))
     `(diredfl-number ((,c :inherit shadow)))
     `(diredfl-other-priv ((,c :foreground ,rainbow-0)))
@@ -1510,7 +1432,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(marginalia-file-owner ((,c :inherit shadow)))
     `(marginalia-file-priv-dir (( )))
     `(marginalia-file-priv-exec ((,c :foreground ,rainbow-3)))
-    `(marginalia-file-priv-link ((,c :foreground ,link)))
+    `(marginalia-file-priv-link ((,c :foreground ,fg-link)))
     `(marginalia-file-priv-no ((,c :inherit shadow)))
     `(marginalia-file-priv-other ((,c :foreground ,rainbow-0)))
     `(marginalia-file-priv-rare ((,c :foreground ,rainbow-0)))
@@ -2039,8 +1961,8 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(whitespace-tab ((,c :inherit whitespace-indentation)))
     `(whitespace-trailing ((,c :inherit whitespace-space-before-tab)))
 ;;;; widget
-    `(widget-button ((,c :inherit bold :foreground ,link)))
-    `(widget-button-pressed ((,c :inherit widget-button :foreground ,link-alt)))
+    `(widget-button ((,c :inherit bold :foreground ,fg-link)))
+    `(widget-button-pressed ((,c :inherit widget-button :foreground ,fg-link-visited)))
     `(widget-documentation ((,c :inherit font-lock-doc-face)))
     `(widget-field ((,c :background ,bg-alt :foreground ,fg-main :extend nil)))
     `(widget-inactive ((,c :inherit shadow :background ,bg-dim)))

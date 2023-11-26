@@ -2031,6 +2031,11 @@ Optional prefix argument MAPPINGS has the same meaning as for
 ;;;; vertico
     `(vertico-current ((,c :background ,bg-completion)))
     `(vertico-group-title ((,c :inherit bold :foreground ,name)))
+;;;; vundo
+    `(vundo-default ((,c :inherit shadow)))
+    `(vundo-highlight ((,c :inherit (bold vundo-node) :foreground ,red)))
+    `(vundo-last-saved ((,c :inherit (bold vundo-node) :foreground ,blue-cooler)))
+    `(vundo-saved ((,c :inherit vundo-node :foreground ,cyan-cooler)))
 ;;;; wgrep
     `(wgrep-delete-face ((,c :inherit warning)))
     `(wgrep-done-face ((,c :background ,bg-info :foreground ,info)))

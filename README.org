@@ -1197,6 +1197,7 @@ everything most users need.
 - tty-menu
 - vc (=vc-dir.el=, =vc-hooks.el=)
 - vertico
+- vundo [Part of {{{development-version}}}]
 - wgrep
 - which-function-mode
 - which-key [Part of {{{development-version}}}]

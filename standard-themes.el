@@ -827,7 +827,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(elisp-shorthand-font-lock-face ((,c :inherit italic)))
     `(error ((,c :inherit bold :foreground ,err)))
     `(escape-glyph ((,c :foreground ,warning)))
-    `(fringe ((,c :background ,bg-fringe :foreground ,fg-main)))
+    `(fringe ((,c :background ,fringe :foreground ,fg-main)))
     `(header-line ((,c :inherit standard-themes-ui-variable-pitch :background ,bg-dim)))
     `(header-line-highlight ((,c :inherit highlight)))
     `(help-argument-name ((,c :foreground ,prose-verbatim)))

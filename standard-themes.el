@@ -102,21 +102,26 @@ This affects comments, doc strings, and some other minor elements."
      semibold bold heavy extrabold ultrabold)
   "List of font weights.")
 
-(defconst standard-themes--headings-choice
-  '(set :tag "Properties" :greedy t
+(defconst standard-themes--weight-widget
+  '(choice :tag "Font weight (must be supported by the typeface)"
+           (const :tag "Unspecified (use whatever the default is)" nil)
+           (const :tag "Thin" thin)
+           (const :tag "Ultra-light" ultralight)
+           (const :tag "Extra-light" extralight)
+           (const :tag "Light" light)
+           (const :tag "Semi-light" semilight)
+           (const :tag "Regular" regular)
+           (const :tag "Medium" medium)
+           (const :tag "Semi-bold" semibold)
+           (const :tag "Bold" bold)
+           (const :tag "Extra-bold" extrabold)
+           (const :tag "Ultra-bold" ultrabold))
+  "List of supported font weights used by `defcustom' forms.")
+
+(defconst standard-themes--headings-widget
+  `(set :tag "Properties" :greedy t
         (const :tag "Proportionately spaced font (variable-pitch)" variable-pitch)
-        (choice :tag "Font weight (must be supported by the typeface)"
-                (const :tag "Thin" thin)
-                (const :tag "Ultra-light" ultralight)
-                (const :tag "Extra-light" extralight)
-                (const :tag "Light" light)
-                (const :tag "Semi-light" semilight)
-                (const :tag "Regular" regular)
-                (const :tag "Medium" medium)
-                (const :tag "Semi-bold" semibold)
-                (const :tag "Bold" bold)
-                (const :tag "Extra-bold" extrabold)
-                (const :tag "Ultra-bold" ultrabold))
+        ,standard-themes--weight-widget
         (radio :tag "Height"
                (float :tag "Floating point to adjust height by")
                (cons :tag "Cons cell of `(height . FLOAT)'"
@@ -144,43 +149,42 @@ stylistic combinations, followed by a presentation of all
 available properties:
 
     (setq standard-themes-headings
-          (quote ((1 . (light variable-pitch 1.5))
-                  (2 . (regular 1.3))
-                  (3 . (1.1))
-                  (agenda-date (1.3))
-                  (agenda-structure (variable-pitch light 1.8))
-                  (t . (variable-pitch)))))
+          (quote ((1 . (variable-pitch 1.5))
+                  (2 . (1.3))
+                  (agenda-date . (1.3))
+                  (agenda-structure . (variable-pitch light 1.8))
+                  (t . (1.1)))))
 
 By default (a nil value for this variable), all headings have a
-normal typographic weight, a font family that is the same as the
-`default' face (typically monospaced), and a height that is equal
-to the `default' face's height.
+bold typographic weight, use a desaturated text color, have a
+font family that is the same as the `default' face (typically
+monospaced), and a height that is equal to the `default' face's
+height.
 
-- A `variable-pitch' property changes the font family of the
-  heading to that of the `variable-pitch' face (normally a
-  proportionately spaced typeface).  Also check the `fontaine'
-  package (by Protesilaos) for tweaking fonts via faces.
+A `variable-pitch' property changes the font family of the
+heading to that of the `variable-pitch' face (normally a
+proportionately spaced typeface).
 
-- The symbol of a weight attribute adjusts the font of the
-  heading accordingly, such as `light', `semibold', etc.  Valid
-  symbols are defined in the variable `standard-themes-weights'.
-  The absence of a weight means that no distinct weight will be
-  used.
+The symbol of a weight attribute adjusts the font of the heading
+accordingly, such as `light', `semibold', etc.  Valid symbols are
+defined in the variable `standard-themes-weights'.  The absence of a
+weight means that bold will be used by virtue of inheriting the
+`bold' face (check the manual for tweaking bold and italic
+faces).
 
-- A number, expressed as a floating point (e.g. 1.5), adjusts the
-  height of the heading to that many times the base font size.
-  The default height is the same as 1.0, though it need not be
-  explicitly stated.  Instead of a floating point, an acceptable
-  value can be in the form of a cons cell like (height . FLOAT)
-  or (height FLOAT), where FLOAT is the given number.
+A number, expressed as a floating point (e.g. 1.5), adjusts the
+height of the heading to that many times the base font size.  The
+default height is the same as 1.0, though it need not be
+explicitly stated.  Instead of a floating point, an acceptable
+value can be in the form of a cons cell like (height . FLOAT)
+or (height FLOAT), where FLOAT is the given number.
 
 Combinations of any of those properties are expressed as a list,
 like in these examples:
 
     (semibold)
-    (variable-pitch semibold)
     (variable-pitch semibold 1.3)
-    (variable-pitch semibold (height 1.3))   ; same as above
+    (variable-pitch semibold (height 1.3)) ; same as above
     (variable-pitch semibold (height . 1.3)) ; same as above
 
 The order in which the properties are set is not significant.
@@ -188,10 +192,11 @@ The order in which the properties are set is not significant.
 In user configuration files the form may look like this:
 
     (setq standard-themes-headings
-          (quote ((1 . (light variable-pitch 1.5))
-                  (2 . (regular 1.3))
-                  (3 . (1.1))
-                  (t . (variable-pitch)))))
+          (quote ((1 . (variable-pitch 1.5))
+                  (2 . (1.3))
+                  (agenda-date . (1.3))
+                  (agenda-structure . (variable-pitch light 1.8))
+                  (t . (1.1)))))
 
 When defining the styles per heading level, it is possible to
 pass a non-nil value (t) instead of a list of properties.  This
@@ -199,21 +204,31 @@ will retain the original aesthetic for that level.  For example:
 
     (setq standard-themes-headings
           (quote ((1 . t)           ; keep the default style
-                  (2 . (variable-pitch 1.2))
+                  (2 . (semibold 1.2))
                   (t . (variable-pitch))))) ; style for all other headings
 
     (setq standard-themes-headings
-          (quote ((1 . (variable-pitch 1.6))
-                  (2 . (1.3))
-                  (t . t)))) ; default style for all other levels"
+          (quote ((1 . (variable-pitch extrabold 1.5))
+                  (2 . (semibold))
+                  (t . t)))) ; default style for all other levels
+
+Note that the text color of headings, of their background, and
+overline can all be set via the overrides.  It is possible to
+have any color combination for any heading level (something that
+could not be done in older versions of the themes).
+
+Read Info node `(standard-themes) Option for palette overrides' as
+well as Info node `(standard-themes) Make headings more or less
+colorful'.  Else check `standard-themes-common-palette-overrides'
+and related user options."
   :group 'standard-themes
-  :package-version '(standard-themes . "1.0.0")
+  :package-version '(standard-themes . "2.0.0")
   :type `(alist
-          :options ,(mapcar (lambda (h)
-                              (list h standard-themes--headings-choice))
+          :options ,(mapcar (lambda (el)
+                              (list el standard-themes--headings-widget))
                             '(0 1 2 3 4 5 6 7 8 t agenda-date agenda-structure))
           :key-type symbol
-          :value-type ,standard-themes--headings-choice)
+          :value-type ,standard-themes--headings-widget)
   :link '(info-link "(standard-themes) Option for headings"))
 
 (defcustom standard-themes-mixed-fonts nil
@@ -249,22 +264,6 @@ ELPA (by Protesilaos))."
 (make-obsolete-variable 'standard-themes-region nil "2.0.0")
 (make-obsolete-variable 'standard-themes-fringes nil "2.0.0")
 (make-obsolete-variable 'standard-themes-links nil "2.0.0")
-
-(defconst standard-themes--weight-widget
-  '(choice :tag "Font weight (must be supported by the typeface)"
-           (const :tag "Unspecified (use whatever the default is)" nil)
-           (const :tag "Thin" thin)
-           (const :tag "Ultra-light" ultralight)
-           (const :tag "Extra-light" extralight)
-           (const :tag "Light" light)
-           (const :tag "Semi-light" semilight)
-           (const :tag "Regular" regular)
-           (const :tag "Medium" medium)
-           (const :tag "Semi-bold" semibold)
-           (const :tag "Bold" bold)
-           (const :tag "Extra-bold" extrabold)
-           (const :tag "Ultra-bold" ultrabold))
-  "List of supported font weights used by `defcustom' forms.")
 
 (defcustom standard-themes-prompts nil
   "Use subtle or intense styles for minibuffer and REPL prompts.
@@ -390,13 +389,14 @@ color that is combined with FG-FOR-BG."
               weight
             'unspecified))))
 
-(defun standard-themes--alist-or-seq (properties alist-key seq-pred seq-default)
-  "Return value from alist or sequence.
+(defun standard-themes--property-lookup (properties alist-key list-pred default)
+  "Return value from property alist or list.
 Check PROPERTIES for an alist value that corresponds to
 ALIST-KEY.  If no alist is present, search the PROPERTIES
-sequence given SEQ-PRED, using SEQ-DEFAULT as a fallback."
+list given LIST-PRED, using DEFAULT as a fallback."
   (if-let* ((val (or (alist-get alist-key properties)
-                     (seq-find seq-pred properties seq-default)))
+                     (seq-filter (lambda (x) (funcall list-pred x)) properties)
+                     default))
             ((listp val)))
       (car val)
     val))
@@ -408,26 +408,30 @@ sequence given SEQ-PRED, using SEQ-DEFAULT as a fallback."
       (when (memq elt standard-themes-weights)
         (throw 'found elt)))))
 
-(defun standard-themes--heading (level)
-  "Conditional styles for `standard-themes-headings' per LEVEL heading."
+(defun standard-themes--heading (level fg &optional bg ol)
+  "Conditional styles for `standard-themes-headings'.
+
+LEVEL is the heading's position in their order.  FG is the
+default text color.  Optional BG is an appropriate background.
+Optional OL is the color of an overline."
   (let* ((key (alist-get level standard-themes-headings))
          (style (or key (alist-get t standard-themes-headings)))
          (style-listp (listp style))
          (properties style)
+         (var (when (and style-listp (memq 'variable-pitch properties)) 'variable-pitch))
          (weight (when style-listp (standard-themes--weight style))))
-    (list :inherit
-          (if (memq 'variable-pitch properties)
-              'variable-pitch
-            'unspecified)
-          :height
-          (standard-themes--alist-or-seq properties 'height #'floatp 'unspecified)
-          :weight
-          (cond
-           ((and (not (symbolp level))
-                 (zerop level)
-                 (null weight))
-            'bold)
-           ((or weight 'unspecified))))))
+    (list :inherit (cond
+                    ((not style-listp) 'bold)
+                    (weight var)
+                    (var (append (list 'bold) (list var)))
+                    (t 'bold))
+          :background (or bg 'unspecified)
+          :foreground fg
+          :overline (or ol 'unspecified)
+          :height (if style-listp
+                      (standard-themes--property-lookup properties 'height #'floatp 'unspecified)
+                    'unspecified)
+          :weight (or weight 'unspecified))))
 
 ;;; Commands and their helper functions
 
@@ -737,15 +741,16 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(standard-themes-bold ((,c ,@(standard-themes--bold))))
     `(standard-themes-italic ((,c ,@(standard-themes--slant))))
     `(standard-themes-fixed-pitch ((,c ,@(standard-themes--fixed-pitch))))
-    `(standard-themes-heading-0 ((,c ,@(standard-themes--heading 0) :foreground ,rainbow-0)))
-    `(standard-themes-heading-1 ((,c ,@(standard-themes--heading 1) :foreground ,rainbow-1)))
-    `(standard-themes-heading-2 ((,c ,@(standard-themes--heading 2) :foreground ,rainbow-2)))
-    `(standard-themes-heading-3 ((,c ,@(standard-themes--heading 3) :foreground ,rainbow-3)))
-    `(standard-themes-heading-4 ((,c ,@(standard-themes--heading 4) :foreground ,rainbow-4)))
-    `(standard-themes-heading-5 ((,c ,@(standard-themes--heading 5) :foreground ,rainbow-5)))
-    `(standard-themes-heading-6 ((,c ,@(standard-themes--heading 6) :foreground ,rainbow-6)))
-    `(standard-themes-heading-7 ((,c ,@(standard-themes--heading 7) :foreground ,rainbow-7)))
-    `(standard-themes-heading-8 ((,c ,@(standard-themes--heading 8) :foreground ,rainbow-8)))
+    ;; styles for regular headings used in Org, Markdown, Info, etc.
+    `(standard-themes-heading-0 ((,c ,@(standard-themes--heading 0 fg-heading-0 bg-heading-0 overline-heading-0))))
+    `(standard-themes-heading-1 ((,c ,@(standard-themes--heading 1 fg-heading-1 bg-heading-1 overline-heading-1))))
+    `(standard-themes-heading-2 ((,c ,@(standard-themes--heading 2 fg-heading-2 bg-heading-2 overline-heading-2))))
+    `(standard-themes-heading-3 ((,c ,@(standard-themes--heading 3 fg-heading-3 bg-heading-3 overline-heading-3))))
+    `(standard-themes-heading-4 ((,c ,@(standard-themes--heading 4 fg-heading-4 bg-heading-4 overline-heading-4))))
+    `(standard-themes-heading-5 ((,c ,@(standard-themes--heading 5 fg-heading-5 bg-heading-5 overline-heading-5))))
+    `(standard-themes-heading-6 ((,c ,@(standard-themes--heading 6 fg-heading-6 bg-heading-6 overline-heading-6))))
+    `(standard-themes-heading-7 ((,c ,@(standard-themes--heading 7 fg-heading-7 bg-heading-7 overline-heading-7))))
+    `(standard-themes-heading-8 ((,c ,@(standard-themes--heading 8 fg-heading-8 bg-heading-8 overline-heading-8))))
     `(standard-themes-key-binding ((,c :inherit (bold standard-themes-fixed-pitch) :foreground ,keybind)))
     `(standard-themes-prompt ((,c ,@(standard-themes--prompt fg-prompt bg-prompt))))
     `(standard-themes-ui-variable-pitch ((,c ,@(standard-themes--variable-pitch-ui))))
@@ -902,11 +907,11 @@ Optional prefix argument MAPPINGS has the same meaning as for
 ;;;; calendar and diary
     `(calendar-month-header ((,c :inherit bold)))
     `(calendar-today ((,c :inherit bold :underline t)))
-    `(calendar-weekday-header ((,c :foreground ,date)))
-    `(calendar-weekend-header ((,c :foreground ,err)))
+    `(calendar-weekday-header ((,c :foreground ,date-weekday)))
+    `(calendar-weekend-header ((,c :foreground ,date-weekend)))
     `(diary ((,c :background ,bg-dim :foreground ,accent-0)))
     `(diary-anniversary ((,c :foreground ,accent-1)))
-    `(diary-time ((,c :foreground ,date)))
+    `(diary-time ((,c :foreground ,date-common)))
     `(holiday ((,c :background ,bg-dim :foreground ,accent-2)))
 ;;;; cider
     `(cider-deprecated-face ((,c :background ,bg-warning :foreground ,warning)))
@@ -923,7 +928,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
 ;;;; change-log and log-view (`vc-print-log' and `vc-print-root-log')
     `(change-log-acknowledgment ((,c :inherit shadow)))
     `(change-log-conditionals ((,c :inherit error)))
-    `(change-log-date ((,c :foreground ,date)))
+    `(change-log-date ((,c :foreground ,date-common)))
     `(change-log-email ((,c :foreground ,fg-alt)))
     `(change-log-file ((,c :inherit bold)))
     `(change-log-function ((,c :inherit warning)))
@@ -1002,7 +1007,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(custom-group-tag-1 ((,c :inherit bold :foreground ,constant)))
     `(custom-variable-tag ((,c :inherit bold :foreground ,variable)))
 ;;;; denote
-    `(denote-faces-date ((,c :foreground ,date)))
+    `(denote-faces-date ((,c :foreground ,date-common)))
     `(denote-faces-keywords ((,c :foreground ,name)))
 ;;;; dictionary
     `(dictionary-button-face ((,c :inherit bold)))
@@ -1058,7 +1063,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(diredfl-autofile-name ((,c :background ,bg-alt)))
     `(diredfl-compressed-file-name ((,c :foreground ,yellow-cooler)))
     `(diredfl-compressed-file-suffix ((,c :foreground ,red)))
-    `(diredfl-date-time ((,c :foreground ,date)))
+    `(diredfl-date-time ((,c :foreground ,date-common)))
     `(diredfl-deletion ((,c :inherit dired-flagged)))
     `(diredfl-deletion-file-name ((,c :inherit diredfl-deletion)))
     `(diredfl-dir-heading ((,c :inherit bold)))
@@ -1150,10 +1155,10 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(elfeed-log-error-level-face ((,c :inherit error)))
     `(elfeed-log-info-level-face ((,c :inherit success)))
     `(elfeed-log-warn-level-face ((,c :inherit warning)))
-    `(elfeed-search-date-face ((,c :foreground ,date)))
+    `(elfeed-search-date-face ((,c :foreground ,date-common)))
     `(elfeed-search-feed-face ((,c :foreground ,accent-1)))
     `(elfeed-search-filter-face ((,c :inherit bold)))
-    `(elfeed-search-last-update-face ((,c :inherit bold :foreground ,date)))
+    `(elfeed-search-last-update-face ((,c :inherit bold :foreground ,date-common)))
     `(elfeed-search-tag-face ((,c :foreground ,accent-0)))
     `(elfeed-search-title-face ((,c :foreground ,fg-dim)))
     `(elfeed-search-unread-count-face (( )))
@@ -1403,7 +1408,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(magit-keyword ((,c :foreground ,keyword)))
     `(magit-keyword-squash ((,c :inherit bold :foreground ,warning)))
     `(magit-log-author ((,c :foreground ,name)))
-    `(magit-log-date ((,c :foreground ,date)))
+    `(magit-log-date ((,c :foreground ,date-common)))
     `(magit-log-graph ((,c :inherit shadow)))
     `(magit-mode-line-process ((,c :inherit bold :foreground ,modeline-info)))
     `(magit-mode-line-process-error ((,c :inherit bold :foreground ,modeline-err)))
@@ -1448,7 +1453,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
 ;;;; marginalia
     `(marginalia-archive ((,c :foreground ,accent-0)))
     `(marginalia-char ((,c :foreground ,accent-2)))
-    `(marginalia-date ((,c :foreground ,date)))
+    `(marginalia-date ((,c :foreground ,date-common)))
     `(marginalia-documentation ((,c :inherit italic :foreground ,docstring)))
     `(marginalia-file-name (( )))
     `(marginalia-file-owner ((,c :inherit shadow)))
@@ -1637,7 +1642,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(notmuch-jump-key ((,c :inherit standard-themes-key-binding)))
     `(notmuch-message-summary-face ((,c :inherit bold :background ,bg-dim)))
     `(notmuch-search-count ((,c :foreground ,fg-dim)))
-    `(notmuch-search-date ((,c :foreground ,date)))
+    `(notmuch-search-date ((,c :foreground ,date-common)))
     `(notmuch-search-flagged-face ((,c :foreground ,keyword)))
     `(notmuch-search-matching-authors ((,c :foreground ,name)))
     `(notmuch-search-non-matching-authors ((,c :inherit shadow)))
@@ -1669,7 +1674,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(org-agenda-clocking ((,c :background ,bg-warning :foreground ,warning)))
     `(org-agenda-column-dateline ((,c :background ,bg-alt)))
     `(org-agenda-current-time ((,c :foreground ,fg-main)))
-    `(org-agenda-date ((,c ,@(standard-themes--heading 'agenda-date) :foreground ,rainbow-1)))
+    ;; `(org-agenda-date ((,c ,@(standard-themes--heading 'agenda-date date-weekday))))
     `(org-agenda-date-today ((,c :inherit org-agenda-date :underline t)))
     `(org-agenda-date-weekend ((,c :inherit org-agenda-date)))
     `(org-agenda-date-weekend-today ((,c :inherit org-agenda-date-today)))
@@ -1681,7 +1686,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(org-agenda-filter-regexp ((,c :inherit bold :foreground ,modeline-err)))
     `(org-agenda-filter-tags ((,c :inherit bold :foreground ,modeline-err)))
     `(org-agenda-restriction-lock ((,c :background ,bg-dim :foreground ,fg-dim)))
-    `(org-agenda-structure ((,c ,@(standard-themes--heading 'agenda-structure) :foreground ,rainbow-0)))
+    ;; `(org-agenda-structure ((,c ,@(standard-themes--heading 'agenda-structure fg-alt))))
     `(org-agenda-structure-filter ((,c :inherit org-agenda-structure :foreground ,rainbow-1)))
     `(org-agenda-structure-secondary ((,c :foreground ,rainbow-1)))
     `(org-archived ((,c :background ,bg-alt :foreground ,fg-main)))
@@ -1693,8 +1698,8 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(org-code ((,c :inherit standard-themes-fixed-pitch :foreground ,prose-code)))
     `(org-column ((,c :inherit default :background ,bg-alt)))
     `(org-column-title ((,c :inherit (bold default) :underline t :background ,bg-alt)))
-    `(org-date ((,c :inherit standard-themes-fixed-pitch :foreground ,date :underline t)))
-    `(org-date-selected ((,c :foreground ,date :inverse-video t)))
+    `(org-date ((,c :inherit standard-themes-fixed-pitch :foreground ,date-common :underline t)))
+    `(org-date-selected ((,c :foreground ,date-common :inverse-video t)))
     `(org-document-info ((,c :foreground ,rainbow-1)))
     `(org-document-info-keyword ((,c :inherit shadow)))
     `(org-document-title ((,c :inherit standard-themes-heading-0)))
@@ -1723,7 +1728,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(org-priority ((,c :foreground ,keyword)))
     `(org-property-value ((,c :inherit standard-themes-fixed-pitch :foreground ,fg-alt)))
     `(org-quote ((,c :inherit org-block)))
-    `(org-sexp-date ((,c :foreground ,date)))
+    `(org-sexp-date ((,c :foreground ,date-common)))
     `(org-special-keyword ((,c :inherit standard-themes-fixed-pitch :foreground ,keyword)))
     `(org-table ((,c :inherit standard-themes-fixed-pitch :foreground ,fg-alt)))
     `(org-table-header ((,c :inherit (bold org-table))))
@@ -1769,7 +1774,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(package-description ((,c :foreground ,docstring)))
     `(package-help-section-name ((,c :inherit bold)))
     `(package-name ((,c :inherit link)))
-    `(package-status-available ((,c :foreground ,date)))
+    `(package-status-available ((,c :foreground ,date-common)))
     `(package-status-avail-obso ((,c :inherit error)))
     `(package-status-built-in ((,c :foreground ,builtin)))
     `(package-status-dependency ((,c :foreground ,warning)))
@@ -1813,7 +1818,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(rcirc-other-nick ((,c :inherit bold :foreground ,accent-0)))
     `(rcirc-prompt ((,c :inherit standard-themes-prompt)))
     `(rcirc-server ((,c :inherit font-lock-comment-face)))
-    `(rcirc-timestamp ((,c :foreground ,date)))
+    `(rcirc-timestamp ((,c :foreground ,date-common)))
     `(rcirc-track-keyword ((,c :inherit bold :foreground ,modeline-warning)))
     `(rcirc-track-nick ((,c :inherit rcirc-my-nick)))
     `(rcirc-url ((,c :inherit link)))

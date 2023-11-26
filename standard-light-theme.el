@@ -184,7 +184,10 @@
       (warning yellow-warmer)
       (info green)
 
-      (date cyan-warmer)
+      (date-common cyan-warmer)
+      (date-weekday cyan-warmer)
+      (date-weekend red)
+
       (name green-cooler)
       (keybind blue)
       (bg-prompt unspecified)
@@ -238,7 +241,39 @@
 
       (prose-code cyan-cooler)
       (prose-macro green-warmer)
-      (prose-verbatim magenta))
+      (prose-verbatim magenta)
+
+;;;; Heading mappings
+
+      (fg-heading-0 rainbow-0)
+      (fg-heading-1 rainbow-1)
+      (fg-heading-2 rainbow-2)
+      (fg-heading-3 rainbow-3)
+      (fg-heading-4 rainbow-4)
+      (fg-heading-5 rainbow-5)
+      (fg-heading-6 rainbow-6)
+      (fg-heading-7 rainbow-7)
+      (fg-heading-8 rainbow-8)
+
+      (bg-heading-0 unspecified)
+      (bg-heading-1 unspecified)
+      (bg-heading-2 unspecified)
+      (bg-heading-3 unspecified)
+      (bg-heading-4 unspecified)
+      (bg-heading-5 unspecified)
+      (bg-heading-6 unspecified)
+      (bg-heading-7 unspecified)
+      (bg-heading-8 unspecified)
+
+      (overline-heading-0 unspecified)
+      (overline-heading-1 unspecified)
+      (overline-heading-2 unspecified)
+      (overline-heading-3 unspecified)
+      (overline-heading-4 unspecified)
+      (overline-heading-5 unspecified)
+      (overline-heading-6 unspecified)
+      (overline-heading-7 unspecified)
+      (overline-heading-8 unspecified))
     "The `standard-light' palette.
 Color values have the form (COLOR-NAME HEX-VALUE) with the former
 as a symbol and the latter as a string.

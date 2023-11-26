@@ -235,16 +235,6 @@ family of the ~fixed-pitch~ and ~variable-pitch~ faces.  The
 ~fontaine~ package on GNU ELPA (by Protesilaos) can be helpful in this
 regard.
 
-** Accented mode line
-:PROPERTIES:
-:CUSTOM_ID: h:7ccb3fce-4980-4bd6-9281-bdf5fc750902
-:END:
-
-#+vindex: standard-themes-mode-line-accented
-The user option ~standard-themes-mode-line-accented~ handles the
-background color of the active mode line.  When the value is ~nil~,
-the color is gray, while non-~nil~ uses an accent value.
-
 ** Option to control the UI typeface
 :PROPERTIES:
 :CUSTOM_ID: h:fbe4de97-f582-4a53-93cb-6ed4747cdc42

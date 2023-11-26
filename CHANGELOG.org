@@ -10,8 +10,14 @@ The newest release is at the top.  For further details, please consult
 the manual: <https://protesilaos.com/emacs/standard-themes>.
 
 * Version 1.2.0 on 2023-02-16
+:PROPERTIES:
+:CUSTOM_ID: h:ff36edbc-57c5-4660-9524-5ca5d5973a38
+:END:
 
 ** Support for palette overrides
+:PROPERTIES:
+:CUSTOM_ID: h:97413700-4164-440c-a491-ed7bcb2eb054
+:END:
 
 It is now possible to override the palette of each Standard theme.
 This is the same feature that I implemented for the ~modus-themes~,
@@ -48,6 +54,9 @@ Thanks to Clemens Radermacher for fixing a mistake I made in the code
 that produces the palette previews.
 
 ** Added the function ~standard-themes-get-color-value~
+:PROPERTIES:
+:CUSTOM_ID: h:5fa61127-274f-4f9b-b303-d6a3e7328f66
+:END:
 
 It returns the colour value of named =COLOR= for the current Standard
 theme.
@@ -91,6 +100,9 @@ entries.  The example it uses, with the ~standard-light~ as current:
 #+end_src
 
 ** New user option ~standard-themes-disable-other-themes~
+:PROPERTIES:
+:CUSTOM_ID: h:801d194a-c849-4db8-ac1b-0281c234eb55
+:END:
 
 This user option is set to ~t~ by default.  This means that loading a
 Standard theme with the command ~standard-themes-toggle~ or the
@@ -108,6 +120,9 @@ combinations.  Sure, experts can blend themes which is an argument in
 favour of making that behaviour opt-in.
 
 ** Other changes
+:PROPERTIES:
+:CUSTOM_ID: h:fe84c508-126c-4fe7-8e5f-c2bbe6e29b3d
+:END:
 
 + Refined the ~standard-dark~ theme's ~bg-hl-line~ background.  This
   makes it easier to read the underlying text of the currently
@@ -121,6 +136,9 @@ favour of making that behaviour opt-in.
   list: <https://lists.sr.ht/~protesilaos/standard-themes/%3C87cz8bjrwz.fsf%40gnu.org%3E>.
 
 ** Acknowledgement
+:PROPERTIES:
+:CUSTOM_ID: h:ced52765-3287-44d0-a9d5-a47eed9fccd1
+:END:
 
 Thanks to Fritz Grabo who provided feedback via a private channel.
 With it, I was able to better understand the underlying patterns of

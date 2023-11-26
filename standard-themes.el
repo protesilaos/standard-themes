@@ -1530,7 +1530,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(mode-line-highlight ((,c :inherit highlight)))
     `(mode-line-inactive ((,c :inherit standard-themes-ui-variable-pitch
                               :box (:line-width -1 :color ,border-mode-line-inactive)
-                              :background ,bg-mode-line-inactive :foreground ,fg-dim)))
+                              :background ,bg-mode-line-inactive :foreground ,fg-mode-line-inactive)))
 ;;;; mu4e
     `(mu4e-attach-number-face ((,c :inherit bold :foreground ,fg-dim)))
     `(mu4e-cited-1-face ((,c :inherit message-cited-text-1)))

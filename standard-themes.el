@@ -625,11 +625,9 @@ symbol, which is safe when used as a face attribute's value."
       value
     'unspecified))
 
-(declare-function cl-remove-if-not "cl-seq" (cl-pred cl-list &rest cl-keys))
-
 (defun standard-themes--list-enabled-themes ()
   "Return list of `custom-enabled-themes' with standard- prefix."
-  (cl-remove-if-not
+  (seq-filter
    (lambda (theme)
      (string-prefix-p "standard-" (symbol-name theme)))
    custom-enabled-themes))
@@ -644,7 +642,7 @@ symbol, which is safe when used as a face attribute's value."
 (defun standard-themes--list-known-themes ()
   "Return list of `custom-known-themes' with standard- prefix."
   (standard-themes--enable-themes)
-  (cl-remove-if-not
+  (seq-filter
    (lambda (theme)
      (string-prefix-p "standard-" (symbol-name theme)))
    custom-known-themes))

@@ -1131,7 +1131,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(ediff-even-diff-B ((,c :background ,bg-dim)))
     `(ediff-even-diff-C ((,c :background ,bg-dim)))
     `(ediff-fine-diff-A ((,c :background ,bg-removed-refine :foreground ,fg-removed)))
-    `(ediff-fine-diff-Ancestor ((,c :inherit modus-themes-subtle-cyan)))
+    `(ediff-fine-diff-Ancestor ((,c :inherit region)))
     `(ediff-fine-diff-B ((,c :background ,bg-added-refine :foreground ,fg-added)))
     `(ediff-fine-diff-C ((,c :background ,bg-changed-refine :foreground ,fg-changed)))
     `(ediff-odd-diff-A ((,c :inherit ediff-even-diff-A)))

@@ -137,6 +137,7 @@
       (bg-hover-alt  "#ffff00")
       (bg-hl-line    "#b4eeb4")
       (bg-region     "#eedc82")
+      (fg-region     unspecified)
       (bg-paren      "#40e0d0")
       (bg-err        "#ffd5ea") ; check with err
       (bg-warning    "#ffeabb") ; check with warning
@@ -159,7 +160,6 @@
 
       ;; Conditional hues
       (bg-prompt           "#daccff")
-      (bg-region-intense   "#eeb422")
       (bg-mode-line-accent "#9fbaff")
 
       ;; Mappings

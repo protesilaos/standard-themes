@@ -246,42 +246,6 @@ ELPA (by Protesilaos))."
   :type 'boolean
   :link '(info-link "(standard-themes) UI typeface"))
 
-(defcustom standard-themes-region nil
-  "Control the appearance of the `region' face.
-
-The value is a list of symbols.
-
-If nil or an empty list (the default), use a subtle background
-for the region and preserve the color of selected text.
-
-The `no-extend' symbol limits the highlighted area to the end of
-the line, so that it does not reach the edge of the window.
-
-The `neutral' symbol makes the highlighted area's background
-gray (or more gray, depending on the theme).
-
-The `intense' symbol amplifies the intensity of the highlighted
-area's background color.  It also overrides any text color to
-keep it legible.
-
-Combinations of those symbols are expressed in any order.
-
-In user configuration files the form may look like this:
-
-    (setq standard-themes-region \\='(intense no-extend))
-
-Other examples:
-
-    (setq standard-themes-region \\='(intense))
-    (setq standard-themes-region \\='(intense no-extend neutral))"
-  :group 'standard-themes
-  :package-version '(standard-themes . "1.0.0")
-  :type '(set :tag "Properties" :greedy t
-              (const :tag "Do not extend to the edge of the window" no-extend)
-              (const :tag "More neutral/gray background" neutral)
-              (const :tag "More intense background (also override text color)" intense))
-  :link '(info-link "(standard-themes) Style of region highlight"))
-
 
 (defcustom standard-themes-links nil
   "Set the style of links.
@@ -334,6 +298,7 @@ Please refer to their documentation strings."
               (const :tag "Bold font weight" bold)
               (const :tag "Italic font slant" italic))
   :link '(info-link "(standard-themes) Link style"))
+(make-obsolete-variable 'standard-themes-region nil "2.0.0")
 (make-obsolete-variable 'standard-themes-fringes nil "2.0.0")
 
 (defcustom standard-themes-prompts nil
@@ -479,32 +444,6 @@ sequence given SEQ-PRED, using SEQ-DEFAULT as a fallback."
             'bold)
            ((or weight 'unspecified))))))
 
-(defun standard-themes--region (bg bgneutral bgintense bgintenseneutral fgintense)
-  "Apply `standard-themes-region' styles.
-
-BG is the default background.  BGNEUTRAL is its gray counterpart.
-BGINTENSE is an amplified variant of BG, while BGINTENSENEUTRAL
-is a more intense neutral background.  FGINTENSE is the
-foreground that is used with any of the intense backgrounds."
-  (let ((properties (standard-themes--list-or-warn 'standard-themes-region)))
-    (list
-     :background
-     (cond
-      ((and (memq 'intense properties) (memq 'neutral properties))
-       bgintenseneutral)
-      ((memq 'intense properties)
-       bgintense)
-      ((memq 'neutral properties)
-       bgneutral)
-      (bg))
-     :foreground
-     (if (memq 'intense properties)
-         fgintense
-       'unspecified)
-     :extend
-     (if (memq 'no-extend properties)
-         nil
-       t))))
 
 (defun standard-themes--link (fg fgfaint underline)
   "Conditional application of link styles.
@@ -883,7 +822,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(cursor ((,c :background ,cursor)))
     `(default ((,c :background ,bg-main :foreground ,fg-main)))
     `(italic ((,c :slant italic)))
-    `(region ((,c ,@(standard-themes--region bg-region bg-alt bg-region-intense bg-active fg-main))))
+    `(region ((,c :background ,bg-region :foreground ,fg-region)))
     `(vertical-border ((,c :foreground "gray50")))
 ;;;;; all other basic faces
     `(button ((,c ,@(standard-themes--link link link-faint border))))

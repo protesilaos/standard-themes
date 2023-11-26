@@ -735,13 +735,38 @@ Optional prefix argument MAPPINGS has the same meaning as for
    :package-version '(standard-themes . "1.0.0")
    :group 'standard-themes-faces))
 
+(dolist (color '(red green yellow blue magenta cyan))
+  (custom-declare-face
+   (intern (format "standard-themes-nuanced-%s" color))
+   nil (format "Nuanced %s background." color)
+   :package-version '(standard-themes . "2.0.0")
+   :group 'standard-themes-faces))
+
+(dolist (color '(red green yellow blue magenta cyan))
+  (custom-declare-face
+   (intern (format "standard-themes-subtle-%s" color))
+   nil (format "Subtle %s background." color)
+   :package-version '(standard-themes . "2.0.0")
+   :group 'standard-themes-faces))
+
+(dolist (color '(red green yellow blue magenta cyan))
+  (custom-declare-face
+   (intern (format "standard-themes-intense-%s" color))
+   nil (format "Intense %s background." color)
+   :package-version '(standard-themes . "2.0.0")
+   :group 'standard-themes-faces))
+
 (defconst standard-themes-faces
   '(
 ;;;; internal faces
+;;;;; general internal faces
     `(standard-themes-bold ((,c ,@(standard-themes--bold))))
     `(standard-themes-italic ((,c ,@(standard-themes--slant))))
     `(standard-themes-fixed-pitch ((,c ,@(standard-themes--fixed-pitch))))
-    ;; styles for regular headings used in Org, Markdown, Info, etc.
+    `(standard-themes-ui-variable-pitch ((,c ,@(standard-themes--variable-pitch-ui))))
+    `(standard-themes-key-binding ((,c :inherit (bold standard-themes-fixed-pitch) :foreground ,keybind)))
+    `(standard-themes-prompt ((,c ,@(standard-themes--prompt fg-prompt bg-prompt))))
+;;;;; styles for regular headings used in Org, Markdown, Info, etc.
     `(standard-themes-heading-0 ((,c ,@(standard-themes--heading 0 fg-heading-0 bg-heading-0 overline-heading-0))))
     `(standard-themes-heading-1 ((,c ,@(standard-themes--heading 1 fg-heading-1 bg-heading-1 overline-heading-1))))
     `(standard-themes-heading-2 ((,c ,@(standard-themes--heading 2 fg-heading-2 bg-heading-2 overline-heading-2))))
@@ -751,18 +776,38 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(standard-themes-heading-6 ((,c ,@(standard-themes--heading 6 fg-heading-6 bg-heading-6 overline-heading-6))))
     `(standard-themes-heading-7 ((,c ,@(standard-themes--heading 7 fg-heading-7 bg-heading-7 overline-heading-7))))
     `(standard-themes-heading-8 ((,c ,@(standard-themes--heading 8 fg-heading-8 bg-heading-8 overline-heading-8))))
-    `(standard-themes-key-binding ((,c :inherit (bold standard-themes-fixed-pitch) :foreground ,keybind)))
-    `(standard-themes-prompt ((,c ,@(standard-themes--prompt fg-prompt bg-prompt))))
-    `(standard-themes-ui-variable-pitch ((,c ,@(standard-themes--variable-pitch-ui))))
+;;;;; mark indicators
     `(standard-themes-mark-delete ((,c :inherit bold :background ,bg-mark-del :foreground ,fg-mark-del)))
     `(standard-themes-mark-select ((,c :inherit bold :background ,bg-mark-sel :foreground ,fg-mark-sel)))
     `(standard-themes-mark-other ((,c :inherit bold :background ,bg-mark-alt :foreground ,fg-mark-alt)))
+;;;;; underlines for linting and fringe indicators
     `(standard-themes-underline-error ((,c :underline (:style wave :color ,underline-err))))
     `(standard-themes-underline-info ((,c :underline (:style wave :color ,underline-info))))
     `(standard-themes-underline-warning ((,c :underline (:style wave :color ,underline-warning))))
     `(standard-themes-fringe-error ((,c :inherit bold :background ,bg-red-intense :foreground ,fg-main)))
     `(standard-themes-fringe-info ((,c :inherit bold :background ,bg-green-intense :foreground ,fg-main)))
     `(standard-themes-fringe-warning ((,c :inherit bold :background ,bg-yellow-intense :foreground ,fg-main)))
+;;;;; nuanced colored backgrounds
+    `(standard-themes-nuanced-red ((,c :background ,bg-red-nuanced :extend t)))
+    `(standard-themes-nuanced-green ((,c :background ,bg-green-nuanced :extend t)))
+    `(standard-themes-nuanced-yellow ((,c :background ,bg-yellow-nuanced :extend t)))
+    `(standard-themes-nuanced-blue ((,c :background ,bg-blue-nuanced :extend t)))
+    `(standard-themes-nuanced-magenta ((,c :background ,bg-magenta-nuanced :extend t)))
+    `(standard-themes-nuanced-cyan ((,c :background ,bg-cyan-nuanced :extend t)))
+;;;;; subtle colored backgrounds
+    `(standard-themes-subtle-red ((,c :background ,bg-red-subtle :foreground ,fg-main)))
+    `(standard-themes-subtle-green ((,c :background ,bg-green-subtle :foreground ,fg-main)))
+    `(standard-themes-subtle-yellow ((,c :background ,bg-yellow-subtle :foreground ,fg-main)))
+    `(standard-themes-subtle-blue ((,c :background ,bg-blue-subtle :foreground ,fg-main)))
+    `(standard-themes-subtle-magenta ((,c :background ,bg-magenta-subtle :foreground ,fg-main)))
+    `(standard-themes-subtle-cyan ((,c :background ,bg-cyan-subtle :foreground ,fg-main)))
+;;;;; intense colored backgrounds
+    `(standard-themes-intense-red ((,c :background ,bg-red-intense :foreground ,fg-main)))
+    `(standard-themes-intense-green ((,c :background ,bg-green-intense :foreground ,fg-main)))
+    `(standard-themes-intense-yellow ((,c :background ,bg-yellow-intense :foreground ,fg-main)))
+    `(standard-themes-intense-blue ((,c :background ,bg-blue-intense :foreground ,fg-main)))
+    `(standard-themes-intense-magenta ((,c :background ,bg-magenta-intense :foreground ,fg-main)))
+    `(standard-themes-intense-cyan ((,c :background ,bg-cyan-intense :foreground ,fg-main)))
 ;;;; all basic faces
 ;;;;; absolute essentials
     `(appt-notification ((,c :inherit error)))

@@ -1529,7 +1529,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(mode-line-emphasis ((,c :inherit bold :foreground ,modeline-info)))
     `(mode-line-highlight ((,c :inherit highlight)))
     `(mode-line-inactive ((,c :inherit standard-themes-ui-variable-pitch
-                              :box (:line-width -1 :color ,border)
+                              :box (:line-width -1 :color ,border-mode-line-inactive)
                               :background ,bg-mode-line-inactive :foreground ,fg-dim)))
 ;;;; mu4e
     `(mu4e-attach-number-face ((,c :inherit bold :foreground ,fg-dim)))

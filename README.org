@@ -286,24 +286,6 @@ affects comments, doc strings, and a few other minor elements.
 
 [[#h:2c92df8a-02c5-4124-82f8-e3ccdef1a4f8][Configure bold and italic faces]].
 
-** Fringe visibility
-:PROPERTIES:
-:CUSTOM_ID: h:a04db578-dacc-422e-a3a9-e4b41afd9b0b
-:END:
-
-#+vindex: standard-themes-fringes
-The user option ~standard-themes-fringes~ controls the visibility and
-intensity of the fringes.  With regular Emacs settings "Fringe" is a
-small surface area to either side of the Emacs window: it is where
-certain indicators are displayed, such as continuation lines.
-
-When the value is ~nil~, do not apply a distinct background color.
-
-With a value of ~subtle~, use a gray background color that is visible
-yet close to the main background color.  This is the default style.
-
-With ~intense~, use a more pronounced gray background color.
-
 ** Link style
 :PROPERTIES:
 :CUSTOM_ID: h:b92555bf-1542-40f6-945b-f59849e6446c

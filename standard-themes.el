@@ -1706,6 +1706,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(org-document-title ((,c :inherit standard-themes-heading-0)))
     `(org-done ((,c :inherit bold :foreground ,info)))
     `(org-drawer ((,c :inherit standard-themes-fixed-pitch :foreground ,fnname)))
+    `(org-ellipsis ((,c :foreground ,yellow)))
     `(org-footnote ((,c :inherit link)))
     `(org-formula ((,c :inherit standard-themes-fixed-pitch :foreground ,comment)))
     `(org-hide ((,c :foreground ,bg-main)))

@@ -176,8 +176,8 @@ Everything is in place to set up the package.
 :END:
 
 The ~standard-themes~ provide user options which tweak secondary
-aspects of the theme.  All customizations need to be evaluated before
-loading a theme.  Any change after the theme has been loaded require a
+aspects of the theme. All customizations need to be evaluated before
+loading a theme. Any change after the theme has been loaded requires a
 re-load ([[#h:59c399d6-5dca-4686-b793-255be8bffc31][Loading a theme]]).
 
 ** Option to disable other themes
@@ -186,15 +186,15 @@ re-load ([[#h:59c399d6-5dca-4686-b793-255be8bffc31][Loading a theme]]).
 :END:
 
 #+vindex: standard-themes-disable-other-themes
-The user option ~standard-themes-disable-other-themes~ controls which
-themes to disable when loading a Standard theme ([[#h:59c399d6-5dca-4686-b793-255be8bffc31][Loading a theme]]).
+The user option ~standard-themes-disable-other-themes~ controls
+whether to disable other themes when loading a Standard theme ([[#h:59c399d6-5dca-4686-b793-255be8bffc31][Loading a theme]]).
 
 When the value is non-nil, the command ~standard-themes-toggle~ as
 well as the functions ~standard-themes-load-dark~ and
 ~standard-themes-load-light~, will disable all other themes while
-loading the specified Standard theme.  This is done to ensure that
-Emacs does not blend two or more themes: such blends lead to awkward
-results that undermine the work of the designer.
+loading the given Standard theme. This is done to ensure that Emacs
+does not blend two or more themes: such blends lead to awkward results
+that undermine the work of the designer.
 
 When the value is nil, the aforementioned command and functions will
 only disable the other Standard theme.
@@ -212,7 +212,7 @@ this variable to a nil value.
 #+vindex: standard-themes-mixed-fonts
 The user option ~standard-themes-mixed-fonts~ controls whether strictly
 spacing-sensitive constructs inherit from ~fixed-pitch~ (a monospaced
-font family).
+font family) to ensure proper alignment at all times.
 
 By default (a ~nil~ value for this user option) no face inherits from
 ~fixed-pitch~: they all use the default font family, regardless of
@@ -220,15 +220,16 @@ whether it is monospaced or not.
 
 When ~standard-themes-mixed-fonts~ is set to a non-~nil~ value, faces
 such as for Org tables, inline code, code blocks, and the like, are
-rendered in a monospaced font at all times.  The user can thus set
-their default font family to a proportionately spaced font without
-worrying about breaking the alignment of relevant elements, or if they
-simply prefer the aesthetics of mixed mono and proportionately spaced
-font families.
+rendered in a monospaced font (the inherit the ~fixed-pitch~ face).
+The user can thus set their default font family to a proportionately
+spaced font without worrying about breaking the alignment of relevant
+elements (or if they simply prefer the aesthetics of mixed mono and
+proportionately spaced font families).
 
 A temporary switch to a proportionately spaced font (known in Emacs as
 ~variable-pitch~) can be enabled in the current buffer with the
-activation of the built-in ~variable-pitch-mode~.
+activation of the built-in ~variable-pitch-mode~. Mixed fonts work
+well in this case.
 
 To get consistent typography, the user may need to edit the font
 family of the ~fixed-pitch~ and ~variable-pitch~ faces.  The
@@ -243,10 +244,12 @@ regard.
 #+vindex: standard-themes-variable-pitch-ui
 The user option ~standard-themes-variable-pitch-ui~ controls whether
 the elements of the User Interface (UI) use a proportionately spaced
-font.  By default (a ~nil~ value), all UI elements use the default
-font family.  When this user option is set to a non-~nil~ value, all
-UI elements will inherit the face ~variable-pitch~, thus rendering
-them in a proportionately spaced font.
+font.
+
+By default (a ~nil~ value), all UI elements use the default font
+family. When this user option is set to a non-~nil~ value, all UI
+elements will inherit the face ~variable-pitch~, thus rendering them
+in a proportionately spaced font.
 
 In this context, the UI elements are:
 
@@ -267,8 +270,8 @@ regard.
 
 #+vindex: standard-themes-bold-constructs
 The user option ~standard-themes-bold-constructs~ determines whether
-select faces will inherit the ~bold~ face.  When the value is
-non-~nil~, a bold weight is applied to code constructs.  This affects
+select faces will inherit the ~bold~ face. When the value is
+non-~nil~, a bold weight is applied to code constructs. This affects
 keywords, builtins, and a few other elements.
 
 [[#h:2c92df8a-02c5-4124-82f8-e3ccdef1a4f8][Configure bold and italic faces]].
@@ -280,9 +283,9 @@ keywords, builtins, and a few other elements.
 
 #+vindex: standard-themes-italic-constructs
 The user option ~standard-themes-italic-constructs~ determines whether
-select faces will inherit the ~italic~ face.  When the value is
-non-~nil~, an italic style is applied to code constructs.  This
-affects comments, doc strings, and a few other minor elements.
+select faces will inherit the ~italic~ face. When the value is
+non-~nil~, an italic style is applied to code constructs. This affects
+comments, doc strings, and a few other minor elements.
 
 [[#h:2c92df8a-02c5-4124-82f8-e3ccdef1a4f8][Configure bold and italic faces]].
 
@@ -302,7 +305,6 @@ Possible values are expressed as a list of properties (default is
 symbols:
 
 + ~italic~
-+ ~italic~
 + A font weight, which must be supported by the underlying typeface:
   - ~thin~
   - ~ultralight~
@@ -318,7 +320,7 @@ symbols:
   - ~ultrabold~
 
 The default (a ~nil~ value or an empty list) means to only use a
-subtle colored foreground color.
+foreground color without any typographic additions.
 
 The ~italic~ property adds a slant to the font's forms (italic or
 oblique forms, depending on the typeface).
@@ -343,6 +345,9 @@ In user configuration files the form may look like this:
 #+begin_src emacs-lisp
 (setq standard-themes-prompts '(extrabold italic))
 #+end_src
+
+The foreground and background colors of prompts can be modified by
+applying palette overrides ([[#h:34fe0582-960b-45dc-af5d-23c8f3e9d724][Palette overrides]]).
 
 ** Option for headings
 :PROPERTIES:
@@ -458,6 +463,9 @@ overline can all be set via the overrides.  It is possible to have any
 color combination for any heading level (something that could not be
 done in older versions of the themes).
 
+The foreground, background, and overline colors of headings can be
+modified by applying palette overrides ([[#h:34fe0582-960b-45dc-af5d-23c8f3e9d724][Palette overrides]]).
+
 ** Palette overrides
 :PROPERTIES:
 :CUSTOM_ID: h:34fe0582-960b-45dc-af5d-23c8f3e9d724
@@ -561,9 +569,9 @@ as =init.el=.
 #+findex: standard-themes-toggle
 As the Standard themes are extensible, another way to load the theme
 of choice is to use either ~standard-themes-load-dark~ or
-~standard-themes-load-light~.  These functions take care of (i)
-disabling other themes, (ii) loading the specified Standard theme, and
-(iii) running the ~standard-themes-post-load-hook~ which is useful for
+~standard-themes-load-light~. These functions take care to (i) disable
+other themes, (ii) load the specified Standard theme, and (iii) run
+the ~standard-themes-post-load-hook~ which is useful for
 do-it-yourself customizations ([[#h:a6d48445-c215-4f2e-b0ff-c83b0c673fa7][The general approach to DIY changes]]).
 These two functions are also called by the command
 ~standard-themes-toggle~.

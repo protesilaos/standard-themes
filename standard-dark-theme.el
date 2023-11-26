@@ -165,7 +165,7 @@
       (border-mode-line-active    "#959595")
       (bg-mode-line-inactive      "#323232")
       (fg-mode-line-inactive      "#969696")
-      (border-mode-line-inactive  "#606060")
+      (border-mode-line-inactive  "#606070")
 
       (bg-tab              "#333333")
       (bg-tab-inactive     "#4d4d4d")

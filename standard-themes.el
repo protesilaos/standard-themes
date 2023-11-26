@@ -846,7 +846,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(shadow ((,c :foreground ,fg-dim)))
     `(success ((,c :inherit bold :foreground ,info)))
     `(tooltip ((,c :background ,bg-alt :foreground ,fg-main)))
-    `(trailing-whitespace ((,c :background ,bg-red-intense :foreground ,fg-main)))
+    `(trailing-whitespace ((,c :background ,bg-space-err)))
     `(warning ((,c :inherit bold :foreground ,warning)))
 ;;;; all-the-icons
     `(all-the-icons-blue ((,c :foreground ,blue-cooler)))
@@ -2027,17 +2027,17 @@ Optional prefix argument MAPPINGS has the same meaning as for
 ;;;; which-function-mode
     `(which-func ((,c :inherit bold :foreground ,modeline-warning))) ; same as `breadcrumb-imenu-leaf-face'
 ;;;; whitespace-mode
-    `(whitespace-big-indent ((,c :background ,bg-err :foreground ,err)))
-    `(whitespace-empty ((,c :inherit whitespace-big-indent)))
-    `(whitespace-hspace ((,c :inherit whitespace-indentation)))
-    `(whitespace-indentation ((,c :background ,bg-dim :foreground ,fg-dim)))
-    `(whitespace-line ((,c :background ,bg-dim :foreground ,warning)))
-    `(whitespace-newline ((,c :inherit whitespace-indentation)))
-    `(whitespace-space ((,c :inherit whitespace-indentation)))
-    `(whitespace-space-after-tab ((,c :inherit whitespace-space-before-tab)))
-    `(whitespace-space-before-tab ((,c :background ,bg-red-intense)))
-    `(whitespace-tab ((,c :inherit whitespace-indentation)))
-    `(whitespace-trailing ((,c :inherit whitespace-space-before-tab)))
+    `(whitespace-big-indent ((,c :background ,bg-space-err)))
+    `(whitespace-empty ((,c :inherit standard-themes-intense-magenta)))
+    `(whitespace-hspace ((,c :background ,bg-space :foreground ,fg-space)))
+    `(whitespace-indentation ((,c :background ,bg-space :foreground ,fg-space)))
+    `(whitespace-line ((,c :background ,bg-space :foreground ,warning)))
+    `(whitespace-newline ((,c :background ,bg-space :foreground ,fg-space)))
+    `(whitespace-space ((,c :background ,bg-space :foreground ,fg-space)))
+    `(whitespace-space-after-tab ((,c :inherit standard-themes-subtle-magenta)))
+    `(whitespace-space-before-tab ((,c :inherit standard-themes-subtle-cyan)))
+    `(whitespace-tab ((,c :background ,bg-space :foreground ,fg-space)))
+    `(whitespace-trailing ((,c :background ,bg-space-err)))
 ;;;; widget
     `(widget-button ((,c :inherit bold :foreground ,fg-link)))
     `(widget-button-pressed ((,c :inherit widget-button :foreground ,fg-link-visited)))

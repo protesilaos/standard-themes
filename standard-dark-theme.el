@@ -274,6 +274,12 @@
       (rainbow-7 blue-faint)
       (rainbow-8 yellow-cooler)
 
+;;;; Space mappings
+
+      (bg-space unspecified)
+      (fg-space border)
+      (bg-space-err bg-red-intense)
+
 ;;;; Prose mappings
 
       (prose-code cyan-cooler)

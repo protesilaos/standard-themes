@@ -179,9 +179,6 @@
       (underline-warning "#bf5f00")
       (underline-info    "#02af52")
 
-      ;; Conditional hues
-      (bg-mode-line-accent "#9fbaff")
-
       ;; Mappings
       (err red-warmer)
       (warning yellow-warmer)

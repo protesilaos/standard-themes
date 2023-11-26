@@ -250,38 +250,54 @@ ELPA (by Protesilaos))."
 (make-obsolete-variable 'standard-themes-fringes nil "2.0.0")
 (make-obsolete-variable 'standard-themes-links nil "2.0.0")
 
+(defconst standard-themes--weight-widget
+  '(choice :tag "Font weight (must be supported by the typeface)"
+           (const :tag "Unspecified (use whatever the default is)" nil)
+           (const :tag "Thin" thin)
+           (const :tag "Ultra-light" ultralight)
+           (const :tag "Extra-light" extralight)
+           (const :tag "Light" light)
+           (const :tag "Semi-light" semilight)
+           (const :tag "Regular" regular)
+           (const :tag "Medium" medium)
+           (const :tag "Semi-bold" semibold)
+           (const :tag "Bold" bold)
+           (const :tag "Extra-bold" extrabold)
+           (const :tag "Ultra-bold" ultrabold))
+  "List of supported font weights used by `defcustom' forms.")
+
 (defcustom standard-themes-prompts nil
-  "Control the style of prompts (e.g. minibuffer, REPL).
+  "Use subtle or intense styles for minibuffer and REPL prompts.
 
 The value is a list of properties, each designated by a symbol.
-The default (a nil value or an empty list) means to only use an
-accented foreground color.
+The default (a nil value or an empty list) means to only use a
+subtle colored foreground color.
 
-The property `background' applies a background color to the
-prompt's text and adjusts the foreground accordingly.
-
-The property `bold' makes the text use a bold typographic weight.
-Similarly, `italic' adds a slant to the font's forms (italic or
+The `italic' property adds a slant to the font's forms (italic or
 oblique forms, depending on the typeface).
+
+The symbol of a font weight attribute such as `light',
+`semibold', et cetera, adds the given weight to links.  Valid
+symbols are defined in the variable `standard-themes-weights'.
+The absence of a weight means that the one of the underlying text
+will be used.
 
 Combinations of any of those properties are expressed as a list,
 like in these examples:
 
-    (background)
     (bold italic)
-    (background bold italic)
+    (italic semibold)
 
 The order in which the properties are set is not significant.
 
 In user configuration files the form may look like this:
 
-    (setq standard-themes-prompts (quote (background bold)))"
+    (setq standard-themes-prompts (quote (extrabold italic)))"
   :group 'standard-themes
-  :package-version '(standard-themes . "1.0.0")
-  :type '(set :tag "Properties" :greedy t
-              (const :tag "With Background" background)
-              (const :tag "Bold font weight" bold)
-              (const :tag "Italic font slant" italic))
+  :package-version '(standard-themes . "2.0.0")
+  :type `(set :tag "Properties" :greedy t
+              (const :tag "Italic font slant" italic)
+              ,standard-themes--weight-widget)
   :link '(info-link "(standard-themes) Option for command prompts"))
 
 (make-obsolete-variable 'standard-themes-mode-line-accented nil "2.0.0")
@@ -348,6 +364,32 @@ represents."
   (when standard-themes-variable-pitch-ui
     (list :inherit 'variable-pitch)))
 
+(defun standard-themes--prompt (fg bg)
+  "Conditional use of colors for text prompt faces.
+FG is the prompt's standard foreground.  BG is a background
+color that is combined with FG-FOR-BG."
+  (let* ((properties (standard-themes--list-or-warn 'standard-themes-prompts))
+         (weight (standard-themes--weight properties)))
+    (list :inherit
+          (cond
+           ((and (memq 'bold properties)
+                 (memq 'italic properties))
+            'bold-italic)
+           ((memq 'italic properties)
+            'italic)
+           ((memq 'bold properties)
+            'bold)
+           ('unspecified))
+          :background bg
+          :foreground fg
+          :weight
+          ;; If we have `bold' specifically, we inherit the face of
+          ;; the same name.  This allows the user to customise that
+          ;; face, such as to change its font family.
+          (if (and weight (not (eq weight 'bold)))
+              weight
+            'unspecified))))
+
 (defun standard-themes--alist-or-seq (properties alist-key seq-pred seq-default)
   "Return value from alist or sequence.
 Check PROPERTIES for an alist value that corresponds to
@@ -386,26 +428,6 @@ sequence given SEQ-PRED, using SEQ-DEFAULT as a fallback."
                  (null weight))
             'bold)
            ((or weight 'unspecified))))))
-
-(defun standard-themes--prompt (fg bg fg-for-bg)
-  "Conditional use of colors for text prompt faces.
-FG is the prompt's standard foreground.  BG is a background
-color that is combined with FG-FOR-BG."
-  (let ((properties (standard-themes--list-or-warn 'standard-themes-prompts)))
-    (list :background
-          (if (memq 'background properties) bg 'unspecified)
-          :foreground
-          (if (memq 'background properties) fg-for-bg fg)
-          :inherit
-          (cond
-           ((and (memq 'bold properties)
-                 (memq 'italic properties))
-            'bold-italic)
-           ((memq 'italic properties)
-            'italic)
-           ((memq 'bold properties)
-            'bold)
-           ('unspecified)))))
 
 ;;; Commands and their helper functions
 
@@ -681,6 +703,11 @@ Optional prefix argument MAPPINGS has the same meaning as for
   :package-version '(standard-themes . "1.0.0")
   :group 'standard-themes-faces)
 
+(defface standard-themes-prompt nil
+  "Generic face for command prompts."
+  :package-version '(standard-themes . "2.0.0")
+  :group 'standard-themes-faces)
+
 ;; This produces `standard-themes-mark-delete' and the like.
 (dolist (scope '(delete select other))
   (custom-declare-face
@@ -720,6 +747,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(standard-themes-heading-7 ((,c ,@(standard-themes--heading 7) :foreground ,rainbow-7)))
     `(standard-themes-heading-8 ((,c ,@(standard-themes--heading 8) :foreground ,rainbow-8)))
     `(standard-themes-key-binding ((,c :inherit (bold standard-themes-fixed-pitch) :foreground ,keybind)))
+    `(standard-themes-prompt ((,c ,@(standard-themes--prompt fg-prompt bg-prompt))))
     `(standard-themes-ui-variable-pitch ((,c ,@(standard-themes--variable-pitch-ui))))
     `(standard-themes-mark-delete ((,c :inherit bold :background ,bg-mark-del :foreground ,fg-mark-del)))
     `(standard-themes-mark-select ((,c :inherit bold :background ,bg-mark-sel :foreground ,fg-mark-sel)))
@@ -744,7 +772,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(button ((,c :background ,bg-link :foreground ,fg-link :underline ,underline-link)))
     `(child-frame-border ((,c :background ,border)))
     `(comint-highlight-input ((,c :inherit bold)))
-    `(comint-highlight-prompt ((,c :inherit minibuffer-prompt)))
+    `(comint-highlight-prompt ((,c :inherit standard-themes-prompt)))
     `(edmacro-label ((,c :inherit bold :foreground ,accent-0)))
     `(elisp-shorthand-font-lock-face ((,c :inherit italic)))
     `(error ((,c :inherit bold :foreground ,err)))
@@ -759,7 +787,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(icon-button ((,c :box ,fg-dim :background ,bg-active :foreground ,fg-main))) ; same as `custom-button'
     `(link ((,c :inherit button)))
     `(link-visited ((,c :background ,bg-link-visited :foreground ,fg-link-visited :underline ,underline-link-visited)))
-    `(minibuffer-prompt ((,c ,@(standard-themes--prompt prompt bg-prompt fg-main))))
+    `(minibuffer-prompt ((,c :inherit standard-themes-prompt)))
     `(mm-command-output ((,c :foreground ,mail-4))) ; like message-mml
     `(pgtk-im-0 ((,c :inherit secondary-selection)))
     `(read-multiple-choice-face ((,c :inherit warning :background ,bg-warning)))
@@ -888,7 +916,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(cider-fringe-good-face ((,c :inherit standard-themes-mark-select)))
     `(cider-instrumented-face ((,c :box ,err)))
     `(cider-reader-conditional-face ((,c :inherit font-lock-type-face)))
-    `(cider-repl-prompt-face ((,c :inherit minibuffer-prompt)))
+    `(cider-repl-prompt-face ((,c :inherit standard-themes-prompt)))
     `(cider-repl-stderr-face ((,c :foreground ,err)))
     `(cider-repl-stdout-face ((,c :foreground ,info)))
     `(cider-warning-highlight-face ((,c :inherit standard-themes-underline-warning)))
@@ -1157,7 +1185,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(eshell-ls-special ((,c :foreground ,magenta)))
     `(eshell-ls-symlink ((,c :inherit link)))
     `(eshell-ls-unreadable ((,c :inherit shadow)))
-    `(eshell-prompt ((,c :inherit minibuffer-prompt)))
+    `(eshell-prompt ((,c :inherit standard-themes-prompt)))
 ;;;; eww
     `(eww-invalid-certificate ((,c :foreground ,err)))
     `(eww-valid-certificate ((,c :foreground ,info)))
@@ -1783,7 +1811,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(rcirc-nick-in-message ((,c :inherit rcirc-my-nick)))
     `(rcirc-nick-in-message-full-line ((,c :inherit rcirc-my-nick)))
     `(rcirc-other-nick ((,c :inherit bold :foreground ,accent-0)))
-    `(rcirc-prompt ((,c :inherit minibuffer-prompt)))
+    `(rcirc-prompt ((,c :inherit standard-themes-prompt)))
     `(rcirc-server ((,c :inherit font-lock-comment-face)))
     `(rcirc-timestamp ((,c :foreground ,date)))
     `(rcirc-track-keyword ((,c :inherit bold :foreground ,modeline-warning)))

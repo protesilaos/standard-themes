@@ -180,7 +180,6 @@
       (underline-info    "#02af52")
 
       ;; Conditional hues
-      (bg-prompt           "#daccff")
       (bg-mode-line-accent "#9fbaff")
 
       ;; Mappings
@@ -191,7 +190,8 @@
       (date cyan-warmer)
       (name green-cooler)
       (keybind blue)
-      (prompt blue-cooler)
+      (bg-prompt unspecified)
+      (fg-prompt blue-cooler)
 
       (builtin blue-faint)
       (comment red-faint)

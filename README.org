@@ -1018,6 +1018,8 @@ but also because they are often enclosed in angled brackets).
 :CUSTOM_ID: h:2553eaca-d9f7-4cb0-9b0b-63e1a22a40e7
 :END:
 
+[ Updated as part of {{{development-version}}}. ]
+
 The themes define some faces to make it possible to achieve
 consistency between various groups of faces.  For example, all "marks
 for selection" use the ~standard-themes-mark-select~ face.  If, say, the
@@ -1028,29 +1030,30 @@ apply to lots of packages, like Dired, Trashed, Ibuffer.
 
 All the faces defined by the themes:
 
-+ ~standard-themes-bold~
-+ ~standard-themes-fixed-pitch~
-+ ~standard-themes-fringe-error~
-+ ~standard-themes-fringe-info~
-+ ~standard-themes-fringe-warning~
-+ ~standard-themes-heading-0~
-+ ~standard-themes-heading-1~
-+ ~standard-themes-heading-2~
-+ ~standard-themes-heading-3~
-+ ~standard-themes-heading-4~
-+ ~standard-themes-heading-5~
-+ ~standard-themes-heading-6~
-+ ~standard-themes-heading-7~
-+ ~standard-themes-heading-8~
-+ ~standard-themes-italic~
-+ ~standard-themes-key-binding~
-+ ~standard-themes-mark-delete~
-+ ~standard-themes-mark-other~
-+ ~standard-themes-mark-select~
-+ ~standard-themes-ui-variable-pitch~
-+ ~standard-themes-underline-error~
-+ ~standard-themes-underline-info~
-+ ~standard-themes-underline-warning~
+- ~standard-themes-bold~
+- ~standard-themes-fixed-pitch~
+- ~standard-themes-fringe-error~
+- ~standard-themes-fringe-info~
+- ~standard-themes-fringe-warning~
+- ~standard-themes-heading-0~
+- ~standard-themes-heading-1~
+- ~standard-themes-heading-2~
+- ~standard-themes-heading-3~
+- ~standard-themes-heading-4~
+- ~standard-themes-heading-5~
+- ~standard-themes-heading-6~
+- ~standard-themes-heading-7~
+- ~standard-themes-heading-8~
+- ~standard-themes-italic~
+- ~standard-themes-key-binding~
+- ~standard-themes-mark-delete~
+- ~standard-themes-mark-other~
+- ~standard-themes-mark-select~
+- ~standard-themes-prompt~
+- ~standard-themes-ui-variable-pitch~
+- ~standard-themes-underline-error~
+- ~standard-themes-underline-info~
+- ~standard-themes-underline-warning~
 
 * Supported packages or face groups
 :PROPERTIES:

@@ -1198,6 +1198,7 @@ everything most users need.
 - vertico
 - wgrep
 - which-function-mode
+- which-key [Part of {{{development-version}}}]
 - whitespace-mode
 - widget
 - writegood-mode

@@ -9,6 +9,259 @@ project's main git repository: <https://git.sr.ht/~protesilaos/standard-themes>.
 The newest release is at the top.  For further details, please consult
 the manual: <https://protesilaos.com/emacs/standard-themes>.
 
+* Version 2.0.0 on 2023-11-27
+:PROPERTIES:
+:CUSTOM_ID: h:9c58f5e9-e471-4013-943d-4c1c59b11d0e
+:END:
+
+** Deprecated several user options that changed colours
+:PROPERTIES:
+:CUSTOM_ID: h:c3cd5ee4-45dc-4b54-be1d-9c0594611ab9
+:END:
+
+The following user options are deprecated in favour of palette
+overrides (more in the following section):
+
+- ~standard-themes-mode-line-accented~
+- ~standard-themes-links~
+- ~standard-themes-region~
+- ~standard-themes-fringes~
+
+In the same spirit, the user option ~standard-themes-prompts~ no
+longer affects colours.
+
+** All colour-related tweaks are done via palette overrides
+:PROPERTIES:
+:CUSTOM_ID: h:a114f9ed-9851-417a-80c2-30d21dee1d09
+:END:
+
+In previous versions of the themes, we provided certain hardcoded
+colour variations, such as for an "accented" mode line and more
+"intense" fringes. We no longer do so, in favour of a more flexible
+approach that empowers the user to pick the exact colour they like.
+
+The Standard themes provide the means to override every entry in their
+palette. Each palette defines named faces (such as what is the exact
+hexademical Red-Green-Blue value of =blue-warmer=) as well as semantic
+colour mappings (like =bg-mode-line-active=). Users can configure
+either the ~standard-themes-common-palette-overrides~ or the
+theme-specific ones, ~standard-dark-palette-overrides~,
+~standard-light-palette-overrides~.
+
+Refer to the manual for how this can be done:
+<https://protesilaos.com/emacs/standard-themes#h:34fe0582-960b-45dc-af5d-23c8f3e9d724>.
+And/or use the commands to preview the palette:
+~standard-themes-preview-colors~,
+~standard-themes-preview-colors-current~. Below is a sample:
+
+#+begin_src emacs-lisp
+(setq standard-themes-common-palette-overrides
+      '((cursor red-warmer)
+        (bg-mode-line-active bg-blue-subtle)))
+#+end_src
+
+[ This is the same functionality found in my =modus-themes= and
+  =ef-themes=. Modus has the most palette entries and widest package
+  support due to its maximalist scope. ]
+
+** The ~standard-themes-prompts~ accept any typographic weight
+:PROPERTIES:
+:CUSTOM_ID: h:ae1574ad-87b2-43b5-90d3-c30163b8aca8
+:END:
+
+This user option applies to prompt texts of all sorts, such as the
+minibuffer and command-line shells. It now accepts any supported
+typographic weight as part of its value. The list of weights are
+recorded in the documentation of the variable
+~standard-themes-weights~ as well as the manual.
+
+** Headings have more semantic colour mappings associated with them
+:PROPERTIES:
+:CUSTOM_ID: h:404de8e3-7a47-4b10-9b26-0594c55dc6e4
+:END:
+
+Apart from the foreground, each heading level from 0 to 8 now has a
+background and an overline. These new palette entries are set to the
+=unspecified= value, meaning that they do not have any visual effect.
+Users can set them to a colour via palette overrides to have headings
+with a background and/or an overline (per heading level).
+
+Building on the previous sample code with the overrides:
+
+#+begin_src emacs-lisp
+(setq standard-themes-common-palette-overrides
+      '((cursor red-warmer)
+        (bg-mode-line-active bg-blue-subtle)
+
+        ;; Extra space for didactic purposes
+
+        (fg-heading-1 rainbow-1)
+        (fg-heading-2 rainbow-2)
+
+        (bg-heading-1 bg-blue-nuanced)
+        (bg-heading-2 bg-yellow-nuanced)
+
+        (overline-heading-1 blue-faint)
+        (overline-heading-2 yellow-faint)
+
+        ))
+#+end_src
+
+Always remember to reload the theme for changes to take effect.
+
+Contact me if you need any help.
+
+** Space-related semantic colour mappings are available
+:PROPERTIES:
+:CUSTOM_ID: h:818e0d4a-1969-4982-be33-d5f85f075a64
+:END:
+
+The ~whitespace-mode~ and related faces now use new palette entries
+that are specific to them. This means that users can easily make space
+characters more intense/subtle. As part of this redesign, the
+background that was enabled by default is now removed to accommodate
+uses of ~whitespace-mode~ in spacing-sensitive programming modes: an
+intensely coloured background on every space makes it hard to edit the
+text.
+
+** The ~display-line-numbers-mode~ benefits from semantic colour mappings
+:PROPERTIES:
+:CUSTOM_ID: h:15002e3b-db06-4ca0-b3d0-f27a04374a2c
+:END:
+
+A new subset of palette entries applies to line numbers. It covers
+foreground and background values for the current/other line numbers.
+Users can style them as they see fit by using palette overrides. For
+example, this makes line numbers have a subtle grey backgrounds to not
+be mistaken for the contents of the buffer:
+
+#+begin_src emacs-lisp
+(setq standard-themes-common-palette-overrides
+      '((cursor red-warmer)
+        (bg-mode-line-active bg-blue-subtle)
+
+        ;; Extra space for didactic purposes
+
+        (fg-heading-1 rainbow-1)
+        (fg-heading-2 rainbow-2)
+
+        (bg-heading-1 bg-blue-nuanced)
+        (bg-heading-2 bg-yellow-nuanced)
+
+        (overline-heading-1 blue-faint)
+        (overline-heading-2 yellow-faint)
+
+        (bg-line-number-active bg-active)
+        (bg-line-number-inactive bg-dim)
+
+        ))
+#+end_src
+
+** More semantic colour mappings for dates
+:PROPERTIES:
+:CUSTOM_ID: h:0d762d7f-d433-40dd-95d9-2110292d43f7
+:END:
+
+The palette of each theme now defines an expanded subset of entries
+for dates. These include, among others, what we find in the Org agenda
+and the =M-x calendar=, such as =date-weekday=, =date-scheduled=, and
+more. Use palette overrides to tweak them accordingly.
+
+** More packages are supported
+:PROPERTIES:
+:CUSTOM_ID: h:5ba5fa40-8e95-405e-b368-4e9b14ce61c4
+:END:
+
+Support for more packages means that the theme looks consistent across
+a variety of interfaces (this is, after all, the original idea behind
+the ~standard-themes~ otherwise an unthemed Emacs looks too
+inconsistent---sorry!). For this version, we include the following in
+an already long list:
+
+- breadcrumb
+- centaur-tabs
+- corfu-candidate-overlay
+- jit-spell
+- nerd-icons
+- nerd-icons-dired
+- nerd-icons-ibuffer
+- vundo
+- which-key
+
+** Ediff faces do not implicitly depend on diff-mode
+:PROPERTIES:
+:CUSTOM_ID: h:8182cb1f-a5b2-4f62-ae5d-85d5b6dbe965
+:END:
+
+The Ediff faces used to inherit from the built-in ~diff-mode~. This
+introduced a dependency and so using something like =M-x ediff-files=
+before loading ~diff-mode~ would result in an error. Ediff faces are
+thus designed to stand on their own.
+
+** "Flagged" and "trashed" emails are now distinct
+:PROPERTIES:
+:CUSTOM_ID: h:c01b88a5-1592-4e4d-a652-1ca9e334a4fb
+:END:
+
+They used to have the same colour, but this is no more. The change
+covers the ~mu4e~ and ~notmuch~ packages.
+
+** Miscellaneous
+:PROPERTIES:
+:CUSTOM_ID: h:503f2289-c2be-4d5b-a5de-67716d194e84
+:END:
+
+- Revised the colour value of the ~standard-dark~ =bg-region= palette
+  entry. The previous one was the same as the original colour used by
+  the ~region~ face against a dark background: an intense blue. The
+  new value is still blue, though it is toned down to do what it needs
+  to do without exaggerations. (Remember that the point of the
+  ~standard-themes~ is to be faithful to the defaults, but I still
+  apply judgement where I think improvements can be made without
+  changing the character of the themes).
+
+- Added support for the ~appt-notification~ face (which I introduced
+  in Emacs 30).
+
+- Extended support for the various ~flymake~ "echo" and "end of line"
+  faces (e.g. ~flymake-error-echo~, ~flymake-end-of-line-diagnostics-face~).
+
+- Removed the deprecated ~consult-preview-cursor~ face. This was done
+  in commit =267b0c9= on the Consult Git repository. Discussed here:
+  <https://github.com/minad/consult/issues/764#issuecomment-1537491625>.
+
+- Revised colours used in the ~all-the-icons~ faces. They now look
+  more consistent.
+
+- Deleted the underline from the ~org-ellipsis~ face. Org files are
+  already too busy and we do not need more of that.
+
+- Made the ~eglot-diagnostic-tag-unnecessary-face~ look like a
+  warning. By default it inherits the 'shadow' face, which makes it
+  counter-intuitive as it dims the text instead of bringing it to our
+  attention. The intent of ~eglot-diagnostic-tag-unnecessary-face~ is
+  to highlight unused symbols, so this is better presented as a
+  warning.
+
+  Thanks to Augusto Stoffel for bringing this matter to my attention.
+  This was done via a private channel and the information is shared
+  with permission.
+
+- Rewrote most of the manual to remove the deprecated user options,
+  expand the documentation where necessary, and tweak the sample
+  configuration.
+
+- Expanded the ~deftheme~ definition of each theme's metadata. This is
+  to support new features in Emacs where themes can specify the set
+  they belong to, as well as whether they are light or dark. The
+  built-in command is ~theme-choose-variant~. This is in response to
+  Emacs bug#65468: <https://debbugs.gnu.org/cgi/bugreport.cgi?bug=65468>.
+  Thanks to Mauro Aranda for bringing this matter to my attention.
+
+- Replaced function calls that depended on ~cl-lib.el~ with equivalent
+  ones from ~seq.el~. The latter is loaded by default and we did not
+  need the CL features, anyway.
+
 * Version 1.2.0 on 2023-02-16
 :PROPERTIES:
 :CUSTOM_ID: h:ff36edbc-57c5-4660-9524-5ca5d5973a38

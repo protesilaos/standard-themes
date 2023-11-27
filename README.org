@@ -4,9 +4,9 @@
 #+language: en
 #+options: ':t toc:nil author:t email:t num:t
 #+startup: content
-#+macro: stable-version 1.2.0
-#+macro: release-date 2023-02-16
-#+macro: development-version 2.0.0-dev
+#+macro: stable-version 2.0.0
+#+macro: release-date 2023-11-27
+#+macro: development-version 2.1.0-dev
 #+export_file_name: standard-themes.texi
 #+texinfo_filename: standard-themes.info
 #+texinfo_dir_category: Emacs misc features
@@ -294,8 +294,6 @@ comments, doc strings, and a few other minor elements.
 :CUSTOM_ID: h:eedd0b6b-9f84-48bc-8871-620934506aa6
 :END:
 
-[ Updated as part of {{{development-version}}}. ]
-
 #+vindex: standard-themes-prompts
 The user option ~standard-themes-prompts~ controls the style of all
 prompts, such as those of the minibuffer and REPLs.
@@ -353,8 +351,6 @@ applying palette overrides ([[#h:34fe0582-960b-45dc-af5d-23c8f3e9d724][Palette o
 :PROPERTIES:
 :CUSTOM_ID: h:8540fd7a-7633-4eb9-af4b-4f160568f79a
 :END:
-
-[ Updated as part of {{{development-version}}}. ]
 
 #+vindex: standard-themes-headings
 The user option ~standard-themes-headings~ provides support for individual
@@ -1026,8 +1022,6 @@ but also because they are often enclosed in angled brackets).
 :CUSTOM_ID: h:2553eaca-d9f7-4cb0-9b0b-63e1a22a40e7
 :END:
 
-[ Updated as part of {{{development-version}}}. ]
-
 The themes define some faces to make it possible to achieve
 consistency between various groups of faces.  For example, all "marks
 for selection" use the ~standard-themes-mark-select~ face.  If, say, the
@@ -1103,12 +1097,12 @@ everything most users need.
 - ansi-color
 - auctex
 - auto-dim-other-buffers
-- breadcrumb [Part of {{{development-version}}}]
+- breadcrumb
 - bongo
 - bookmark
 - calendar and diary
 - cider
-- centaur-tabs [Part of {{{development-version}}}]
+- centaur-tabs
 - change-log and log-view (part of VC)
 - chart
 - clojure-mode
@@ -1117,7 +1111,7 @@ everything most users need.
 - completions
 - consult
 - corfu
-- corfu-candidate-overlay [Part of {{{development-version}}}]
+- corfu-candidate-overlay
 - custom (=M-x customize=)
 - denote
 - dictionary
@@ -1149,7 +1143,7 @@ everything most users need.
 - image-dired
 - info
 - isearch, occur, query-replace
-- jit-spell [Part of {{{development-version}}}]
+- jit-spell
 - keycast
 - lin
 - line numbers (~display-line-numbers-mode~ and global variant)
@@ -1160,9 +1154,9 @@ everything most users need.
 - messages
 - mode-line
 - mu4e
-- nerd-icons [Part of {{{development-version}}}.]
-- nerd-icons-dired [Part of {{{development-version}}}.]
-- nerd-icons-ibuffer [Part of {{{development-version}}}.]
+- nerd-icons
+- nerd-icons-dired
+- nerd-icons-ibuffer
 - neotree
 - notmuch
 - olivetti
@@ -1197,10 +1191,10 @@ everything most users need.
 - tty-menu
 - vc (=vc-dir.el=, =vc-hooks.el=)
 - vertico
-- vundo [Part of {{{development-version}}}]
+- vundo
 - wgrep
 - which-function-mode
-- which-key [Part of {{{development-version}}}]
+- which-key
 - whitespace-mode
 - widget
 - writegood-mode

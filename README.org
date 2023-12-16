@@ -1290,7 +1290,7 @@ matters.
 + Contributions to code :: Clemens Radermacher.
 
 + Ideas and/or user feedback :: Fritz Grabo, Manuel Uberti, Tassilo
-  Horn.
+  Horn, Zack Weinberg.
 
 * GNU Free Documentation License
 :PROPERTIES:

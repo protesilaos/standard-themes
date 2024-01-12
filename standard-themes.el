@@ -1,6 +1,6 @@
 ;;; standard-themes.el --- Like the default theme but more consistent -*- lexical-binding:t -*-
 
-;; Copyright (C) 2022-2023  Free Software Foundation, Inc.
+;; Copyright (C) 2022-2024  Free Software Foundation, Inc.
 
 ;; Author: Protesilaos Stavrou <info@protesilaos.com>
 ;; Maintainer: Standard-Themes Development <~protesilaos/standard-themes@lists.sr.ht>

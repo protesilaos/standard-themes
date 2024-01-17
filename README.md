@@ -9,10 +9,8 @@ consistency, customizability, and extensibility.
 + Official manual: <https://protesilaos.com/emacs/standard-themes>
 + Change log: <https://protesilaos.com/emacs/standard-themes-changelog>
 + Sample pictures: <https://protesilaos.com/emacs/standard-themes-pictures>
-+ Git repo on SourceHut: <https://git.sr.ht/~protesilaos/standard-themes>
-  - Mirrors:
-    + GitHub: <https://github.com/protesilaos/standard-themes>
-    + GitLab: <https://gitlab.com/protesilaos/standard-themes>
-+ Mailing list: <https://lists.sr.ht/~protesilaos/standard-themes>
++ Git repositories:
+  + GitHub: <https://github.com/protesilaos/standard-themes>
+  + GitLab: <https://gitlab.com/protesilaos/standard-themes>
 + Backronym: Standard Themes Are Not Derivatives but the
-  Affectionately Reimagined Defaults ... themes.
+  Affectionately Reimagined Default ... themes.

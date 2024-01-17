@@ -3,9 +3,8 @@
 ;; Copyright (C) 2022-2024  Free Software Foundation, Inc.
 
 ;; Author: Protesilaos Stavrou <info@protesilaos.com>
-;; Maintainer: Standard-Themes Development <~protesilaos/standard-themes@lists.sr.ht>
-;; URL: https://git.sr.ht/~protesilaos/standard-themes
-;; Mailing-List: https://lists.sr.ht/~protesilaos/standard-themes
+;; Maintainer: Protesilaos Stavrou <info@protesilaos.com>
+;; URL: https://github.com/protesilaos/standard-themes
 ;; Keywords: faces, theme, accessibility
 
 ;; This file is part of GNU Emacs.

@@ -1032,6 +1032,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(completions-common-part ((,c :inherit bold :foreground ,accent-0)))
     `(completions-first-difference ((,c :inherit bold :foreground ,accent-1)))
     `(completions-group-title ((,c :inherit bold :foreground ,name)))
+    `(completions-highlight ((,c :background ,bg-completion)))
 ;;;; consult
     `(consult-async-split ((,c :inherit warning)))
     `(consult-key ((,c :inherit standard-themes-key-binding)))

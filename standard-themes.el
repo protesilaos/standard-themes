@@ -1761,7 +1761,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(org-date ((,c :inherit standard-themes-fixed-pitch :foreground ,date-common :underline t)))
     `(org-date-selected ((,c :foreground ,date-common :inverse-video t)))
     `(org-document-info ((,c :foreground ,rainbow-1)))
-    `(org-document-info-keyword ((,c :inherit shadow)))
+    `(org-document-info-keyword ((,c :inherit (standard-themes-fixed-pitch shadow))))
     `(org-document-title ((,c :inherit standard-themes-heading-0)))
     `(org-done ((,c :inherit bold :foreground ,info)))
     `(org-drawer ((,c :inherit standard-themes-fixed-pitch :foreground ,fnname)))

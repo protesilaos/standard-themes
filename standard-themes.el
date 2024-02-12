@@ -2082,7 +2082,20 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(woman-addition ((,c :foreground ,accent-2)))
     `(woman-bold ((,c :inherit bold :foreground ,accent-0)))
     `(woman-italic ((,c :inherit italic :foreground ,accent-1)))
-    `(woman-unknown ((,c :foreground ,accent-3))))
+    `(woman-unknown ((,c :foreground ,accent-3)))
+;;;; ztree
+    `(ztreep-arrow-face ((,c :inherit shadow)))
+    `(ztreep-diff-header-face ((,c :inherit standard-themes-heading-0)))
+    `(ztreep-diff-header-small-face ((,c :inherit font-lock-doc-face)))
+    `(ztreep-diff-model-add-face ((,c :foreground ,info)))
+    `(ztreep-diff-model-diff-face ((,c :foreground ,err)))
+    `(ztreep-diff-model-ignored-face ((,c :foreground ,fg-dim :strike-through t)))
+    `(ztreep-diff-model-normal-face (( )))
+    `(ztreep-expand-sign-face ((,c :inherit shadow)))
+    `(ztreep-header-face ((,c :inherit standard-themes-heading-0)))
+    `(ztreep-leaf-face (( )))
+    `(ztreep-node-count-children-face ((,c :inherit (shadow italic))))
+    `(ztreep-node-face ((,c :foreground ,accent-0))))
   "Face specs for use with `standard-themes-theme'.")
 
 (defconst standard-themes-custom-variables

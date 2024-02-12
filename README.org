@@ -1127,6 +1127,7 @@ everything most users need.
 - elfeed
 - embark
 - epa
+- erc [ Part of {{{development-version}}}. ]
 - ert [ Part of {{{development-version}}}. ]
 - eshell
 - eww

@@ -1127,6 +1127,7 @@ everything most users need.
 - elfeed
 - embark
 - epa
+- ert [ Part of {{{development-version}}}. ]
 - eshell
 - eww
 - flycheck

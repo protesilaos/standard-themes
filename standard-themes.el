@@ -1171,7 +1171,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(doom-modeline-evil-visual-state ((,c :inherit bold :foreground ,modeline-warning)))
     `(doom-modeline-info ((,c :inherit bold :foreground ,modeline-info)))
     `(doom-modeline-input-method (( )))
-    `(doom-modeline-lsp-error ((,c :inherit bold-italic)))
+    `(doom-modeline-lsp-error ((,c :inherit bold)))
     `(doom-modeline-lsp-running (( )))
     `(doom-modeline-lsp-success ((,c :inherit bold :foreground ,modeline-info)))
     `(doom-modeline-lsp-warning ((,c :inherit bold :foreground ,modeline-warning)))
@@ -1182,7 +1182,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(doom-modeline-repl-success ((,c :inherit bold :foreground ,modeline-info)))
     `(doom-modeline-repl-warning ((,c :inherit bold :foreground ,modeline-warning)))
     `(doom-modeline-time (( )))
-    `(doom-modeline-urgent ((,c :inherit bold-italic :foreground ,modeline-err)))
+    `(doom-modeline-urgent ((,c :inherit bold :foreground ,modeline-err)))
     `(doom-modeline-warning ((,c :inherit bold :foreground ,modeline-warning)))
 ;;;; ediff
     `(ediff-current-diff-A ((,c :background ,bg-removed :foreground ,fg-removed)))

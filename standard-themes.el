@@ -1044,7 +1044,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(corfu-bar ((,c :background ,fg-main)))
     `(corfu-border ((,c :background ,bg-active)))
     `(corfu-default ((,c :background ,bg-inactive)))
-;;;;; corfu-candidate-overlay
+;;;; corfu-candidate-overlay
     `(corfu-candidate-overlay-face ((t :inherit shadow)))
 ;;;; custom (M-x customize)
     `(custom-button ((,c :box (:line-width 2 :style released-button) :background ,bg-active :foreground ,fg-main)))
@@ -1658,7 +1658,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(mu4e-url-number-face ((,c :inherit shadow)))
     `(mu4e-view-body-face (( )))
     `(mu4e-warning-face ((,c :inherit warning)))
-;;;;; nerd-icons
+;;;; nerd-icons
     `(nerd-icons-blue ((,c :foreground ,blue-cooler)))
     `(nerd-icons-blue-alt ((,c :foreground ,blue-warmer)))
     `(nerd-icons-cyan ((,c :foreground ,cyan)))

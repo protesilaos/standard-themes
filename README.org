@@ -1155,6 +1155,7 @@ everything most users need.
 - mode-line
 - mu4e
 - nerd-icons
+- nerd-icons-completion [ Part of {{{development-version}}}. ]
 - nerd-icons-dired
 - nerd-icons-ibuffer
 - neotree

@@ -9,6 +9,112 @@ project's main git repository: <https://git.sr.ht/~protesilaos/standard-themes>.
 The newest release is at the top.  For further details, please consult
 the manual: <https://protesilaos.com/emacs/standard-themes>.
 
+* Version 2.1.0 on 2024-08-11
+:PROPERTIES:
+:CUSTOM_ID: h:9f80dc23-c609-4f29-ad93-b86f8799bd1c
+:END:
+
+This package is in a stable state. The present release introduces only
+tweaks and refinements.
+
+** The built-in ~erc~ package is now supported
+:PROPERTIES:
+:CUSTOM_ID: h:1e62ce05-ffe0-49be-8789-eaec369b93ac
+:END:
+
+This is an IRC client for Emacs that is more feature-rich than its
+~rcirc~ counterpart (also built-in). The colours used in ERC buffers
+are now consistest with the rest of theme.
+
+** ~ert~ test results have the appropriate styles
+:PROPERTIES:
+:CUSTOM_ID: h:0fa5516c-62b2-49da-acd7-246e93adde0b
+:END:
+
+The built-in ~ert~ testing framework for Emacs Lisp code displays its
+results in a set of colours that are consistent with the rest of the
+themes.
+
+** The ~ztree~ package is fully supported
+:PROPERTIES:
+:CUSTOM_ID: h:feaaeeed-b390-4b49-9adf-880e96b7b355
+:END:
+
+This is a directory viewer that also has the capability to compare the
+contents of different directories. The colours it uses now follow the
+established patterns of the themes.
+
+** Mu4e folds look a bit different
+:PROPERTIES:
+:CUSTOM_ID: h:8b6edefb-b75d-4173-9723-7e060a328439
+:END:
+
+The characters used by the ~mu4e~ email client to show the tree
+structure of message threads are now draws in a less intense colour.
+This ensures that the focus in on the message subject lines and
+accompanying information.
+
+** The ~doom-modeline~ no longer uses bold+italic combinations
+:PROPERTIES:
+:CUSTOM_ID: h:e0481595-cc87-45da-989c-912f00010833
+:END:
+
+This is because those can clip the edges of icons/symbols used
+therein.
+
+I was informed about this problem on the issue tracker of my
+~ef-themes~ by Filippo Argiolas: <https://github.com/protesilaos/ef-themes/issues/42>.
+
+** The Elisp shorthands are easier to spot
+:PROPERTIES:
+:CUSTOM_ID: h:142e9780-3ccd-42f4-b77c-9d72e3d9618c
+:END:
+
+This is not a commonly seen feature, though Emacs Lisp can benefit
+from so-called "shorthands" were long symbol prefixes are substituted
+by a shorter equivalent. At the theme level, we now render those in
+italic and in a colour that is not used elsewhere in Elisp code.
+
+** Nerd icon directories are more colourful during completion
+:PROPERTIES:
+:CUSTOM_ID: h:18207887-1c84-492d-832e-5cba861b341b
+:END:
+
+The ~nerd-icons-completion~ package extends coverage of ~nerd-icons~
+to the minibuffer. File/directory prompts now display directories in
+the colour that is also used in Dired buffers instead of black/white.
+This makes the themes more consistent and the icons in the minibuffer
+less intense.
+
+** Org keywords like =#+title= may be monospaced
+:PROPERTIES:
+:CUSTOM_ID: h:d197aa93-89c9-4908-992f-b8611fd0a054
+:END:
+
+If the user option ~standard-themes-mixed-fonts~ is set to a non-nil
+value, then all such keywords will use a monospaced font (inherit from
+~fixed-pitch~). This is already done for other code- or metadata- like
+elements.
+
+The purpose of this user option is to render spacing-sensitive
+constructs in a monospaced font but allow the user to set the
+~default~ face to a proportionately spaced font (this can be done on
+demand with =M-x variable-pitch-mode=). Without this arrangement,
+proportionately spaced fonts will produce misalignments in tables,
+code blocks, et cetera.
+
+** Miscellaneous
+:PROPERTIES:
+:CUSTOM_ID: h:e8c5156c-08f3-4a8a-b82b-b35020090557
+:END:
+
+- Extended the coverage of ~shr~ (built-in) faces to cover ~shr-mark~.
+- Added support for the built-in ~completions-highlight~ face (Emacs
+  29).
+- Removed the underline property from the Gnus implicit buttons,
+  because it can be too distracting.
+- Made changes to the manual, were necessary.
+
 * Version 2.0.0 on 2023-11-27
 :PROPERTIES:
 :CUSTOM_ID: h:9c58f5e9-e471-4013-943d-4c1c59b11d0e

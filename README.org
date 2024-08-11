@@ -4,9 +4,9 @@
 #+language: en
 #+options: ':t toc:nil author:t email:t num:t
 #+startup: content
-#+macro: stable-version 2.0.0
-#+macro: release-date 2023-11-27
-#+macro: development-version 2.1.0-dev
+#+macro: stable-version 2.1.0
+#+macro: release-date 2024-08-11
+#+macro: development-version 2.2.0-dev
 #+export_file_name: standard-themes.texi
 #+texinfo_filename: standard-themes.info
 #+texinfo_dir_category: Emacs misc features
@@ -1127,8 +1127,8 @@ everything most users need.
 - elfeed
 - embark
 - epa
-- erc [ Part of {{{development-version}}}. ]
-- ert [ Part of {{{development-version}}}. ]
+- erc
+- ert
 - eshell
 - eww
 - flycheck
@@ -1155,7 +1155,7 @@ everything most users need.
 - mode-line
 - mu4e
 - nerd-icons
-- nerd-icons-completion [ Part of {{{development-version}}}. ]
+- nerd-icons-completion
 - nerd-icons-dired
 - nerd-icons-ibuffer
 - neotree
@@ -1200,7 +1200,7 @@ everything most users need.
 - widget
 - writegood-mode
 - woman
-- ztree [ Part of {{{development-version}}}. ]
+- ztree
 
 ** Implicitly supported packages or face groups
 :PROPERTIES:

@@ -116,7 +116,7 @@ mkdir manual-packages
 cd manual-packages
 
 # Clone this repo, naming it "standard-themes"
-git clone https://git.sr.ht/~protesilaos/standard-themes standard-themes
+git clone https://github.com/protesilaos/standard-themes standard-themes
 #+end_src
 
 Finally, in your =init.el= (or equivalent) evaluate this:

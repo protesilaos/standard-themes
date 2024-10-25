@@ -512,11 +512,11 @@ symbol, which is safe when used as a face attribute's value."
   "Return THEME palette as a symbol.
 With optional OVERRIDES, return THEME palette overrides as a
 symbol."
-  (when-let ((suffix (cond
-                      ((and theme overrides)
-                       "palette-overrides")
-                      (theme
-                       "palette"))))
+  (when-let* ((suffix (cond
+                       ((and theme overrides)
+                        "palette-overrides")
+                       (theme
+                        "palette"))))
     (intern (format "%s-%s" theme suffix))))
 
 (defun standard-themes--palette-value (theme &optional overrides)
@@ -532,7 +532,7 @@ symbol."
   "Return palette value of active Standard theme, else produce `user-error'.
 With optional OVERRIDES return palette value plus whatever
 overrides."
-  (if-let ((theme (standard-themes--current-theme)))
+  (if-let* ((theme (standard-themes--current-theme)))
       (if overrides
           (standard-themes--palette-value theme :overrides)
         (standard-themes--palette-value theme))

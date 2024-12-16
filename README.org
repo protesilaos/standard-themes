@@ -1145,7 +1145,7 @@ everything most users need.
 - isearch, occur, query-replace
 - jit-spell
 - keycast
-- lin
+- lin [ Part of {{{development-version}}}. ]
 - line numbers (~display-line-numbers-mode~ and global variant)
 - magit
 - man

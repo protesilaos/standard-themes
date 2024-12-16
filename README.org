@@ -1170,7 +1170,7 @@ everything most users need.
 - package (=M-x list-packages=)
 - perspective
 - powerline
-- pulsar
+- pulsar [ Part of {{{development-version}}}. ]
 - pulse
 - rainbow-delimiters
 - rcirc

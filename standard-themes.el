@@ -73,6 +73,9 @@ set this variable to a nil value."
   :package-version '(standard-themes . "1.2.0")
   :type 'boolean)
 
+(defvaralias 'standard-themes-after-load-theme-hook 'standard-themes-post-load-hook
+  "Alias for `standard-themes-post-load-hook'.")
+
 (defcustom standard-themes-post-load-hook nil
   "Hook that runs after loading a Standard theme.
 This is used by the command `standard-themes-toggle'."

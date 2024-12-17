@@ -1,4 +1,4 @@
-;;; standard-dark-theme.el --- Like the unthemed dark Emacs, but more consistent -*- lexical-binding:t -*-
+;;; standard-dark-tinted-theme.el --- More nightly variant of standard-dark theme -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2022-2024  Free Software Foundation, Inc.
 
@@ -42,25 +42,25 @@
   (require 'standard-themes)
 
 ;;;###theme-autoload
-  (deftheme standard-dark
-    "Like the unthemed dark Emacs, but more consistent."
+  (deftheme standard-dark-tinted
+    "More nightly variant of standard-dark theme."
     :background-mode 'dark
     :kind 'color-scheme
     :family 'standard)
 
-  (defconst standard-dark-palette
+  (defconst standard-dark-tinted-palette
     '(
 ;;; Basic values
 
-      (bg-main     "#000000")
+      (bg-main     "#182440")
       (fg-main     "#ffffff")
-      (bg-dim      "#202020")
+      (bg-dim      "#2e3355")
       (fg-dim      "#a6a6a6")
-      (bg-alt      "#363636")
+      (bg-alt      "#3f4560")
       (fg-alt      "#a0afef")
-      (bg-active   "#606060")
-      (bg-inactive "#141414")
-      (border      "#606070")
+      (bg-active   "#5f6580")
+      (bg-inactive "#252844")
+      (border      "#707090")
 
 ;; Basic accent foregrounds
 
@@ -114,30 +114,30 @@
 
 ;;; Diffs
 
-      (bg-added          "#00331f")
-      (bg-added-faint    "#002410")
-      (bg-added-refine   "#03492f")
+      (bg-added          "#12522f")
+      (bg-added-faint    "#0f3a30")
+      (bg-added-refine   "#13694f")
       (fg-added          "#4fb04f")
 
-      (bg-changed        "#323200")
-      (bg-changed-faint  "#281a00")
-      (bg-changed-refine "#484800")
+      (bg-changed        "#424200")
+      (bg-changed-faint  "#383a00")
+      (bg-changed-refine "#684f20")
       (fg-changed        "#e0cf03")
 
-      (bg-removed        "#4a1119")
-      (bg-removed-faint  "#320a0f")
-      (bg-removed-refine "#751a1f")
+      (bg-removed        "#602119")
+      (bg-removed-faint  "#4e0f1f")
+      (bg-removed-refine "#792f2f")
       (fg-removed        "#ff5f5f")
 
 ;;; Marks
 
-      (bg-mark-alt  "#002f4a")
-      (fg-mark-alt  "#57cefa")
+      (bg-mark-alt  "#223f6a")
+      (fg-mark-alt  "#57defa")
 
-      (bg-mark-del  "#440d09")
-      (fg-mark-del  "#ff5f60")
+      (bg-mark-del  "#5a201f")
+      (fg-mark-del  "#ff7f60")
 
-      (bg-mark-sel  "#333000")
+      (bg-mark-sel  "#494000")
       (fg-mark-sel  "#d0d082")
 
 ;;; Graphs
@@ -158,27 +158,27 @@
 ;;; Special hues
 
       (bg-accent     "#ffc200")
-      (bg-completion "#254b5f")
-      (bg-hover      "#457b2f")
+      (bg-completion "#406a70")
+      (bg-hover      "#35705f")
       (bg-hover-alt  "#00688b")
-      (bg-hl-line    "#334815")
-      (bg-region     "#20009d")
+      (bg-hl-line    "#304845")
+      (bg-region     "#4f2f99")
       (fg-region     unspecified)
       (bg-paren      "#4f94cd")
-      (bg-err        "#3f0d09") ; check with err
-      (bg-warning    "#362f00") ; check with warning
-      (bg-info       "#002f12") ; check with info
+      (bg-err        "#5f1f1f") ; check with err
+      (bg-warning    "#434100") ; check with warning
+      (bg-info       "#20481f") ; check with info
 
-      (bg-mode-line-active        "#505050")
+      (bg-mode-line-active        "#5b59b2")
       (fg-mode-line-active        "#ffffff")
-      (border-mode-line-active    "#959595")
-      (bg-mode-line-inactive      "#323232")
+      (border-mode-line-active    "#9595b5")
+      (bg-mode-line-inactive      "#353a52")
       (fg-mode-line-inactive      "#a6a6a6")
       (border-mode-line-inactive  "#606070")
 
-      (bg-tab              "#333333")
-      (bg-tab-inactive     "#4d4d4d")
-      (bg-tab-inactive-alt "#666666")
+      (bg-tab              "#374073")
+      (bg-tab-inactive     "#545f90")
+      (bg-tab-inactive-alt "#6a7898")
 
       (modeline-err     "#ff80af")
       (modeline-warning "#dfcf33")
@@ -192,7 +192,7 @@
 
 ;;;; General mappings
 
-      (cursor fg-main)
+      (cursor "#d072f0")
       (fringe bg-dim)
       (name cyan-cooler)
       (keybind blue-cooler)
@@ -216,7 +216,7 @@
 ;;;; Prompt mappings
 
       (bg-prompt unspecified)
-      (fg-prompt blue)
+      (fg-prompt cyan)
 
 ;;;; Code mappings
 
@@ -323,7 +323,7 @@
       (overline-heading-6 unspecified)
       (overline-heading-7 unspecified)
       (overline-heading-8 unspecified))
-    "The `standard-dark' palette.
+    "The `standard-dark-tinted' palette.
 Color values have the form (COLOR-NAME HEX-VALUE) with the former
 as a symbol and the latter as a string.
 
@@ -331,8 +331,8 @@ Semantic color mappings have the form (MAPPING-NAME COLOR-NAME)
 with both as symbols.  The latter is a color that already exists
 in the palette and is associated with a HEX-VALUE.")
 
-  (defcustom standard-dark-palette-overrides nil
-    "Overrides for `standard-dark-palette'.
+  (defcustom standard-dark-tinted-palette-overrides nil
+    "Overrides for `standard-dark-tinted-palette'.
 
 Mirror the elements of the aforementioned palette, overriding
 their value.
@@ -351,10 +351,10 @@ represents."
   :type '(repeat (list symbol (choice symbol string)))
   :link '(info-link "(standard-themes) Palette overrides"))
 
-  (standard-themes-theme standard-dark
-                         standard-dark-palette
-                         standard-dark-palette-overrides)
+  (standard-themes-theme standard-dark-tinted
+                         standard-dark-tinted-palette
+                         standard-dark-tinted-palette-overrides)
 
-  (provide-theme 'standard-dark))
+  (provide-theme 'standard-dark-tinted))
 
-;;; standard-dark-theme.el ends here
+;;; standard-dark-tinted-theme.el ends here

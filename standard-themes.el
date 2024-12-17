@@ -26,10 +26,12 @@
 
 ;;; Commentary:
 ;;
-;; The `standard-themes' are a pair of light and dark themes for GNU
-;; Emacs.  They emulate the out-of-the-box looks of Emacs (which
-;; technically do NOT constitute a theme) while bringing to them
-;; thematic consistency, customizability, and extensibility.
+;; The `standard-themes' are a collection of light and dark themes for
+;; GNU Emacs.  The `standard-light' and `standard-dark' emulate the
+;; out-of-the-box looks of Emacs (which technically do NOT constitute
+;; a theme) while bringing to them thematic consistency,
+;; customizability, and extensibility.  Other themes are stylistic
+;; variations of those.
 ;;
 ;; Why call them "standard"?  Obviously because: Standard Themes Are
 ;; Not Derivatives but the Affectionately Reimagined Default ... themes.
@@ -49,7 +51,11 @@
 
 ;;; User options
 
-(defconst standard-themes-items '(standard-dark standard-light)
+(defvaralias 'standard-themes-collection 'standard-themes-items
+  "Alias of `standard-themes-items'.")
+
+(defconst standard-themes-items
+  '(standard-light standard-light-tinted standard-dark standard-dark-tinted)
   "Symbols of the Standard themes.")
 
 (defcustom standard-themes-disable-other-themes t

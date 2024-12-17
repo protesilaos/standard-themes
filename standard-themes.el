@@ -58,6 +58,32 @@
   '(standard-light standard-light-tinted standard-dark standard-dark-tinted)
   "Symbols of the Standard themes.")
 
+(defcustom standard-themes-to-toggle '(standard-light standard-dark)
+  "Specify two Standard themes for the `standard-themes-toggle' command.
+The variable `standard-themes-items' contains the symbols of all
+themes that form part of this collection."
+  :type `(choice
+          (const :tag "No toggle (default)" nil)
+          (list :tag "Pick two themes to toggle between"
+                (choice :tag "Theme one of two"
+                        ,@(mapcar (lambda (theme)
+                                    (list 'const theme))
+                                  standard-themes-items))
+                (choice :tag "Theme two of two"
+                        ,@(mapcar (lambda (theme)
+                                    (list 'const theme))
+                                  standard-themes-items))))
+  :package-version '(standard-themes . "2.2.0")
+  :group 'standard-themes)
+
+(defcustom standard-themes-to-rotate standard-themes-items
+  "List of Standard themes to rotate among, per `standard-themes-rotate'."
+  :type `(repeat (choice
+                  :tag "A theme among the `standard-themes-items'"
+                  ,@(mapcar (lambda (theme) (list 'const theme)) standard-themes-items)))
+  :package-version '(standard-themes . "2.2.0")
+  :group 'standard-themes)
+
 (defcustom standard-themes-disable-other-themes t
   "Disable all other themes when loading a Standard theme.
 
@@ -547,6 +573,65 @@ overrides."
         (standard-themes--palette-value theme))
     (user-error "No enabled Standard theme could be found")))
 
+(defun standard-themes--annotate-theme (theme)
+  "Return completion annotation for THEME."
+  (when-let* ((symbol (intern-soft theme))
+              (doc-string (get symbol 'theme-documentation)))
+    (format " -- %s"
+            (propertize (car (split-string doc-string "\\."))
+                        'face 'completions-annotations))))
+
+(defun standard-themes--standard-p (theme)
+  "Return non-nil if THEME name has a standard- prefix."
+  (string-prefix-p "standard-" (symbol-name theme)))
+
+(defvar standard-themes--select-theme-history nil
+  "Minibuffer history of `standard-themes--select-prompt'.")
+
+(defun standard-themes--completion-table (category candidates)
+  "Pass appropriate metadata CATEGORY to completion CANDIDATES."
+  (lambda (string pred action)
+    (if (eq action 'metadata)
+        `(metadata (category . ,category))
+      (complete-with-action action candidates string pred))))
+
+(defun standard-themes--completion-table-candidates ()
+  "Render `standard-themes--list-known-themes' as completion with theme category."
+  (standard-themes--completion-table 'theme (standard-themes--list-known-themes)))
+
+(defun standard-themes--select-prompt (&optional prompt)
+  "Minibuffer prompt to select a Standard theme.
+With optional PROMPT string, use it.  Else use a generic prompt."
+  (let ((completion-extra-properties `(:annotation-function ,#'standard-themes--annotate-theme)))
+    (intern
+     (completing-read
+      (or prompt "Select Standard theme: ")
+      (standard-themes--completion-table-candidates)
+      nil t nil 'standard-themes--select-theme-history))))
+
+(defun standard-themes-load-theme (theme)
+  "Load THEME while disabling other themes.
+
+Which themes are disabled is determined by the user option
+`standard-themes-disable-other-themes'.
+
+Run the `standard-themes-after-load-theme-hook' as the final step
+after loading the THEME.
+
+Return THEME."
+  (standard-themes--disable-themes)
+  (load-theme theme :no-confirm)
+  (run-hooks 'standard-themes-post-load-hook)
+  theme)
+
+;;;###autoload
+(defun standard-themes-select (theme)
+  "Load a Standard THEME using minibuffer completion.
+Run `standard-themes-after-load-theme-hook' after loading the theme.
+Disable other themes per `standard-themes-disable-other-themes'."
+  (interactive (list (standard-themes--select-prompt)))
+  (standard-themes-load-theme theme))
+
 (defun standard-themes--disable-themes ()
   "Disable themes per `standard-themes-disable-other-themes'."
   (mapc #'disable-theme
@@ -561,43 +646,77 @@ Run `standard-themes-post-load-hook'."
   (load-theme theme :no-confirm)
   (run-hooks 'standard-themes-post-load-hook))
 
-;;;###autoload
-(defun standard-themes-load-dark ()
-  "Load `standard-dark' and run `standard-themes-post-load-hook'."
-  (interactive)
-  (standard-themes--load-theme 'standard-dark))
+(make-obsolete 'standard-themes-load-dark 'standard-themes-load-theme "2.2.0")
+(make-obsolete 'standard-themes-load-light 'standard-themes-load-theme "2.2.0")
 
-;;;###autoload
-(defun standard-themes-load-light ()
-  "Load `standard-light' and run `standard-themes-post-load-hook'."
-  (interactive)
-  (standard-themes--load-theme 'standard-light))
+(defun standard-themes--toggle-theme-p ()
+  "Return non-nil if `standard-themes-to-toggle' are valid."
+  (condition-case nil
+      (dolist (theme standard-themes-to-toggle)
+        (or (memq theme standard-themes-items)
+            (memq theme (standard-themes--list-known-themes))
+            (error "`%s' is not part of `standard-themes-items'" theme)))
+    (error nil)
+    (:success standard-themes-to-toggle)))
 
-(defun standard-themes--load-prompt ()
-  "Helper for `standard-themes-toggle'."
-  (let ((theme
-         (intern
-          (completing-read "Load Standard theme (will disable all others): "
-                           standard-themes-items nil t))))
-    (standard-themes--disable-themes)
-    (pcase theme
-      ('standard-light (standard-themes-load-light))
-      ('standard-dark (standard-themes-load-dark)))))
+;;;; Toggle between two themes
 
 ;;;###autoload
 (defun standard-themes-toggle ()
-  "Toggle between the `standard-dark' and `standard-light' themes.
+  "Toggle between the two `standard-themes-to-toggle'.
+If `standard-themes-to-toggle' does not specify two Standard themes,
+inform the user about it while prompting with completion for a theme
+among our collection (this is practically the same as the
+`standard-themes-select' command).
+
 Run `standard-themes-post-load-hook' after loading the theme."
   (interactive)
-  (pcase (standard-themes--current-theme)
-    ('standard-light (standard-themes-load-dark))
-    ('standard-dark (standard-themes-load-light))
-    (_ (standard-themes--load-prompt))))
+  (if (standard-themes--toggle-theme-p)
+      (pcase-let ((`(,one ,two) standard-themes-to-toggle))
+        (if (eq (car custom-enabled-themes) one)
+            (standard-themes-load-theme two)
+          (standard-themes-load-theme one)))
+    (standard-themes-load-theme
+     (standard-themes--select-prompt
+      (concat "Set two `standard-themes-to-toggle'; "
+              "switching to theme selection for now: ")))))
 
-(defun standard-themes--preview-colors-render (buffer theme &optional mappings &rest _)
-  "Render colors in BUFFER from THEME for `standard-themes-preview-colors'.
-Optional MAPPINGS changes the output to only list the semantic
-color mappings of the palette, instead of its named colors."
+;;;; Rotate through a list of themes
+
+(defun standard-themes--rotate (themes)
+  "Rotate THEMES rightward such that the car is moved to the end."
+  (if (proper-list-p themes)
+      (let* ((index (seq-position themes (standard-themes--current-theme)))
+             (offset (1+ index)))
+        (append (nthcdr offset themes) (take offset themes)))
+    (error "The `%s' is not a list" themes)))
+
+(defun standard-themes--rotate-p (themes)
+  "Return a new theme among THEMES if it is possible to rotate to it."
+  (if-let* ((new-theme (car (standard-themes--rotate themes))))
+      (if (eq new-theme (standard-themes--current-theme))
+          (car (standard-themes--rotate-p (standard-themes--rotate themes)))
+        new-theme)
+    (error "Cannot determine a theme among `%s'" themes)))
+
+;;;###autoload
+(defun standard-themes-rotate (themes)
+  "Rotate to the next theme among THEMES.
+When called interactively THEMES is the value of `standard-themes-to-rotate'.
+
+If the current theme is already the next in line, then move to the one
+after.  Perform the rotation rightwards, such that the first element in
+the list becomes the last.  Do not modify THEMES in the process."
+  (interactive (list standard-themes-to-rotate))
+  (unless (proper-list-p themes)
+    "This is not a list of themes: `%s'" themes)
+  (let ((candidate (standard-themes--rotate-p themes)))
+    (if (standard-themes--standard-p candidate)
+        (progn
+          (message "Rotating to `%s'" (propertize (symbol-name candidate) 'face 'success))
+          (standard-themes-load-theme candidate))
+      (user-error "`%s' is not part of the Standard collection" candidate))))
+
   (let* ((current-palette (standard-themes--palette-value theme mappings))
          (palette (if mappings
                       (seq-remove (lambda (cell)

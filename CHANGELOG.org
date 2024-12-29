@@ -9,6 +9,80 @@ project's main git repository: <https://github.com/protesilaos/standard-themes>.
 The newest release is at the top.  For further details, please consult
 the manual: <https://protesilaos.com/emacs/standard-themes>.
 
+* Version 2.2.0 on 2024-12-29
+:PROPERTIES:
+:CUSTOM_ID: h:1e3bc52c-2bba-411f-864d-c224b86aa9fa
+:END:
+
+This version contains a few refinements to an already stable base.
+
+** Enjoy the new "tinted" themes
+:PROPERTIES:
+:CUSTOM_ID: h:174d90b6-12a1-4e63-88e7-d33bab3dc642
+:END:
+
+I now provide the ~standard-light-tinted~ and ~standard-dark-tinted~
+themes in addition to ~standard-light~ and ~standard-dark~. The
+announcement I made about these new themes also includes screenshots
+of them: <https://protesilaos.com/codelog/2024-12-17-emacs-standard-themes-tinted/>.
+
+The ~standard-light-tinted~ theme has an earthly feel to it, with
+hints of magenta. It otherwise follows the stylistic patterns of its
+~standard-light~ counterpart.
+
+The ~standard-dark-tinted~ theme has a dark blue background in
+combination with appropriate shades of magenta. It, too, is
+stylistically consistent with its ~standard-dark~ counterpart.
+
+** Command to rotate themes
+:PROPERTIES:
+:CUSTOM_ID: h:4db16d31-3ed9-4add-92fd-5fb85129e435
+:END:
+
+The ~standard-themes-rotate~ goes through the Standard themes defined
+in the user option ~standard-themes-to-rotate~. It does so in order
+from left to right, starting from the currently loaded theme. By
+default, the value of ~standard-themes-to-rotate~ is:
+
+#+begin_src emacs-lisp
+'(standard-light standard-light-tinted standard-dark standard-dark-tinted)
+#+end_src
+
+Users who plan to only use two themes can rely instead on the command
+~standard-themes-toggle~ and its ~standard-themes-to-toggle~ variable.
+
+** Explicit support for the ~lin~ and ~pulsar~ packages
+:PROPERTIES:
+:CUSTOM_ID: h:62e6c0fa-abc0-46f7-91af-07b37d1080cd
+:END:
+
+These packages highlight the current line. By extending support to
+their faces, we guarantee that they always look right with the given
+Standard theme.
+
+** The palette preview use a tabular view
+:PROPERTIES:
+:CUSTOM_ID: h:3e344806-14a9-4a9a-87d5-8ae6bc95825d
+:END:
+
+The commands ~standard-themes-list-colors~ and
+~standard-themes-list-colors-current~ are redesigned to show colours
+in a tabular layout.
+
+The practical advantage for users is that they can now sort the
+entries by column: move the cursor to the desired column and type =S=
+(or =M-x tabulated-list-sort=). Do it again to reverse the sorting.
+
+This can be achieved with the mouse as well: move the pointer to the
+relevant column heading and use left click (well, =<mouse-1>= to be
+precise) to select and then reverse the sorting.
+
+Remember that the Standard themes provides a comprehensive mechanism
+of named colours and semantic mappings, which can be overridden. Thus,
+it is possible for one to define a spin-off of these themes by only
+changing a few colour values. Refer to the manual for the details, or
+contact me.
+
 * Version 2.1.0 on 2024-08-11
 :PROPERTIES:
 :CUSTOM_ID: h:9f80dc23-c609-4f29-ad93-b86f8799bd1c

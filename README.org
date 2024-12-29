@@ -4,9 +4,9 @@
 #+language: en
 #+options: ':t toc:nil author:t email:t num:t
 #+startup: content
-#+macro: stable-version 2.1.0
-#+macro: release-date 2024-08-11
-#+macro: development-version 2.2.0-dev
+#+macro: stable-version 2.2.0
+#+macro: release-date 2024-12-29
+#+macro: development-version 2.3.0-dev
 #+export_file_name: standard-themes.texi
 #+texinfo_filename: standard-themes.info
 #+texinfo_dir_category: Emacs misc features
@@ -215,8 +215,6 @@ this variable to a nil value.
 :CUSTOM_ID: h:e06a546a-4fb3-4112-8aa2-d80031d89d5c
 :END:
 
-[ Part of {{{development-version}}}. ]
-
 #+vindex: standard-themes-to-toggle
 The user option ~standard-themes-to-toggle~ is a list of Standard
 themes to switch between when using the command ~standard-themes-toggle~.
@@ -227,8 +225,6 @@ The list must include two items. If there are more, they are ignored.
 :PROPERTIES:
 :CUSTOM_ID: h:90131405-9fdb-44cd-b0d2-a9e1fa8f45ac
 :END:
-
-[ Part of {{{development-version}}}. ]
 
 #+vindex: standard-themes-to-rotate
 The user option ~standard-themes-to-rotate~ is a list of Standard
@@ -1177,7 +1173,7 @@ everything most users need.
 - isearch, occur, query-replace
 - jit-spell
 - keycast
-- lin [ Part of {{{development-version}}}. ]
+- lin
 - line numbers (~display-line-numbers-mode~ and global variant)
 - magit
 - man
@@ -1202,7 +1198,7 @@ everything most users need.
 - package (=M-x list-packages=)
 - perspective
 - powerline
-- pulsar [ Part of {{{development-version}}}. ]
+- pulsar
 - pulse
 - rainbow-delimiters
 - rcirc

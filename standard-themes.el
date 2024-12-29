@@ -1067,6 +1067,7 @@ color mappings instead of the complete palette."
     `(TeX-error-description-warning ((,c :inherit warning)))
 ;;;; auto-dim-other-buffers
     `(auto-dim-other-buffers-face ((,c :background ,bg-inactive)))
+    `(auto-dim-other-buffers-hide-face ((,c :foreground ,bg-inactive :background ,bg-inactive)))
 ;;;; breadcrumb
     `(breadcrumb-face (( )))
     `(breadcrumb-imenu-leaf-face ((,c :inherit bold :foreground ,modeline-warning))) ; same as `which-func'

@@ -2124,6 +2124,9 @@ color mappings instead of the complete palette."
     `(smerge-refined-changed (( )))
     `(smerge-refined-removed ((,c :inherit diff-refine-removed)))
     `(smerge-upper ((,c :inherit diff-removed)))
+;;;; spacious-padding
+    `(spacious-padding-subtle-mode-line-active ((,c :foreground ,accent-0)))
+    `(spacious-padding-subtle-mode-line-inactive ((,c :foreground ,border)))
 ;;;; tab-bar-mode
     `(tab-bar ((,c :inherit standard-themes-ui-variable-pitch :background ,bg-tab)))
     `(tab-bar-tab-inactive ((,c :inherit tab-bar-tab :background ,bg-tab-inactive)))

@@ -484,8 +484,7 @@ This function is used in the macros `standard-themes-theme',
      ((or (stringp value)
           (eq value 'unspecified))
       value)
-     ((and (symbolp value)
-           (memq value (mapcar #'car palette)))
+     ((and (symbolp value) value)
       (standard-themes--retrieve-palette-value value palette))
      (t
       'unspecified))))

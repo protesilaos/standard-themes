@@ -1167,6 +1167,7 @@ everything most users need.
 - git-rebase
 - gnus
 - hi-lock (=M-x highlight-regexp=)
+- howm [ Part of {{{development-version}}}. ]
 - ibuffer
 - image-dired
 - info

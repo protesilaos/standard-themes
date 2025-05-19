@@ -515,12 +515,13 @@ symbol, which is safe when used as a face attribute's value."
       value
     'unspecified))
 
+(defun standard-themes--standard-p (theme)
+  "Return non-nil if THEME name has a standard- prefix."
+  (string-prefix-p "standard-" (symbol-name theme)))
+
 (defun standard-themes--list-enabled-themes ()
   "Return list of `custom-enabled-themes' with standard- prefix."
-  (seq-filter
-   (lambda (theme)
-     (string-prefix-p "standard-" (symbol-name theme)))
-   custom-enabled-themes))
+  (seq-filter #'standard-themes--standard-p custom-enabled-themes))
 
 (defun standard-themes--enable-themes ()
   "Enable the Standard themes."
@@ -532,10 +533,7 @@ symbol, which is safe when used as a face attribute's value."
 (defun standard-themes--list-known-themes ()
   "Return list of `custom-known-themes' with standard- prefix."
   (standard-themes--enable-themes)
-  (seq-filter
-   (lambda (theme)
-     (string-prefix-p "standard-" (symbol-name theme)))
-   custom-known-themes))
+  (seq-filter #'standard-themes--standard-p custom-known-themes))
 
 (defun standard-themes--current-theme ()
   "Return first enabled Standard theme."
@@ -579,10 +577,6 @@ overrides."
     (format " -- %s"
             (propertize (car (split-string doc-string "\\."))
                         'face 'completions-annotations))))
-
-(defun standard-themes--standard-p (theme)
-  "Return non-nil if THEME name has a standard- prefix."
-  (string-prefix-p "standard-" (symbol-name theme)))
 
 (defvar standard-themes--select-theme-history nil
   "Minibuffer history of `standard-themes--select-prompt'.")

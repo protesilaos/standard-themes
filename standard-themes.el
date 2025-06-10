@@ -960,6 +960,7 @@ color mappings instead of the complete palette."
     `(escape-glyph ((,c :foreground ,warning)))
     `(fringe ((,c :background ,fringe :foreground ,fg-main)))
     `(header-line ((,c :inherit standard-themes-ui-variable-pitch :background ,bg-dim)))
+    `(header-line-inactive ((,c :inherit (standard-themes-ui-variable-pitch shadow))))
     `(header-line-highlight ((,c :inherit highlight)))
     `(help-argument-name ((,c :foreground ,prose-verbatim)))
     `(help-key-binding ((,c :inherit (bold standard-themes-fixed-pitch) :foreground ,keybind)))

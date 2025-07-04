@@ -2040,6 +2040,8 @@ color mappings instead of the complete palette."
 ;;;; package (M-x list-packages)
     `(package-description ((,c :foreground ,docstring)))
     `(package-help-section-name ((,c :inherit bold)))
+    `(package-mark-delete-line ((,c :inherit standard-themes-mark-delete)))
+    `(package-mark-install-line ((,c :inherit standard-themes-mark-select)))
     `(package-name ((,c :inherit link)))
     `(package-status-available ((,c :foreground ,date-common)))
     `(package-status-avail-obso ((,c :inherit error)))

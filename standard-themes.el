@@ -1578,7 +1578,7 @@ color mappings instead of the complete palette."
 ;;;; info
     `(Info-quoted ((,c :inherit standard-themes-fixed-pitch :foreground ,prose-code))) ; the capitalization is canonical
     `(info-header-node ((,c :inherit (shadow bold))))
-    `(info-header-xref ((,c :foreground ,link)))
+    `(info-header-xref ((,c :foreground ,fg-link)))
     `(info-index-match ((,c :inherit match)))
     `(info-menu-header ((,c :inherit bold)))
     `(info-menu-star ((,c :foreground ,err)))

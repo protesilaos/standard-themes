@@ -1965,7 +1965,7 @@ color mappings instead of the complete palette."
     `(org-column ((,c :inherit default :background ,bg-alt)))
     `(org-column-title ((,c :inherit (standard-themes-fixed-pitch bold default) :underline t :background ,bg-alt)))
     `(org-date ((,c :inherit standard-themes-fixed-pitch :foreground ,date-common :underline t)))
-    `(org-date-selected ((,c :foreground ,date-common :inverse-video t)))
+    `(org-date-selected ((,c :inherit calendar-today)))
     `(org-document-info ((,c :foreground ,rainbow-1)))
     `(org-document-info-keyword ((,c :inherit (standard-themes-fixed-pitch shadow))))
     `(org-document-title ((,c :inherit standard-themes-heading-0)))

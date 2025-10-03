@@ -172,7 +172,9 @@ to blend Standard and Modus into one collection).
   (setq modus-themes-mixed-fonts t)
   (setq modus-themes-italic-constructs t)
 
-  ;; Finally, load your theme of choice.
+  ;; Finally, load your theme of choice (or a random one with
+  ;; `modus-themes-load-random', `modus-themes-load-random-dark',
+  ;; `modus-themes-load-random-light').
   (modus-themes-load-theme 'standard-light-tinted))
 #+end_src
 

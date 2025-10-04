@@ -116,6 +116,7 @@ if you prefer to blend Standard and Modus into a single group, enable
 
     (bg-search-current bg-magenta-intense)
     (bg-search-lazy bg-cyan-intense)
+    (bg-search-static bg-yellow-subtle)
     (bg-search-replace bg-red-intense)
 
     (bg-search-rx-group-0 bg-blue-intense)

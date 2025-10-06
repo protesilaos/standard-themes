@@ -193,26 +193,6 @@ if you prefer to blend Standard and Modus into a single group, enable
 
 ;;;; Compatibility with older versions of the Standard themes
 
-(define-obsolete-function-alias 'standard-themes-rotate 'modus-themes-rotate
-  "Since version 3.0.0, `standard-themes' derive from the `modus-themes'.
-You can configure the `standard-themes' via the user options of the
-`modus-themes'.
-
-To make all the Modus commands that operate on a theme consider only
-Standard themes, enable `standard-themes-take-over-modus-themes-mode'.
-Or, if you prefer to blend Standard and Modus into a single group,
-enable `modus-themes-include-derivatives-mode' instead.")
-
-(define-obsolete-function-alias 'standard-themes-toggle 'modus-themes-toggle
-  "Since version 3.0.0, `standard-themes' derive from the `modus-themes'.
-You can configure the `standard-themes' via the user options of the
-`modus-themes'.
-
-To make all the Modus commands that operate on a theme consider only
-Standard themes, enable `standard-themes-take-over-modus-themes-mode'.
-Or, if you prefer to blend Standard and Modus into a single group,
-enable `modus-themes-include-derivatives-mode' instead.")
-
 (define-obsolete-variable-alias 'standard-themes-disable-other-themes 'modus-themes-disable-other-themes
   "Since version 3.0.0, `standard-themes' derive from the `modus-themes'.
 You can configure the `standard-themes' via the user options of the
@@ -307,7 +287,12 @@ enable `modus-themes-include-derivatives-mode' instead.")
 
 ;;;###autoload
 (define-minor-mode standard-themes-take-over-modus-themes-mode
-  "When enabled, all Modus themes commands consider only Standard themes."
+  "When enabled, all Modus themes commands consider only Standard themes.
+Alternatively, use the commands `standard-themes-rotate',
+`standard-themes-select', `standard-themes-load-random',
+`standard-themes-load-random-dark', `standard-themes-load-random-light',
+`standard-themes-list-colors', `standard-themes-list-colors-current'.
+They are all designed to only consider Standard themes."
   :global t
   :init-value nil)
 
@@ -318,6 +303,31 @@ enable `modus-themes-include-derivatives-mode' instead.")
             (sorted-light-dark (modus-themes-sort sorted-a-z 'light)))
       sorted-light-dark
     standard-themes-items))
+
+;;;; Convenience commands
+
+;; TODO 2025-10-06: How best to handle a possible `standard-themes-toggle'?
+
+;;;###autoload (autoload 'standard-themes-rotate "standard-themes")
+(modus-themes-define-derivative-command standard-themes rotate)
+
+;;;###autoload (autoload 'standard-themes-select "standard-themes")
+(modus-themes-define-derivative-command standard-themes select)
+
+;;;###autoload (autoload 'standard-themes-load-random "standard-themes")
+(modus-themes-define-derivative-command standard-themes load-random)
+
+;;;###autoload (autoload 'standard-themes-load-random-dark "standard-themes")
+(modus-themes-define-derivative-command standard-themes load-random-dark)
+
+;;;###autoload (autoload 'standard-themes-load-random-light "standard-themes")
+(modus-themes-define-derivative-command standard-themes load-random-light)
+
+;;;###autoload (autoload 'standard-themes-list-colors "standard-themes")
+(modus-themes-define-derivative-command standard-themes list-colors)
+
+;;;###autoload (autoload 'standard-themes-list-colors-current "standard-themes")
+(modus-themes-define-derivative-command standard-themes list-colors-current)
 
 ;;;; Add themes from the package to the load path
 

@@ -193,95 +193,50 @@ if you prefer to blend Standard and Modus into a single group, enable
 
 ;;;; Compatibility with older versions of the Standard themes
 
-(define-obsolete-variable-alias 'standard-themes-disable-other-themes 'modus-themes-disable-other-themes
-  "Since version 3.0.0, `standard-themes' derive from the `modus-themes'.
+(defvar standard-themes--aliased-p nil)
+
+(defun standard-themes-define-alias (prefix suffix &optional is-function)
+  "Make alias for the Modus themes symbol with PREFIX and SUFFIX.
+If IS-FUNCTION is non-nil, use the appropriate calls for functions, else
+assume this is a variable."
+  (let ((our-symbol (intern (format "%s-%s" prefix suffix)))
+        (modus-symbol (intern-soft (format "modus-themes-%s" suffix))))
+    (when (symbolp modus-symbol)
+      (funcall
+       (if is-function
+           #'defalias
+         #'defvaralias)
+       our-symbol
+       modus-symbol
+       (format "`%s' is an alias for `%s'.
+Since version 3.0.0, `standard-themes' derive from the `modus-themes'.
 You can configure the `standard-themes' via the user options of the
 `modus-themes'.
 
 To make all the Modus commands that operate on a theme consider only
 Standard themes, enable `standard-themes-take-over-modus-themes-mode'.
 Or, if you prefer to blend Standard and Modus into a single group,
-enable `modus-themes-include-derivatives-mode' instead.")
+enable `modus-themes-include-derivatives-mode' instead.
 
-(define-obsolete-variable-alias 'standard-themes-headings 'modus-themes-headings
-  "Since version 3.0.0, `standard-themes' derive from the `modus-themes'.
-You can configure the `standard-themes' via the user options of the
-`modus-themes'.
+Alternatively, use the commands `standard-themes-rotate',
+`standard-themes-select', `standard-themes-load-random',
+`standard-themes-load-random-dark', `standard-themes-load-random-light',
+`standard-themes-list-colors', `standard-themes-list-colors-current'.
+They are all designed to only consider Standard themes." our-symbol modus-symbol)))))
 
-To make all the Modus commands that operate on a theme consider only
-Standard themes, enable `standard-themes-take-over-modus-themes-mode'.
-Or, if you prefer to blend Standard and Modus into a single group,
-enable `modus-themes-include-derivatives-mode' instead.")
+;; FIXME 2025-10-07: How best to handle a possible `standard-themes-toggle'?
+;; Should we keep the `standard-themes-to-toggle'? And how about the same
+;; for rotation?
+(defun standard-themes-define-option-aliases ()
+  "Define aliases for the user options of the Modus themes."
+  (unless standard-themes--aliased-p
+    (dolist (suffix '( disable-other-themes to-toggle to-rotate after-load-theme-hook
+                       italic-constructs bold-constructs variable-pitch-ui mixed-fonts
+                       headings completions prompts common-palette-overrides))
+      (standard-themes-define-alias "standard-themes" suffix))
+    (setq standard-themes--aliased-p t)))
 
-(define-obsolete-variable-alias 'standard-themes-mixed-fonts 'modus-themes-mixed-fonts
-  "Since version 3.0.0, `standard-themes' derive from the `modus-themes'.
-You can configure the `standard-themes' via the user options of the
-`modus-themes'.
-
-To make all the Modus commands that operate on a theme consider only
-Standard themes, enable `standard-themes-take-over-modus-themes-mode'.
-Or, if you prefer to blend Standard and Modus into a single group,
-enable `modus-themes-include-derivatives-mode' instead.")
-
-(define-obsolete-variable-alias 'standard-themes-to-rotate 'modus-themes-to-rotate
-  "Since version 3.0.0, `standard-themes' derive from the `modus-themes'.
-You can configure the `standard-themes' via the user options of the
-`modus-themes'.
-
-To make all the Modus commands that operate on a theme consider only
-Standard themes, enable `standard-themes-take-over-modus-themes-mode'.
-Or, if you prefer to blend Standard and Modus into a single group,
-enable `modus-themes-include-derivatives-mode' instead.")
-
-(define-obsolete-variable-alias 'standard-themes-to-toggle 'modus-themes-to-toggle
-  "Since version 3.0.0, `standard-themes' derive from the `modus-themes'.
-You can configure the `standard-themes' via the user options of the
-`modus-themes'.
-
-To make all the Modus commands that operate on a theme consider only
-Standard themes, enable `standard-themes-take-over-modus-themes-mode'.
-Or, if you prefer to blend Standard and Modus into a single group,
-enable `modus-themes-include-derivatives-mode' instead.")
-
-(define-obsolete-variable-alias 'standard-themes-common-palette-overrides 'modus-themes-common-palette-overrides
-  "Since version 3.0.0, `standard-themes' derive from the `modus-themes'.
-You can configure the `standard-themes' via the user options of the
-`modus-themes'.
-
-To make all the Modus commands that operate on a theme consider only
-Standard themes, enable `standard-themes-take-over-modus-themes-mode'.
-Or, if you prefer to blend Standard and Modus into a single group,
-enable `modus-themes-include-derivatives-mode' instead.")
-
-(define-obsolete-variable-alias 'standard-themes-variable-pitch-ui 'modus-themes-variable-pitch-ui
-  "Since version 3.0.0, `standard-themes' derive from the `modus-themes'.
-You can configure the `standard-themes' via the user options of the
-`modus-themes'.
-
-To make all the Modus commands that operate on a theme consider only
-Standard themes, enable `standard-themes-take-over-modus-themes-mode'.
-Or, if you prefer to blend Standard and Modus into a single group,
-enable `modus-themes-include-derivatives-mode' instead.")
-
-(define-obsolete-variable-alias 'standard-themes-after-load-theme-hook 'modus-themes-after-load-theme-hook
-  "Since version 3.0.0, `standard-themes' derive from the `modus-themes'.
-You can configure the `standard-themes' via the user options of the
-`modus-themes'.
-
-To make all the Modus commands that operate on a theme consider only
-Standard themes, enable `standard-themes-take-over-modus-themes-mode'.
-Or, if you prefer to blend Standard and Modus into a single group,
-enable `modus-themes-include-derivatives-mode' instead.")
-
-(define-obsolete-variable-alias 'standard-themes-post-load-hook 'modus-themes-post-load-hook
-  "Since version 3.0.0, `standard-themes' derive from the `modus-themes'.
-You can configure the `standard-themes' via the user options of the
-`modus-themes'.
-
-To make all the Modus commands that operate on a theme consider only
-Standard themes, enable `standard-themes-take-over-modus-themes-mode'.
-Or, if you prefer to blend Standard and Modus into a single group,
-enable `modus-themes-include-derivatives-mode' instead.")
+(standard-themes-define-option-aliases)
 
 ;;;; Limit the Modus themes to only Standard themes
 
@@ -305,8 +260,6 @@ They are all designed to only consider Standard themes."
     standard-themes-items))
 
 ;;;; Convenience commands
-
-;; TODO 2025-10-06: How best to handle a possible `standard-themes-toggle'?
 
 ;;;###autoload (autoload 'standard-themes-rotate "standard-themes")
 (modus-themes-define-derivative-command standard-themes rotate)

@@ -74,7 +74,7 @@ if you prefer to blend Standard and Modus into a single group, enable
   (append standard-themes-light-themes standard-themes-dark-themes)
   "Symbols of the Standard themes.")
 
-(defvar standard-themes-common-palette-mappings
+(defconst standard-themes-common-palette-mappings
   '((fg-region unspecified)
 
     (fringe bg-dim)

@@ -275,7 +275,7 @@ represents."
     dark
     modus-vivendi-palette
     standard-dark-palette
-    standard-dard-palette-overrides
+    standard-dark-palette-overrides
     standard-themes-custom-faces))
 
 ;;; standard-dark-theme.el ends here

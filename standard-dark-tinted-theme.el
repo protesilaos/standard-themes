@@ -50,9 +50,9 @@
      (bg-dim      "#2e3355")
      (fg-dim      "#a6a6a6")
      (bg-alt      "#3f4560")
-     (fg-alt      "#a0afef")
+     (fg-alt      "#80c8d2")
      (bg-active   "#5f6580")
-     (bg-inactive "#252844")
+     (bg-inactive "#203348")
      (border      "#707090")
 
      ;; Basic accent foregrounds
@@ -109,7 +109,7 @@
 
      (bg-added          "#12522f")
      (bg-added-faint    "#0f3a30")
-     (bg-added-refine   "#13694f")
+     (bg-added-refine   "#17623f")
      (fg-added          "#4fb04f")
 
      (bg-changed        "#424200")

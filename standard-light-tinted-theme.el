@@ -52,7 +52,7 @@
      (bg-alt      "#d0bab0")
      (fg-alt      "#193f8f")
      (bg-active   "#b09a90")
-     (bg-inactive "#e0e0d0")
+     (bg-inactive "#dedecd")
      (border      "#9a7a7a")
 
 ;;; Basic accent foregrounds

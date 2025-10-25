@@ -47,12 +47,12 @@
 
      (bg-main     "#ffffff")
      (fg-main     "#000000")
-     (bg-dim      "#ededed")
+     (bg-dim      "#ebebeb")
      (fg-dim      "#7f7f7f")
      (bg-alt      "#dcdcdc")
      (fg-alt      "#193f8f")
      (bg-active   "#bfbfbf")
-     (bg-inactive "#f5f5f5")
+     (bg-inactive "#f0f0f0")
      (border      "#bababa")
 
 ;;; Basic accent foregrounds

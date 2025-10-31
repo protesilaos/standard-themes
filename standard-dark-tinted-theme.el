@@ -274,7 +274,7 @@ represents."
  'standard-themes
  "Night sky variant of standard-dark theme."
  'dark
- 'modus-themes-vivendi-tinted-palette
+ 'modus-vivendi-tinted-palette
  'standard-dark-tinted-palette
  'standard-dark-tinted-palette-overrides
  'standard-themes-custom-faces)

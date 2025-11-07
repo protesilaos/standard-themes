@@ -242,6 +242,9 @@ They are all designed to only consider Standard themes." our-symbol modus-symbol
 
 (standard-themes-define-option-aliases)
 
+(defalias 'standard-themes-with-colors 'modus-themes-with-colors
+  "Alias for `modus-themes-with-colors.")
+
 ;;;; Limit the Modus themes to only Standard themes
 
 ;;;###autoload

@@ -147,12 +147,10 @@ Everything is in place to set up the package.
 
 [ Updated as part of {{{development-version}}}, to build on top of the ~modus-themes~. ]
 
-Starting with version =3.0.0=, the ~standard-themes~ are built on top of the
-~modus-themes~. This means that all customisation options of the Modus
-themes apply to the Standard themes. Same for all Modus commands that load a
-theme. Enable ~standard-themes-take-over-modus-themes-mode~ to set up this
-arrangement (or enable ~modus-themes-include-derivatives-mode~ instead
-to blend Standard and Modus into one collection).
+Starting with version =3.0.0= (currently {{{development-version}}}),
+the ~standard-themes~ are built on top of the ~modus-themes~. This means
+that all customisation is done via the Modus user options ([[#h:c3975e07-8bbb-42b2-a160-27e3afeb3258][Customisation options]]).
+Furthermore, all theme-loading commands are those of Modus ([[#h:d8ebe175-cd61-4e0b-9b84-7a4f5c7e09cd][Working with other Modus themes or taking over Modus]]).
 
 #+begin_src emacs-lisp
 (use-package standard-themes
@@ -178,16 +176,153 @@ to blend Standard and Modus into one collection).
   (modus-themes-load-theme 'standard-light-tinted))
 #+end_src
 
-* Customization options
+* Working with other Modus themes or taking over Modus
+:PROPERTIES:
+:CUSTOM_ID: h:d8ebe175-cd61-4e0b-9b84-7a4f5c7e09cd
+:END:
+
+Starting version =3.0.0=, the Standard themes are built on top of the
+Modus themes. This means that they inherit the comprehensive
+infrastructure of Modus and all of its wide face/package coverage. To
+make the change easier for existing users, we provide aliases for user
+options and commands.
+
+** Loading only Standard themes with the convenience wrappers we provide
+:PROPERTIES:
+:CUSTOM_ID: h:b5e7977b-817f-4519-afaf-ea46d51ef32c
+:END:
+
+All the old commands Standard provided for loading one of its themes will
+still work as before, meaning that they will only ever show and load a
+theme that belongs to the Standard collection ([[#h:22bf7a88-aa4d-4f46-a7bb-b4f9a0cd7224][Combining core Modus themes with all their derivatives]]).
+
+Internally, these commands are now using the Modus infrastructure and
+are then limiting the set of themes to the Standard collection. They are
+thus convenience wrappers around the equivalent Modus commands.
+
+#+findex: standard-themes-toggle
+- ~standard-themes-toggle~
+
+#+findex: standard-themes-rotate
+- ~standard-themes-rotate~
+
+#+findex: standard-themes-select
+- ~standard-themes-select~
+
+#+findex: standard-themes-load-random
+- ~standard-themes-load-random~
+
+#+findex: standard-themes-load-random-dark
+- ~standard-themes-load-random-dark~
+
+#+findex: standard-themes-load-random-light
+- ~standard-themes-load-random-light~
+
+#+findex: standard-themes-list-colors
+#+findex: standard-themes-list-colors-current
+Additionally, the commands ~standard-themes-list-colors~ and
+~standard-themes-list-colors-current~ use the relevant Modus functionality
+under the hood while working only with Standard themes.
+
+Depending on their needs, users may prefer to take over Modus
+completely, instead of relying on these convenience wrapper commands
+([[#h:bf30baf6-b6d6-46e8-b9b2-ce829a27c6da][Taking over the Modus commands altogether]]).
+
+** Combining core Modus themes with all their derivatives
+:PROPERTIES:
+:CUSTOM_ID: h:22bf7a88-aa4d-4f46-a7bb-b4f9a0cd7224
+:END:
+
+#+findex: modus-themes-include-derivatives-mode
+The minor mode ~modus-themes-include-derivatives-mode~ makes all the
+theme-loading commands that Modus defines consider all core and
+derivative themes. This means that something like ~modus-themes-select~
+will offer ~modus-operandi~ and ~ef-summer~ as two of the many
+possible candidates.
+
+In this scenario, the Modus and Standard collections become part of a larger
+family of themes as opposed to only considering one or the other
+([[#h:b5e7977b-817f-4519-afaf-ea46d51ef32c][Loading only Standard themes with the convenience wrappers we provide]]).
+Enable ~modus-themes-include-derivatives-mode~ and then access them
+all with the following commands:
+
+#+findex: modus-themes-toggle
+- ~modus-themes-toggle~
+
+#+findex: modus-themes-rotate
+- ~modus-themes-rotate~
+
+#+findex: modus-themes-select
+- ~modus-themes-select~
+
+#+findex: modus-themes-load-random
+- ~modus-themes-load-random~
+
+#+findex: modus-themes-load-random-dark
+- ~modus-themes-load-random-dark~
+
+#+findex: modus-themes-load-random-light
+- ~modus-themes-load-random-light~
+
+#+findex: modus-themes-list-colors
+#+findex: modus-themes-preview-colors
+- ~modus-themes-list-colors~ (alias ~modus-themes-preview-colors~)
+
+#+findex: modus-themes-list-colors-current
+- ~modus-themes-list-colors-current~ (alias ~modus-themes-preview-colors-current~)
+
+Consult the manual of the Modus themes for further details and/or read
+the documentation string of each command.
+
+** Taking over the Modus commands altogether
+:PROPERTIES:
+:CUSTOM_ID: h:bf30baf6-b6d6-46e8-b9b2-ce829a27c6da
+:END:
+
+#+findex: standard-themes-take-over-modus-themes-mode
+The minor mode ~standard-themes-take-over-modus-themes-mode~ makes all Modus
+commands that load a theme consider only Standard themes. This is the
+opposite of allowing different theme collections to be blended
+together ([[#h:22bf7a88-aa4d-4f46-a7bb-b4f9a0cd7224][Combining core Modus themes with all their derivatives]]).
+It effectively is the same as using one of the convenience wrapper
+commands we already provide ([[#h:b5e7977b-817f-4519-afaf-ea46d51ef32c][Loading only Standard themes with the convenience wrappers we provide]]).
+
+This minor mode exists to accommodate the needs of users who install
+both the Modus and Standard theme packages (and possibly other Modus
+derivatives). They can maintain a single/shared configuration and then
+decide when to enable ~standard-themes-take-over-modus-themes-mode~ to
+switch to using just the Standard themes. In this scenario, a key binding
+to, say, ~modus-themes-rotate~ does not need to be updated: it
+internally reads only Standard themes. When ~standard-themes-take-over-modus-themes-mode~
+is disabled, that same key binding will revert to doing what it did
+before (load only a core Modus theme or Modus plus derivatives if
+~modus-themes-include-derivatives-mode~ is enabled).
+
+** Customisation options for compatibility with Modus
 :PROPERTIES:
 :CUSTOM_ID: h:c3975e07-8bbb-42b2-a160-27e3afeb3258
 :END:
 
-[ Redone as part of {{{development-version}}}. ]
+Consult the Modus themes manual for all customisation options. All the
+user options defined by the Standard themes prior to their version =3.0.0=
+(i.e. before building on top of the Modus themes) are now aliases for
+the equivalent Modus options. We do this for backward compatibility.
+Concretely:
 
-Starting with version =3.0.0= of the ~standard-themes~, all
-customisation is done via the ~modus-themes~. Consult the latter's
-manual for all the technicalities ([[#h:7141f66d-f1b3-4c9a-b07a-f8e78068dcdc][Sample configuration]]).
+| Old name                           | Is alias for CURRENT NAME             |
+|------------------------------------+---------------------------------------|
+| standard-themes-disable-other-themes     | modus-themes-disable-other-themes     |
+| standard-themes-to-toggle                | modus-themes-to-toggle                |
+| standard-themes-to-rotate                | modus-themes-to-rotate                |
+| standard-themes-after-load-theme-hook    | modus-themes-after-load-theme-hook    |
+| standard-themes-italic-constructs        | modus-themes-italic-constructs        |
+| standard-themes-bold-constructs          | modus-themes-bold-constructs          |
+| standard-themes-variable-pitch-ui        | modus-themes-variable-pitch-ui        |
+| standard-themes-mixed-fonts              | modus-themes-mixed-fonts              |
+| standard-themes-headings                 | modus-themes-headings                 |
+| standard-themes-completions              | modus-themes-completions              |
+| standard-themes-prompts                  | modus-themes-prompts                  |
+| standard-themes-common-palette-overrides | modus-themes-common-palette-overrides |
 
 * Acknowledgements
 :PROPERTIES:

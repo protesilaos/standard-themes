@@ -228,9 +228,6 @@ Alternatively, use the commands `standard-themes-rotate',
 `standard-themes-list-colors', `standard-themes-list-colors-current'.
 They are all designed to only consider Standard themes." our-symbol modus-symbol)))))
 
-;; FIXME 2025-10-07: How best to handle a possible `standard-themes-toggle'?
-;; Should we keep the `standard-themes-to-toggle'? And how about the same
-;; for rotation?
 (defun standard-themes-define-option-aliases ()
   "Define aliases for the user options of the Modus themes."
   (unless standard-themes--aliased-p
@@ -267,6 +264,9 @@ They are all designed to only consider Standard themes."
     standard-themes-items))
 
 ;;;; Convenience commands
+
+;;;###autoload (autoload 'standard-themes-toggle "standard-themes")
+(modus-themes-define-derivative-command standard-themes toggle)
 
 ;;;###autoload (autoload 'standard-themes-rotate "standard-themes")
 (modus-themes-define-derivative-command standard-themes rotate)

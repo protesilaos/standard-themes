@@ -4,9 +4,9 @@
 #+language: en
 #+options: ':t toc:nil author:t email:t num:t
 #+startup: content
-#+macro: stable-version 2.2.0
-#+macro: release-date 2024-12-29
-#+macro: development-version 3.0.0-dev
+#+macro: stable-version 3.0.0
+#+macro: release-date 2025-11-09
+#+macro: development-version 3.1.0-dev
 #+export_file_name: standard-themes.texi
 #+texinfo_filename: standard-themes.info
 #+texinfo_dir_category: Emacs misc features
@@ -145,12 +145,10 @@ Everything is in place to set up the package.
 :CUSTOM_ID: h:7141f66d-f1b3-4c9a-b07a-f8e78068dcdc
 :END:
 
-[ Updated as part of {{{development-version}}}, to build on top of the ~modus-themes~. ]
-
-Starting with version =3.0.0= (currently {{{development-version}}}),
-the ~standard-themes~ are built on top of the ~modus-themes~. This means
-that all customisation is done via the Modus user options ([[#h:c3975e07-8bbb-42b2-a160-27e3afeb3258][Customisation options]]).
-Furthermore, all theme-loading commands are those of Modus ([[#h:d8ebe175-cd61-4e0b-9b84-7a4f5c7e09cd][Working with other Modus themes or taking over Modus]]).
+Starting with version =3.0.0=, the ~standard-themes~ are built on top
+of the ~modus-themes~. This means that all customisation is done via
+the Modus user options ([[#h:c3975e07-8bbb-42b2-a160-27e3afeb3258][Customisation options]]). Furthermore, all
+theme-loading commands are those of Modus ([[#h:d8ebe175-cd61-4e0b-9b84-7a4f5c7e09cd][Working with other Modus themes or taking over Modus]]).
 
 #+begin_src emacs-lisp
 (use-package standard-themes

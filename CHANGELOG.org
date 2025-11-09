@@ -9,6 +9,40 @@ project's main git repository: <https://github.com/protesilaos/standard-themes>.
 The newest release is at the top.  For further details, please consult
 the manual: <https://protesilaos.com/emacs/standard-themes>.
 
+#+toc: headlines 1 insert TOC here, with one headline level
+
+* Version 3.0.0 on 2025-11-09
+:PROPERTIES:
+:CUSTOM_ID: h:a3851ca1-7576-430e-9c80-e873dac51613
+:END:
+
+This major version makes Standard build on top of my Modus themes. The
+latter provides extensive face/package coverage and a wide range of
+customisation options. As a result, the Standard themes retain their
+design while giving more control to the user.
+
+These release notes are essentially the same as what I wrote earlier
+today for my ~ef-themes~ package, which is now also built on top of my
+Modus themes: <https://protesilaos.com/codelog/2025-11-09-emacs-ef-themes-2-0-0/>.
+
+In short:
+
+- User options that were provided by the Standard themes are now mere
+  aliases for their Modus counterparts.
+- Commands that were defined by the Standard themes are now reduced to
+  convenience wrappers that build on top of Modus.
+- The new minor mode ~standard-themes-take-over-modus-themes-mode~ can
+  be enabled to make all Modus commands that load a theme only
+  consider the Standard themes. This is effectively the opposite of
+  enabling the ~modus-themes-include-derivatives-mode~ or using one of
+  the Standard commands to load just a Standard theme (like
+  ~standard-themes-rotate~).
+- The manual of the Modus themes covers everything from the basics to
+  advanced topics on how to use and customise the themes. Evaluate
+  ~(info "(modus-themes) Top")~ or visit <https://protesilaos.com/emacs/modus-themes>.
+
+You are welcome to contact me if something is unclear.
+
 * Version 2.2.0 on 2024-12-29
 :PROPERTIES:
 :CUSTOM_ID: h:1e3bc52c-2bba-411f-864d-c224b86aa9fa

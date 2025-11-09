@@ -30,10 +30,14 @@ to blend Standard and Modus into one collection).
 (use-package standard-themes
   :ensure t
   :init
-  ;; This makes the Modus commands listed below consider only the
-  ;; Standard themes.  For an alternative that includes Modus and all
-  ;; derivative themes (like Standard), enable the
-  ;; `modus-themes-include-derivatives-mode' instead.
+  ;; This makes the Modus commands listed below consider only the Ef
+  ;; themes.  For an alternative that includes Modus and all
+  ;; derivative themes (like Ef), enable the
+  ;; `modus-themes-include-derivatives-mode' instead.  The manual of
+  ;; the Ef themes has a section that explains all the possibilities:
+  ;;
+  ;; - Evaluate `(info "(standard-themes) Working with other Modus themes or taking over Modus")'
+  ;; - Visit <https://protesilaos.com/emacs/standard-themes#h:d8ebe175-cd61-4e0b-9b84-7a4f5c7e09cd>
   (standard-themes-take-over-modus-themes-mode 1)
   :bind
   (("<f5>" . modus-themes-rotate)

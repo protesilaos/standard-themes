@@ -239,6 +239,9 @@ They are all designed to only consider Standard themes." our-symbol modus-symbol
 
 (standard-themes-define-option-aliases)
 
+(defalias 'standard-themes-load-theme 'modus-themes-load-theme
+  "Alias for `modus-themes-load-theme.")
+
 (defalias 'standard-themes-with-colors 'modus-themes-with-colors
   "Alias for `modus-themes-with-colors.")
 

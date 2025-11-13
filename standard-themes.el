@@ -5,7 +5,7 @@
 ;; Author: Protesilaos Stavrou <info@protesilaos.com>
 ;; Maintainer: Protesilaos Stavrou <info@protesilaos.com>
 ;; URL: https://github.com/protesilaos/standard-themes
-;; Version: 3.0.0
+;; Version: 3.0.1
 ;; Package-Requires: ((emacs "28.1") (modus-themes "5.0.0"))
 ;; Keywords: faces, theme, accessibility
 
@@ -80,6 +80,8 @@ if you prefer to blend Standard and Modus into a single group, enable
     (fg-region unspecified)
 
     (fringe bg-dim)
+
+    (property variable)
 
     (date-common cyan-warmer)
     (date-deadline red)

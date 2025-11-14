@@ -89,7 +89,7 @@ if you prefer to blend Standard and Modus into a single group, enable
     (date-holiday red-cooler)
     (date-now fg-main)
     (date-range fg-alt)
-    (date-scheduled green)
+    (date-scheduled red-cooler)
     (date-weekday cyan-warmer)
     (date-weekend red)
 

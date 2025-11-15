@@ -81,6 +81,7 @@ if you prefer to blend Standard and Modus into a single group, enable
 
     (fringe bg-dim)
 
+    (docmarkup constant)
     (property variable)
 
     (date-common cyan-warmer)

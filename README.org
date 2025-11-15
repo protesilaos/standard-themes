@@ -340,7 +340,7 @@ matters.
 + Contributions to code :: Clemens Radermacher, Trevor Arjeski.
 
 + Ideas and/or user feedback :: EyoelYT, Filippo Argiolas, Fritz
-  Grabo, Manuel Uberti, Tassilo Horn, Zack Weinberg.
+  Grabo, Manuel Uberti, Tassilo Horn, Vincenzo (vpxyz), Zack Weinberg.
 
 * GNU Free Documentation License
 :PROPERTIES:

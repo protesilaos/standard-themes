@@ -133,9 +133,9 @@ if you prefer to blend Standard and Modus into a single group, enable
     (bg-search-rx-group-2 bg-green-subtle)
     (bg-search-rx-group-3 bg-magenta-subtle)
 
-    (prose-code cyan-cooler)
-    (prose-macro green-warmer)
-    (prose-verbatim magenta-warmer)
+    (fg-prose-code cyan-cooler)
+    (fg-prose-macro green-warmer)
+    (fg-prose-verbatim magenta-warmer)
 
     (fg-heading-0 rainbow-0)
     (fg-heading-1 rainbow-1)

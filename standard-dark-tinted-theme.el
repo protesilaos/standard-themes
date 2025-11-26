@@ -41,11 +41,8 @@
 (require 'standard-themes)
 
 (defconst standard-dark-tinted-palette
-  (append
-   '(
-;;; Basic values
-
-     (bg-main     "#182440")
+  (modus-themes-generate-palette
+   '((bg-main     "#182440")
      (fg-main     "#ffffff")
      (bg-dim      "#2e3355")
      (fg-dim      "#a6a6a6")
@@ -54,9 +51,6 @@
      (bg-active   "#5f6580")
      (bg-inactive "#203348")
      (border      "#707090")
-
-     ;; Basic accent foregrounds
-
      (red             "#ff6f60")
      (red-warmer      "#ff7f24")
      (red-cooler      "#ff778f")
@@ -81,170 +75,106 @@
      (cyan-warmer     "#87cefa")
      (cyan-cooler     "#7fffd4")
      (cyan-faint      "#6acbcb")
-
-;;; Common accent backgrounds
-
      (bg-red-intense     "#9d1f1f")
      (bg-green-intense   "#2f822f")
      (bg-yellow-intense  "#7a6100")
      (bg-blue-intense    "#1640b0")
      (bg-magenta-intense "#7030af")
      (bg-cyan-intense    "#2266ae")
-
      (bg-red-subtle      "#620f2a")
      (bg-green-subtle    "#00422a")
      (bg-yellow-subtle   "#4a4000")
      (bg-blue-subtle     "#242679")
      (bg-magenta-subtle  "#552f5f")
      (bg-cyan-subtle     "#004065")
-
      (bg-red-nuanced     "#2c0614")
      (bg-green-nuanced   "#001904")
      (bg-yellow-nuanced  "#221000")
      (bg-blue-nuanced    "#0f0e39")
      (bg-magenta-nuanced "#230631")
      (bg-cyan-nuanced    "#041529")
-
-;;; Diffs
-
      (bg-added          "#12522f")
      (bg-added-faint    "#0f3a30")
      (bg-added-refine   "#17623f")
      (fg-added          "#4fb04f")
-
      (bg-changed        "#424200")
      (bg-changed-faint  "#383a00")
      (bg-changed-refine "#684f20")
      (fg-changed        "#e0cf03")
-
      (bg-removed        "#602119")
      (bg-removed-faint  "#4e0f1f")
      (bg-removed-refine "#792f2f")
      (fg-removed        "#ff5f5f")
-
-;;; Marks
-
-     (bg-mark-alt  "#223f6a")
-     (fg-mark-alt  "#57defa")
-
-     (bg-mark-del  "#5a201f")
-     (fg-mark-del  "#ff7f60")
-
-     (bg-mark-sel  "#494000")
-     (fg-mark-sel  "#d0d082")
-
-;;; Graphs
-
-     (red-graph-0-bg     "#b52c2c")
-     (red-graph-1-bg     "#702020")
-     (green-graph-0-bg   "#4fd100")
-     (green-graph-1-bg   "#007800")
-     (yellow-graph-0-bg  "#f1e00a")
-     (yellow-graph-1-bg  "#b08600")
-     (blue-graph-0-bg    "#2fafef")
-     (blue-graph-1-bg    "#1f2f8f")
-     (magenta-graph-0-bg "#bf94fe")
-     (magenta-graph-1-bg "#5f509f")
-     (cyan-graph-0-bg    "#47dfea")
-     (cyan-graph-1-bg    "#00808f")
-
-;;; Special hues
-
+     (bg-mark-other  "#223f6a")
+     (fg-mark-other  "#57defa")
+     (bg-mark-delete  "#5a201f")
+     (fg-mark-delete  "#ff7f60")
+     (bg-mark-select  "#494000")
+     (fg-mark-select  "#d0d082")
      (bg-completion "#406a70")
      (bg-hover      "#35705f")
-     (bg-hover-alt  "#00688b")
+     (bg-hover-secondary  "#00688b")
      (bg-hl-line    "#304845")
      (bg-region     "#4f2f99")
      (bg-paren-match "#4f94cd")
-     (bg-err        "#5f1f1f") ; check with err
-     (bg-warning    "#434100") ; check with warning
-     (bg-info       "#20481f") ; check with info
-
      (bg-mode-line-active        "#5b59b2")
      (fg-mode-line-active        "#ffffff")
      (border-mode-line-active    "#9595b5")
      (bg-mode-line-inactive      "#353a52")
      (fg-mode-line-inactive      "#a6a6a6")
      (border-mode-line-inactive  "#606070")
-
      (modeline-err     "#ff80af")
      (modeline-warning "#dfcf33")
      (modeline-info    "#2fc82f")
-
      (underline-err     "#df2f2f")
      (underline-warning "#c0b000")
-     (underline-info    "#22b022")
-
-;;; Mappings
-
-;;;; General mappings
-
+     (underline-note    "#22b022")
      (cursor "#d072f0")
-
-     (name cyan-cooler)
-     (keybind blue-cooler)
-
-     (err red)
-     (warning yellow-warmer)
-     (info green)
-
-;;;; Prompt mappings
-
-     (fg-prompt cyan)
-
-;;;; Code mappings
-
-     (builtin blue-faint)
-     (comment red-warmer)
-     (constant cyan-cooler)
-     (fnname cyan-warmer)
-     (fnname-call cyan-faint)
-     (keyword cyan)
-     (preprocessor blue-faint)
-     (docstring yellow-cooler)
-     (string yellow-cooler)
-     (type green-cooler)
-     (variable yellow)
-     (variable-use yellow-faint)
-     (rx-escape green) ; compare with `string'
-     (rx-construct fg-main)
-
-;;;; Accent mappings
-
-     (accent-0 blue-warmer)
-     (accent-1 red-cooler)
-     (accent-2 green)
-     (accent-3 magenta-cooler)
-
-;;;; Link mappings
-
-     (fg-link cyan)
-     (bg-link unspecified)
-     (underline-link blue-warmer)
-
-     (fg-link-visited magenta-cooler)
-     (bg-link-visited unspecified)
-     (underline-link-visited magenta)
-
-;;;; Mail mappings
-
-     (mail-0 magenta-warmer)
-     (mail-1 cyan-cooler)
-     (mail-2 yellow)
-     (mail-3 red)
-     (mail-4 blue-warmer)
-     (mail-recipient blue)
-     (mail-subject magenta-cooler)
-     (mail-other cyan)
-
-;;;; Rainbow mappings
-
      (rainbow-0 "#afeeee"))
-   standard-themes-common-palette-mappings)
+   'warm
+   nil
+   (append
+    '((name cyan-cooler)
+      (keybind blue-cooler)
+      (err red)
+      (warning yellow-warmer)
+      (info green)
+      (fg-prompt cyan)
+      (builtin blue-faint)
+      (comment red-warmer)
+      (constant cyan-cooler)
+      (fnname cyan-warmer)
+      (fnname-call cyan-faint)
+      (keyword cyan)
+      (preprocessor blue-faint)
+      (docstring yellow-cooler)
+      (string yellow-cooler)
+      (type green-cooler)
+      (variable yellow)
+      (variable-use yellow-faint)
+      (rx-backslash green) ; compare with `string'
+      (rx-construct fg-main)
+      (accent-0 blue-warmer)
+      (accent-1 red-cooler)
+      (accent-2 green)
+      (accent-3 magenta-cooler)
+      (fg-link cyan)
+      (bg-link unspecified)
+      (underline-link blue-warmer)
+      (fg-link-visited magenta-cooler)
+      (bg-link-visited unspecified)
+      (underline-link-visited magenta)
+      (mail-cite-0 magenta-warmer)
+      (mail-cite-1 cyan-cooler)
+      (mail-cite-2 yellow)
+      (mail-cite-3 red)
+      (mail-recipient blue)
+      (mail-subject magenta-cooler)
+      (mail-other cyan))
+    standard-themes-common-palette-mappings))
   "The `standard-dark-tinted' palette.
 Color values have the form (COLOR-NAME HEX-VALUE) with the former
 as a symbol and the latter as a string.
-
 Semantic color mappings have the form (MAPPING-NAME COLOR-NAME)
 with both as symbols.  The latter is a color that already exists
 in the palette and is associated with a HEX-VALUE.")

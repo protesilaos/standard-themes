@@ -145,27 +145,7 @@ if you prefer to blend Standard and Modus into a single group, enable
     (fg-heading-5 rainbow-5)
     (fg-heading-6 rainbow-6)
     (fg-heading-7 rainbow-7)
-    (fg-heading-8 rainbow-8)
-
-    (bg-heading-0 unspecified)
-    (bg-heading-1 unspecified)
-    (bg-heading-2 unspecified)
-    (bg-heading-3 unspecified)
-    (bg-heading-4 unspecified)
-    (bg-heading-5 unspecified)
-    (bg-heading-6 unspecified)
-    (bg-heading-7 unspecified)
-    (bg-heading-8 unspecified)
-
-    (overline-heading-0 unspecified)
-    (overline-heading-1 unspecified)
-    (overline-heading-2 unspecified)
-    (overline-heading-3 unspecified)
-    (overline-heading-4 unspecified)
-    (overline-heading-5 unspecified)
-    (overline-heading-6 unspecified)
-    (overline-heading-7 unspecified)
-    (overline-heading-8 unspecified))
+    (fg-heading-8 rainbow-8))
   "Common palette mappings for the Standard themes.")
 
 (defconst standard-themes-custom-faces

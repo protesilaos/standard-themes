@@ -170,6 +170,13 @@ if you prefer to blend Standard and Modus into a single group, enable
                 :foreground ,fg-mode-line-active)
        (((supports :box t))
         ,@(modus-themes--box border-mode-line-active nil 'released-button))
+       (t :underline ,border-mode-line-active)))
+    `(mode-line-active
+      ((default :inherit modus-themes-ui-variable-pitch
+                :background ,bg-mode-line-active
+                :foreground ,fg-mode-line-active)
+       (((supports :box t))
+        ,@(modus-themes--box border-mode-line-active nil 'released-button))
        (t :underline ,border-mode-line-active)))))
 
 (defconst standard-themes-with-properties

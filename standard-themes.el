@@ -128,10 +128,20 @@ if you prefer to blend Standard and Modus into a single group, enable
     (bg-search-static bg-yellow-subtle)
     (bg-search-replace bg-red-intense)
 
+    (fg-search-current fg-main)
+    (fg-search-lazy fg-main)
+    (fg-search-static fg-main)
+    (fg-search-replace fg-main)
+
     (bg-search-rx-group-0 bg-blue-intense)
     (bg-search-rx-group-1 bg-yellow-intense)
     (bg-search-rx-group-2 bg-green-subtle)
     (bg-search-rx-group-3 bg-magenta-subtle)
+
+    (fg-search-rx-group-0 fg-main)
+    (fg-search-rx-group-1 fg-main)
+    (fg-search-rx-group-2 fg-main)
+    (fg-search-rx-group-3 fg-main)
 
     (fg-prose-code cyan-cooler)
     (fg-prose-macro green-warmer)

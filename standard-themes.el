@@ -261,7 +261,7 @@ They are all designed to only consider Standard themes."
   :init-value nil)
 
 (cl-defmethod modus-themes-get-themes (&context (standard-themes-take-over-modus-themes-mode (eql t)))
-  "Return list of Standard themes, per `standard-themes-take-over-modus-themes-mode'."
+  "Return Standard themes per `standard-themes-take-over-modus-themes-mode'."
   (if-let* ((themes (modus-themes-get-all-known-themes 'standard-themes))
             (sorted-a-z (sort themes #'string-lessp))
             (sorted-light-dark (modus-themes-sort sorted-a-z 'light)))

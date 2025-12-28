@@ -180,10 +180,10 @@ if you prefer to blend Standard and Modus into a single group, enable
        (t :underline ,border-mode-line-active)))))
 
 (defconst standard-themes-with-properties
-  '((standard-light standard-themes "Like the unthemed light Emacs, but more consistent." light modus-operandi-palette standard-light-palette standard-light-palette-overrides)
-    (standard-light-tinted standard-themes "Light ochre variant of the standard-light theme." light modus-operandi-tinted-palette standard-light-tinted-palette standard-light-tinted-palette-overrides)
-    (standard-dark standard-themes "Like the unthemed dark Emacs, but more consistent." dark modus-vivendi-palette standard-dark-palette standard-dark-palette-overrides)
-    (standard-dark-tinted standard-themes "Night sky variant of standard-dark theme." dark modus-vivendi-tinted-palette standard-dark-tinted-palette standard-dark-tinted-palette-overrides)))
+  '((standard-light standard-themes "Like the unthemed light Emacs, but more consistent." light standard-light-palette nil standard-light-palette-overrides)
+    (standard-light-tinted standard-themes "Light ochre variant of the standard-light theme." light standard-light-tinted-palette nil standard-light-tinted-palette-overrides)
+    (standard-dark standard-themes "Like the unthemed dark Emacs, but more consistent." dark standard-dark-palette nil standard-dark-palette-overrides)
+    (standard-dark-tinted standard-themes "Night sky variant of standard-dark theme." dark standard-dark-tinted-palette nil standard-dark-tinted-palette-overrides)))
 
 (defvar standard-themes--declared-p nil)
 

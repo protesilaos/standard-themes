@@ -185,7 +185,7 @@ if you prefer to blend Standard and Modus into a single group, enable
     (standard-dark standard-themes "Like the unthemed dark Emacs, but more consistent." dark standard-dark-palette nil standard-dark-palette-overrides)
     (standard-dark-tinted standard-themes "Night sky variant of standard-dark theme." dark standard-dark-tinted-palette nil standard-dark-tinted-palette-overrides)
     (standard-adwaita standard-themes "Like the built-in adwaita theme, but more consistent" light standard-adwaita-palette nil standard-adwaita-palette-overrides)
-    (standard-wombat standard-themes "Like the built-in adwaita theme, but more consistent" dark standard-wombat-palette nil standard-wombat-palette-overrides)))
+    (standard-wombat standard-themes "Like the built-in wombat theme, but more consistent" dark standard-wombat-palette nil standard-wombat-palette-overrides)))
 
 (defvar standard-themes--declared-p nil)
 

@@ -337,7 +337,8 @@ matters.
 
 + Author/maintainer :: Protesilaos Stavrou.
 
-+ Contributions to code :: Clemens Radermacher, Trevor Arjeski.
++ Contributions to code :: Clemens Radermacher, Elías Gabriel Pérez,
+  Trevor Arjeski.
 
 + Ideas and/or user feedback :: EyoelYT, Filippo Argiolas, Fritz
   Grabo, Manuel Uberti, Tassilo Horn, Vincenzo (vpxyz), Zack Weinberg.

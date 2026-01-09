@@ -60,11 +60,11 @@ if you prefer to blend Standard and Modus into a single group, enable
   :tag "Standard Themes")
 
 (defconst standard-themes-light-themes
-  '(standard-light standard-light-tinted)
+  '(standard-light standard-light-tinted standard-adwaita)
   "List of symbols with the light Standard themes.")
 
 (defconst standard-themes-dark-themes
-  '(standard-dark standard-dark-tinted)
+  '(standard-dark standard-dark-tinted standard-wombat)
   "List of symbols with the dark Standard themes.")
 
 (defvaralias 'standard-themes-collection 'standard-themes-items
@@ -183,7 +183,9 @@ if you prefer to blend Standard and Modus into a single group, enable
   '((standard-light standard-themes "Like the unthemed light Emacs, but more consistent." light standard-light-palette nil standard-light-palette-overrides)
     (standard-light-tinted standard-themes "Light ochre variant of the standard-light theme." light standard-light-tinted-palette nil standard-light-tinted-palette-overrides)
     (standard-dark standard-themes "Like the unthemed dark Emacs, but more consistent." dark standard-dark-palette nil standard-dark-palette-overrides)
-    (standard-dark-tinted standard-themes "Night sky variant of standard-dark theme." dark standard-dark-tinted-palette nil standard-dark-tinted-palette-overrides)))
+    (standard-dark-tinted standard-themes "Night sky variant of standard-dark theme." dark standard-dark-tinted-palette nil standard-dark-tinted-palette-overrides)
+    (standard-adwaita standard-themes "Like the built-in adwaita theme, but more consistent" light standard-adwaita-palette nil standard-adwaita-palette-overrides)
+    (standard-wombat standard-themes "Like the built-in adwaita theme, but more consistent" dark standard-wombat-palette nil standard-wombat-palette-overrides)))
 
 (defvar standard-themes--declared-p nil)
 

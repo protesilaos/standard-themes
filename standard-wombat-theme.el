@@ -138,7 +138,9 @@
       (mail-recipient mail-subject)
 
       (bg-mark-select bg-blue-subtle)
-      (fg-mark-delete red))
+      (fg-mark-delete red)
+
+      (prose-tag magenta))
     standard-themes-common-palette-mappings)))
 
 (defcustom standard-wombat-palette-overrides nil

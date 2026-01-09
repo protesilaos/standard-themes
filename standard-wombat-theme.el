@@ -2,7 +2,8 @@
 
 ;; Copyright (C) 2026 Free Software Foundation, Inc.
 
-;; Author: Elijah Gabe Pérez <eg642616@gmail.com>
+;; Author: Elijah Gabe Pérez <eg642616@gmail.com>,
+;;         Protesilaos Stavrou <info@protesilaos.com>
 ;; Keywords: faces, theme, accessibility
 
 ;; This file is NOT part of GNU Emacs.
@@ -20,9 +21,18 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-;;; Commentary:
 
-;; TODO:
+;;; Commentary:
+;;
+;; The `standard-themes' are a collection of light and dark themes for
+;; GNU Emacs.  The `standard-light' and `standard-dark' emulate the
+;; out-of-the-box looks of Emacs (which technically do NOT constitute
+;; a theme) while bringing to them thematic consistency,
+;; customizability, and extensibility.  Other themes are stylistic
+;; variations of those or other built-in themes.
+;;
+;; Why call them "standard"?  Obviously because: Standard Themes Are
+;; Not Derivatives but the Affectionately Reimagined Default ... themes.
 
 ;;; Code:
 
@@ -32,14 +42,23 @@
   (modus-themes-generate-palette
    '((bg-main "#242424")
      (fg-main "#f6f3e8")
-     (fg-dim "#99968b") ; (?)
-     (red "#e5786d") ; or "#b85149"
-     (green "#92a65e") ; or "#cae982" or "#95e454"
+     (fg-dim "#99968b")
+     (red "#e5786d")
+     (red-warmer "#ff9900")
+     (red-cooler "#b85149")
+     (green "#95e454")
+     (green-warmer "#cae682")
+     (green-faint "#92a65e")
      (yellow "#ddaa6f") ; or "#edc4a3" or "#ccaa8f"
-     (yellow-faint "#ccaa8f") ; (?)
-     (blue "#8ac6f2") ; or "#5b98c2" or "#333366"
-     (magenta "#a6a1de") ; or "#64619a"
-     (cyan "#70cecc") ; or "#3f9f9e"
+     (yellow-faint "#ccaa8f")
+     (blue "#8ac6f2")
+     (blue-faint "#5b98c2")
+     (magenta "#a6a1de")
+     (magenta-faint "#64619a")
+     (cyan "#70cecc")
+     (cyan-faint "#3f9f9e")
+
+     (bg-blue-subtle "#333366")
 
      (cursor "#656565")
      (fringe "#303030")
@@ -49,7 +68,6 @@
      (fg-search-current "#857b6f")
 
      (bg-hover "#333333")
-     (bg-hover-secondary "#333366")
      (bg-hl-line "#404040")
      (bg-region "#4f4f4f")
 
@@ -59,46 +77,57 @@
 
      (bg-tab-bar "#303030")
 
-     (fg-link "#8ac6f2")
-     (fg-link-visited "#e5786d")
-
-     (fg-prompt "#e5786d")
-
-     (comment "#99968b")
-     (constant "#e5786d")
-     (keyword "#8ac6f2")
-     (string "#95e454")
-     (docstring "#cae982")
-     (type "#92a65e")
-     (variable "#cae682")
-     (warning "#ff9900")
-     (info "#95e454")
-
-     (keybind "#ddaa6f")
-
-     (mail-subject "#cae682")
-     (mail-recipient "#95e454")
-     (mail-cite-0 "#99968b")
-     (mail-cite-1 "#92a65e")
-     (mail-cite-2 "#ddaa6f")
-     (mail-cite-3 "#ff9900")
-     (mail-other "#95e454")
-
      (bg-button-active "#333333")
      (fg-button-active "#f6f3e8")
 
-     (bg-mark-select "#333366")
      (bg-search-lazy "#384048")
-     (fg-search-lazy "#a0a8b0"))
+     (fg-search-lazy "#a0a8b0")
+
+     (bg-added          "#00331f")
+     (bg-added-faint    "#002410")
+     (bg-added-refine   "#03492f")
+     (fg-added          "#4fb04f")
+     (bg-changed        "#323200")
+     (bg-changed-faint  "#281a00")
+     (bg-changed-refine "#484800")
+     (fg-changed        "#e0cf03")
+     (bg-removed        "#4a1119")
+     (bg-removed-faint  "#320a0f")
+     (bg-removed-refine "#751a1f")
+     (fg-removed        "#ff5f5f"))
    'warm
    nil
    (append
-    '((bg-line-number-inactive unspecified)
+    '((fg-link blue)
+      (fg-link-visited red)
+
+      (fg-prompt red)
+
+      (comment fg-dim)
+      (constant red)
+      (keyword blue)
+      (string green)
+      (docstring green-warmer)
+      (type green-faint)
+      (variable green-warmer)
+      (warning red-warmer)
+      (info green)
+
+      (keybind yellow)
+
+      (mail-subject green-warmer)
+      (mail-recipient green)
+      (mail-cite-0 fg-dim)
+      (mail-cite-1 green-faint)
+      (mail-cite-2 yellow)
+      (mail-cite-3 red-warmer)
+      (mail-other green)
+
+      (bg-hover-secondary bg-blue-subtle)
+      (bg-line-number-inactive unspecified)
       (bg-line-number-active bg-hl-line)
       (fg-region unspecified)
-      (bg-link unspecified)
       (underline-link fg-link)
-      (bg-link-visited unspecified)
       (underline-link-visited fg-link-visited)
       (bg-line-number-inactive unspecified)
       (bg-line-number-active bg-hl-line)
@@ -107,7 +136,9 @@
       (fnname variable)
       (fnname-call fnname)
       (mail-recipient mail-subject)
-      (fg-mark-select fg-main))
+
+      (bg-mark-select bg-blue-subtle)
+      (fg-mark-delete red))
     standard-themes-common-palette-mappings)))
 
 (defcustom standard-wombat-palette-overrides nil
@@ -128,33 +159,33 @@
                                         :background ,bg-mode-line-inactive
                                         :foreground ,fg-mode-line-inactive
                                         :box nil))))
-    `(homoglyph ((,c (:foreground "#ddaa6f" :weight bold))))
+    `(homoglyph ((,c (:foreground yellow :weight bold))))
     `(help-key-binding ((,c (:background "#333333" :foreground "#f6f3e8"))))
     `(header-line ((,c (:background "#303030" :foreground "#e7f6da"))))
-    `(gnus-group-news-1-low ((,c (:foreground "#95e454"))))
-    `(gnus-group-news-2 ((,c (:weight bold :foreground "#cae682"))))
-    `(gnus-group-news-2-low ((,c (:foreground "#cae682"))))
+    `(gnus-group-news-1-low ((,c (:foreground green))))
+    `(gnus-group-news-2 ((,c (:weight bold :foreground green-warmer))))
+    `(gnus-group-news-2-low ((,c (:foreground green-warmer))))
     ;; `(gnus-group-news-3 ((,c (:weight bold :foreground "#ccaa8f"))))
     `(gnus-group-news-3-low ((,c (:foreground "#ccaa8f"))))
-    `(gnus-group-news-4 ((,c (:weight bold :foreground "#99968b"))))
-    `(gnus-group-news-4-low ((,c (:foreground "#99968b"))))
-    `(gnus-group-news-5 ((,c (:weight bold :foreground "#cae682"))))
-    `(gnus-group-news-5-low ((,c (:foreground "#cae682"))))
-    ;; `(gnus-group-news-low ((,c (:foreground "#99968b"))))
-    `(gnus-group-mail-1 ((,c (:weight bold :foreground "#95e454"))))
-    `(gnus-group-mail-1-low ((,c (:foreground "#95e454"))))
-    `(gnus-group-mail-2 ((,c (:weight bold :foreground "#cae682"))))
-    `(gnus-group-mail-2-low ((,c (:foreground "#cae682"))))
+    `(gnus-group-news-4 ((,c (:weight bold :foreground fg-dim))))
+    `(gnus-group-news-4-low ((,c (:foreground fg-dim))))
+    `(gnus-group-news-5 ((,c (:weight bold :foreground green-warmer))))
+    `(gnus-group-news-5-low ((,c (:foreground green-warmer))))
+    ;; `(gnus-group-news-low ((,c (:foreground fg-dim))))
+    `(gnus-group-mail-1 ((,c (:weight bold :foreground green))))
+    `(gnus-group-mail-1-low ((,c (:foreground green))))
+    `(gnus-group-mail-2 ((,c (:weight bold :foreground green-warmer))))
+    `(gnus-group-mail-2-low ((,c (:foreground green-warmer))))
     `(gnus-group-mail-3 ((,c (:weight bold :foreground "#ccaa8f"))))
     `(gnus-group-mail-3-low ((,c (:foreground "#ccaa8f"))))
-    `(gnus-group-mail-low ((,c (:foreground "#99968b"))))
-    `(gnus-header-content ((,c (:foreground "#8ac6f2"))))
-    ;; `(gnus-header-from ((,c (:weight bold :foreground "#95e454"))))
-    ;; `(gnus-header-subject ((,c (:foreground "#cae682"))))
-    `(gnus-header-name ((,c (:foreground "#8ac6f2"))))
-    `(gnus-header-newsgroups ((,c (:foreground "#cae682"))))
-    `(message-header-name ((,c (:foreground "#8ac6f2" :weight bold))))
-    `(message-separator ((,c (:foreground "#e5786d" :weight bold))))))
+    `(gnus-group-mail-low ((,c (:foreground fg-dim))))
+    `(gnus-header-content ((,c (:foreground blue))))
+    ;; `(gnus-header-from ((,c (:weight bold :foreground green))))
+    ;; `(gnus-header-subject ((,c (:foreground green-warmer))))
+    `(gnus-header-name ((,c (:foreground blue))))
+    `(gnus-header-newsgroups ((,c (:foreground green-warmer))))
+    `(message-header-name ((,c (:foreground blue :weight bold))))
+    `(message-separator ((,c (:foreground red :weight bold))))))
 
 (modus-themes-theme
  'standard-wombat

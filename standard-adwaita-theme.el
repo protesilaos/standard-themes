@@ -1,4 +1,4 @@
-;;; standard-adwaita.el --- Like the built-in adwaita theme, but more consistent  -*- lexical-binding: t; -*-
+;;; standard-adwaita-theme.el --- Like the built-in adwaita theme, but more consistent  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2026 Free Software Foundation, Inc.
 
@@ -172,4 +172,4 @@
  'standard-adwaita-custom-faces)
 
 (provide 'standard-adwaita)
-;;; standard-adwaita.el ends here
+;;; standard-adwaita-theme.el ends here

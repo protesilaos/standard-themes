@@ -1,4 +1,4 @@
-;;; standard-wombat.el --- Like the built-in wombat theme, but more consistent  -*- lexical-binding: t; -*-
+;;; standard-wombat-theme.el --- Like the built-in wombat theme, but more consistent  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2026 Free Software Foundation, Inc.
 
@@ -167,4 +167,4 @@
  'standard-wombat-custom-faces)
 
 (provide 'standard-wombat)
-;;; standard-wombat.el ends here
+;;; standard-wombat-theme.el ends here

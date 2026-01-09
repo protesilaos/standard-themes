@@ -2,7 +2,8 @@
 
 ;; Copyright (C) 2026 Free Software Foundation, Inc.
 
-;; Author: Elijah Gabe Pérez <eg642616@gmail.com>
+;; Author: Elijah Gabe Pérez <eg642616@gmail.com>,
+;;         Protesilaos Stavrou <info@protesilaos.com>
 ;; Keywords: faces, theme, accessibility
 
 ;; This file is NOT part of GNU Emacs.
@@ -43,123 +44,130 @@
 
 (defconst standard-adwaita-palette
   (modus-themes-generate-palette
-   `((bg-main "#EDEDED")
-     (fg-main "#2E3436")
-     (red "#c01c28")
-     (green "#3a944a")
+   `((bg-main "#ededed")
+     (fg-main "#2e3436")
+     (red "#b50000")
+     (red-warmer "#c01c28")
+     (red-faint "#a52a2a")
+     (red-intense "#f5666d")
+     (green "#4cb64a")
+     (green-warmer "#4e9a06")
+     (green-cooler "#2f8b58")
+     (green-faint "#9cbb43")
      (yellow "#c88800")
+     (yellow-intense "#ce5c00")
      (blue "#3584e4")
+     (blue-cooler "#0066cc")
+     (blue-faint "#204a87")
      (magenta "#9841bb")
+     (magenta-cooler "#a020f0")
+     (magenta-intense "#ff7092")
      (cyan "#2190a4")
+     (cyan-cooler "#0084c8")
+     (cyan-faint "#00578e")
+
+     (bg-blue-intense "#6799cc")
 
      (bg-tab-bar "#eeeeec")
      (bg-tab-other "#ffffff")
 
-     (cursor "#00BBFF")
-     (border "#EDEDED")
-     (fringe "#E6E6E6")
+     (cursor "#00bbff")
+     (border "#ededed")
+     (fringe "#e6e6e6")
 
-     (bg-mode-line-active "white")
-     (fg-mode-line-active "#2E3436")
-     (bg-mode-line-inactive "white")
-     (fg-mode-line-inactive "#C6C6C6")
+     (bg-mode-line-active "#ffffff")
+     (fg-mode-line-active "#2e3436")
+     (bg-mode-line-inactive "#ffffff")
+     (fg-mode-line-inactive "#c6c6c6")
 
-     (fg-prompt "#0084C8")
+     (bg-hl-line "#d9e2ef")
+     (bg-region "#c2d5e9")
 
-     (bg-hl-line "#D9E2EF")
-     (bg-region "#C2D5E9")
+     (fg-search-current "#ffffff")
 
-     (info "#4E9A06")
-     (warning "#CE5C00")
-     (err "#B50000")
-     (builtin "#A020F0")
-     (constant "#F5666D")
-     (comment "#204A87")
-     (fnname "#00578E")
-     (keyword "#A52A2A")
-     (string "#4E9A06")
-     (type "#2F8B58")
-     (variable "#0084C8")
-     (warning "#F5666D")
-
-     (fg-link "#0066CC")
-     (fg-link-visited "#6799CC")
-
-     (bg-mark-select "#4A90D9")
-     (fg-mark-select "white")
-     (bg-search-lazy "#77A4DD")
-     (fg-search-lazy "white")
-     (bg-hover "#4A90D9")
-
-     (bg-search-current "#77A4DD")
-     (fg-search-current "white")
-
-     (fg-added "#4E9A06")
-     (fg-removed "#F5666D")
-     (bg-added "#eeffee")
-     (bg-removed "#ffeeee")
-
-     (mail-subject   "#FF7092")
-     (mail-cite-0    "#00578E")
-     (mail-cite-1    "#0084C8"))
+     (bg-added          "#c0f8d0")
+     (bg-added-faint    "#d0ffe0")
+     (bg-added-refine   "#b4e8c4")
+     (fg-added          "#007200")
+     (bg-changed        "#ffdfa9")
+     (bg-changed-faint  "#ffefbf")
+     (bg-changed-refine "#fac090")
+     (fg-changed        "#8d6a12")
+     (bg-removed        "#ffd8d5")
+     (bg-removed-faint  "#ffe9e9")
+     (bg-removed-refine "#f3b5af")
+     (fg-removed        "#a02a2a"))
    'cool
    nil
    (append
-    '((fg-region unspecified)
-      (bg-link unspecified)
-      (bg-link-visited unspecified)
+    '((fg-prompt cyan-cooler)
+
+      (info green-warmer)
+      (warning yellow-intense)
+      (err red)
+
+      (builtin magenta-cooler)
+      (constant red-intense)
+      (comment blue-faint)
+      (docstring green-cooler)
+      (fnname cyan-faint)
+      (keyword red-faint)
+      (string green-warmer)
+      (type green-cooler)
+      (variable cyan-cooler)
+      (warning red-intense)
+
+      (fg-link blue-cooler)
+      (fg-link-visited cyan)
+
+      (fg-region unspecified)
       (bg-line-number-inactive unspecified)
       (bg-line-number-active bg-hl-line)
-      (mail-recipient mail-subject))
+
+      (bg-search-lazy bg-cyan-subtle)
+      (bg-search-current bg-blue-intense)
+
+      (bg-mark-select bg-blue-subtle)
+      (fg-mark-select fg-main)
+      (bg-mark-delete bg-red-subtle)
+      (fg-mark-delete fg-main)
+      (bg-mark-other bg-yellow-subtle)
+      (fg-mark-other fg-main)
+
+      (bg-hover bg-cyan-intense)
+
+      (mail-subject magenta-intense)
+      (mail-cite-0 cyan-faint)
+      (mail-cite-1 cyan-cooler)
+      (mail-recipient magenta-intense))
     standard-themes-common-palette-mappings)))
 
 (defvar standard-adwaita-custom-faces
-  `(`(dired-header ((,c (:weight bold :foreground "#0084C8"))))
-    ;; `(widget-button ((,c (:weight bold :foreground "#0084C8"))))
-    ;; `(success ((,c (:weight bold :foreground "#4E9A06"))))
+  '(
+    `(dired-header ((,c (:weight bold :foreground ,cyan-cooler))))
 
-    ;; `(highlight ((,c (:foreground "white" :background "#4A90D9"))))
-
-    `(erc-action-face ((,c (:foreground "#F5666D"))))
-    `(erc-button ((,c (:foreground "#A8799C"))))
-    `(erc-current-nick-face ((,c (:weight bold :foreground "#FF7092"))))
-    `(erc-error-face ((,c (:foreground "#F5666D" :weight bold))))
+    `(erc-action-face ((,c (:foreground ,red-intense))))
+    `(erc-button ((,c (:foreground "#a8799c"))))
+    `(erc-current-nick-face ((,c (:weight bold :foreground ,magenta-intense))))
+    `(erc-error-face ((,c (:foreground ,red-intense :weight bold))))
     `(erc-input-face ((,c (:foreground "black"))))
-    `(erc-keyword-face ((,c (:foreground "#F5666D"))))
-    `(erc-my-nick-face ((,c (:weight bold :foreground "#FF8CA7"))))
-    `(erc-nick-default-face ((,c (:weight bold :foreground "#0084C8"))))
-    `(erc-notice-face ((,c (:foreground "#0084C8"))))
+    `(erc-keyword-face ((,c (:foreground ,red-intense))))
+    `(erc-my-nick-face ((,c (:weight bold :foreground "#ff8ca7"))))
+    `(erc-nick-default-face ((,c (:weight bold :foreground ,cyan-cooler))))
+    `(erc-notice-face ((,c (:foreground ,cyan-cooler))))
     `(erc-prompt-face ((,c (:foreground "black"))))
-    `(erc-timestamp-face ((,c (:foreground ,"#4CB64A"))))
+    `(erc-timestamp-face ((,c (:foreground ,green))))
 
-    `(magit-log-sha1 ((,c (:foreground "#FF7092"))))
-    `(magit-log-head-label-local ((,c (:foreground "#4F78B5"))))
-    `(magit-log-head-label-remote ((,c (:foreground ,"#4CB64A"))))
-    `(magit-branch ((,c (:weight bold :foreground "#0084C8"))))
-    `(magit-section-title ((,c (:weight bold :foreground "#00578E"))))
-    `(magit-item-highlight ((,c (:background "#FEFFBF"))))
-    `(magit-diff-add ((,c (:weight bold :foreground "#4CB64A"))))
-    `(magit-diff-del ((,c (:bold nil :foreground "#F5666D"))))
-
-    `(gnus-group-mail-1-empty ((,c (:foreground "#00578E"))))
-    `(gnus-group-mail-1 ((,c (:weight bold :foreground "#4F78B5"))))
-    `(gnus-group-mail-3-empty ((,c (:foreground "#00578E"))))
-    `(gnus-group-mail-3 ((,c (:weight bold :foreground "#9CBB43"))))
-    `(gnus-group-news-3-empty ((,c (:foreground "#00578E"))))
-    `(gnus-group-news-3 ((,c (:weight bold :foreground "#9CBB43"))))
-    `(gnus-header-name ((,c (:weight bold :foreground "#0084C8"))))
-    `(gnus-header-subject ((,c (:weight bold :foreground "#FF7092"))))
-    `(gnus-header-content ((,c (:foreground "#FF7092"))))
-    `(gnus-button ((,c (:weight bold :foreground "#00578E"))))
-    `(gnus-cite-1 ((,c (:foreground "#00578E"))))
-    `(gnus-cite-2 ((,c (:foreground "#0084C8"))))
-
-    `(image-dired-thumb-mark ((,c (:background "#CE5C00"))))
-    `(image-dired-thumb-flagged ((,c (:background "#B50000"))))
-
-    ;; `(diff-added ((,c (:weight bold :foreground "#4E9A06"))))
-    ;; `(diff-removed ((,c (:weight bold :foreground "#F5666D"))))
-    ))
+    `(gnus-group-mail-1-empty ((,c (:foreground ,cyan-faint))))
+    `(gnus-group-mail-1 ((,c (:weight bold :foreground "#4f78b5"))))
+    `(gnus-group-mail-3-empty ((,c (:foreground ,cyan-faint))))
+    `(gnus-group-mail-3 ((,c (:weight bold :foreground ,green-faint))))
+    `(gnus-group-news-3-empty ((,c (:foreground ,cyan-faint))))
+    `(gnus-group-news-3 ((,c (:weight bold :foreground ,green-faint))))
+    `(gnus-header-name ((,c (:weight bold :foreground ,cyan-cooler))))
+    `(gnus-header-subject ((,c (:weight bold :foreground ,magenta-intense))))
+    `(gnus-header-content ((,c (:foreground ,magenta-intense))))
+    `(gnus-button ((,c (:weight bold :foreground ,cyan-faint))))))
 
 (modus-themes-theme
  'standard-adwaita

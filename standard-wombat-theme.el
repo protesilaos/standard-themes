@@ -107,7 +107,7 @@
       (constant red)
       (keyword blue)
       (string green)
-      (docstring green-warmer)
+      (docstring green)
       (type green-faint)
       (variable green-warmer)
       (warning red-warmer)

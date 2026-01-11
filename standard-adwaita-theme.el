@@ -136,10 +136,13 @@
 
       (bg-hover bg-cyan-intense)
 
-      (mail-subject magenta-intense)
       (mail-cite-0 cyan-faint)
       (mail-cite-1 cyan-cooler)
-      (mail-recipient magenta-intense))
+      (mail-cite-2 red-cooler)
+      (mail-cite-3 red)
+      (mail-recipient magenta)
+      (mail-subject magenta-warmer)
+      (mail-other magenta-cooler))
     standard-themes-common-palette-mappings)))
 
 (defvar standard-adwaita-custom-faces

@@ -160,8 +160,8 @@ if you prefer to blend Standard and Modus into a single group, enable
 
 (defconst standard-themes-custom-faces
   '(
-    `(company-tooltip ((,c :background ,bg-alt)))
-    `(corfu-default ((,c :background ,bg-alt)))
+    `(company-tooltip ((,c :inherit modus-themes-fixed-pitch :background ,bg-alt)))
+    `(corfu-default ((,c :inherit modus-themes-fixed-pitch :background ,bg-alt)))
     `(magit-section-highlight ((,c :background ,bg-alt)))
     `(magit-diff-file-heading-highlight ((,c :inherit magit-diff-file-heading :background ,bg-alt)))
     `(mode-line

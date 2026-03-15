@@ -112,6 +112,7 @@
      (bg-mark-select  "#fafa7b")
      (fg-mark-select  "#805f00")
      (bg-completion "#bfe8ff")
+     (bg-popup "#f3f3f3")
      (bg-hover      "#aaeccf")
      (bg-hover-secondary  "#ffff00")
      (bg-hl-line    "#b4eeb4")

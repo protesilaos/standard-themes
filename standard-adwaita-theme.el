@@ -82,6 +82,7 @@
 
      (bg-hl-line "#d9e2ef")
      (bg-region "#c2d5e9")
+     (bg-popup "#e2e2e2")
 
      (fg-search-current "#ffffff")
 

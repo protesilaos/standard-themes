@@ -70,6 +70,7 @@
      (bg-hover "#333333")
      (bg-hl-line "#404040")
      (bg-region "#4f4f4f")
+     (bg-popup "#2f2f2f")
 
      (bg-mode-line-active "#444444")
      (fg-mode-line-active "#f6f3e8")

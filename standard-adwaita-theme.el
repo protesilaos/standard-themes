@@ -184,5 +184,6 @@
  'standard-adwaita-palette-overrides
  'standard-adwaita-custom-faces)
 
-(provide 'standard-adwaita)
+(provide 'standard-adwaita-theme)
+
 ;;; standard-adwaita-theme.el ends here

@@ -212,4 +212,6 @@ represents."
  'standard-dark-palette-overrides
  'standard-themes-custom-faces)
 
+(provide 'standard-dark-theme)
+
 ;;; standard-dark-theme.el ends here

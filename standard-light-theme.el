@@ -211,4 +211,6 @@ represents."
  'standard-light-palette-overrides
  'standard-themes-custom-faces)
 
+(provide 'standard-light-theme)
+
 ;;; standard-light-theme.el ends here

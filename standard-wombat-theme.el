@@ -201,5 +201,6 @@
  'standard-wombat-palette-overrides
  'standard-wombat-custom-faces)
 
-(provide 'standard-wombat)
+(provide 'standard-wombat-theme)
+
 ;;; standard-wombat-theme.el ends here

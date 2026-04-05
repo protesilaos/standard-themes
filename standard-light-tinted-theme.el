@@ -210,4 +210,6 @@ represents."
  'standard-light-tinted-palette-overrides
  'standard-themes-custom-faces)
 
+(provide 'standard-light-tinted-theme)
+
 ;;; standard-light-tinted-theme.el ends here

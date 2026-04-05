@@ -211,4 +211,6 @@ represents."
  'standard-dark-tinted-palette-overrides
  'standard-themes-custom-faces)
 
+(provide 'standard-dark-tinted-theme)
+
 ;;; standard-dark-tinted-theme.el ends here

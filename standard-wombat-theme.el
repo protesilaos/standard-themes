@@ -3,7 +3,7 @@
 ;; Copyright (C) 2026 Free Software Foundation, Inc.
 
 ;; Author: Elijah Gabe Pérez <eg642616@gmail.com>,
-;;         Protesilaos Stavrou <info@protesilaos.com>
+;;         Protesilaos <info@protesilaos.com>
 ;; Keywords: faces, theme, accessibility
 
 ;; This file is NOT part of GNU Emacs.

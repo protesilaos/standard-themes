@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2022-2026  Free Software Foundation, Inc.
 
-;; Author: Protesilaos Stavrou <info@protesilaos.com>
-;; Maintainer: Protesilaos Stavrou <info@protesilaos.com>
+;; Author: Protesilaos <info@protesilaos.com>
+;; Maintainer: Protesilaos <info@protesilaos.com>
 ;; URL: https://github.com/protesilaos/standard-themes
 ;; Version: 3.0.2
 ;; Package-Requires: ((emacs "28.1") (modus-themes "5.0.0"))
